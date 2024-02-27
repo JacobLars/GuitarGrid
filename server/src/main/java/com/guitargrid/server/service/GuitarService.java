@@ -19,7 +19,6 @@ public class GuitarService {
 
 
     public Guitar saveGuitar(Guitar guitar) {
-
        return guitarRepository.save(guitar);
     }
 

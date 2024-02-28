@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Component
 public class GuitarMapper {
-    
+
     public Guitar mapToGuitar(GuitarRequest guitarRequest) {
         return Guitar.builder()
                 .name(guitarRequest.name())

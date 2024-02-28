@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+import static org.springframework.http.HttpStatus.CREATED;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/brands")
@@ -18,6 +20,7 @@ public class BrandController {
     private final BrandService brandService;
 
     @PostMapping
+    @ResponseStatus(CREATED)
     public BrandResponse saveBrand(@RequestBody BrandRequest brandRequest) {
        return brandService.saveBrand(brandRequest);
     }

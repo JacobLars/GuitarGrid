@@ -34,7 +34,4 @@ public class Product {
         this.name = name;
         this.price = price;
     }
-    public void addImage(Image image) {
-        images.add(image);
-    }
 }

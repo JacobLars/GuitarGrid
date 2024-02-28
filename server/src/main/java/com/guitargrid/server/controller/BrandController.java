@@ -1,5 +1,7 @@
 package com.guitargrid.server.controller;
 
+import com.guitargrid.server.controller.dto.request.BrandRequest;
+import com.guitargrid.server.controller.dto.response.BrandResponse;
 import com.guitargrid.server.model.Brand;
 import com.guitargrid.server.service.BrandService;
 import lombok.RequiredArgsConstructor;
@@ -15,12 +17,12 @@ public class BrandController {
     private final BrandService brandService;
 
     @PostMapping
-    public Brand saveBrand(@RequestBody Brand brand) {
-       return brandService.saveBrand(brand);
+    public BrandResponse saveBrand(@RequestBody BrandRequest brandRequest) {
+       return brandService.saveBrand(brandRequest);
     }
 
     @GetMapping("/{id}")
-    public Brand getBrandById(@PathVariable UUID id) {
+    public BrandResponse getBrandById(@PathVariable UUID id) {
         return brandService.getBrandById(id);
     }
 

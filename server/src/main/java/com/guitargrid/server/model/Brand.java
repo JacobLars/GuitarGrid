@@ -28,8 +28,4 @@ public class Brand {
     @JsonIgnore
     private List<Product> product;
 
-    void addProduct(Product product) {
-        this.product.add(product);
-    }
-
 }

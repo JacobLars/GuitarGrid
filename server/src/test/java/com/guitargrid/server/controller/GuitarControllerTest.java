@@ -1,7 +1,6 @@
 package com.guitargrid.server.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.guitargrid.server.controller.dto.request.BrandRequest;
 import com.guitargrid.server.controller.dto.request.GuitarRequest;
 import com.guitargrid.server.controller.dto.response.GuitarListResponse;
 import com.guitargrid.server.service.GuitarService;
@@ -14,11 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
-import java.util.UUID;
 
-import static com.guitargrid.server.utils.BrandTestData.*;
 import static com.guitargrid.server.utils.GuitarTestData.*;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;

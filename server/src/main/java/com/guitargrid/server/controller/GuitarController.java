@@ -13,6 +13,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequestMapping("api/v1/guitars")
+@CrossOrigin
 public class GuitarController {
 
 

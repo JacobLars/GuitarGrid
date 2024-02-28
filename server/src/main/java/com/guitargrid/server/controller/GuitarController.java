@@ -5,9 +5,10 @@ import com.guitargrid.server.service.GuitarService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping("api/guitars")
+@RequestMapping("api/v1/guitars")
 public class GuitarController {
 
 
@@ -17,18 +18,14 @@ public class GuitarController {
         this.guitarService = guitarService;
     }
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello World";
-    }
     @GetMapping
     public List<Guitar> getAllGuitars() {
         return guitarService.getAllGuitars();
     }
 
-    @PostMapping
-    public Guitar saveGuitar(@RequestBody Guitar guitar) {
-        return guitarService.saveGuitar(guitar);
+    @PostMapping("/{brandId}")
+    public Guitar saveGuitar(@RequestBody Guitar guitar, @PathVariable UUID brandId) {
+        return guitarService.saveGuitar(guitar, brandId);
     }
 
 

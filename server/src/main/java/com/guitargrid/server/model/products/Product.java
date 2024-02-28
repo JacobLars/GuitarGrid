@@ -28,9 +28,9 @@ public class Product {
     @ManyToOne
     private Brand brand;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Image> images;
-    public Product(String name, double price, String brand) {
+    public Product(String name, double price) {
         this.name = name;
         this.price = price;
     }

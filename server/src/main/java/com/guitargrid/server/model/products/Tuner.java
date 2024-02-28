@@ -1,7 +1,10 @@
 package com.guitargrid.server.model.products;
 
+import com.guitargrid.server.model.Image;
 import jakarta.persistence.Entity;
 import lombok.Getter;
+
+import java.util.List;
 
 @Getter
 @Entity

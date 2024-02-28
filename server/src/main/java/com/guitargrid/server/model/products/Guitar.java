@@ -1,9 +1,12 @@
 package com.guitargrid.server.model.products;
 
+import com.guitargrid.server.model.Image;
 import jakarta.persistence.Entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 
 @Getter

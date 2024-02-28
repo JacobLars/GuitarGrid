@@ -1,5 +1,7 @@
 package com.guitargrid.server.controller;
 
+import com.guitargrid.server.controller.dto.request.GuitarRequest;
+import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.service.GuitarService;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +26,8 @@ public class GuitarController {
     }
 
     @PostMapping("/{brandId}")
-    public Guitar saveGuitar(@RequestBody Guitar guitar, @PathVariable UUID brandId) {
-        return guitarService.saveGuitar(guitar, brandId);
+    public GuitarResponse saveGuitar(@RequestBody GuitarRequest guitarRequest, @PathVariable UUID brandId) {
+        return guitarService.saveGuitar(guitarRequest, brandId);
     }
 
 

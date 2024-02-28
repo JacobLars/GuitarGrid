@@ -12,8 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Component
 public class GuitarMapper {
-
-    private final BrandMapper brandMapper;
+    
     public Guitar mapToGuitar(GuitarRequest guitarRequest) {
         return Guitar.builder()
                 .name(guitarRequest.name())
@@ -42,7 +41,8 @@ public class GuitarMapper {
                 .frets(guitar.getFrets())
                 .scale(guitar.getScale())
                 .images(guitar.getImages())
-                .brand(brandMapper.mapToBrandResponse(guitar.getBrand()))
+                .brandName(guitar.getBrand().getName())
+                .brandLogo(guitar.getBrand().getLogo())
                 .build();
     }
 

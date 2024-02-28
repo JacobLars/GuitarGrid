@@ -1,5 +1,6 @@
 package com.guitargrid.server.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.guitargrid.server.model.products.Product;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -23,6 +24,7 @@ public class Image {
     private String url;
 
     @ManyToOne
+    @JsonIgnore
     private Product product;
 
 

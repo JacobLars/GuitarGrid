@@ -1,6 +1,7 @@
 package com.guitargrid.server.controller;
 
 import com.guitargrid.server.controller.dto.request.BrandRequest;
+import com.guitargrid.server.controller.dto.response.BrandListResponse;
 import com.guitargrid.server.controller.dto.response.BrandResponse;
 import com.guitargrid.server.model.Brand;
 import com.guitargrid.server.service.BrandService;
@@ -24,6 +25,11 @@ public class BrandController {
     @GetMapping("/{id}")
     public BrandResponse getBrandById(@PathVariable UUID id) {
         return brandService.getBrandById(id);
+    }
+
+    @GetMapping
+    public BrandListResponse getAllBrands() {
+        return brandService.getAllBrands();
     }
 
 }

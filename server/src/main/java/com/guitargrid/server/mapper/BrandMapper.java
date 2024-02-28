@@ -1,9 +1,12 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.BrandRequest;
+import com.guitargrid.server.controller.dto.response.BrandListResponse;
 import com.guitargrid.server.controller.dto.response.BrandResponse;
 import com.guitargrid.server.model.Brand;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class BrandMapper {
@@ -20,6 +23,12 @@ public class BrandMapper {
                 .id(brand.getId())
                 .name(brand.getName())
                 .logo(brand.getLogo())
+                .build();
+    }
+
+    public BrandListResponse mapToBrandListResponse(List<Brand> brands) {
+        return BrandListResponse.builder()
+                .brands(brands.stream().map(this::mapToBrandResponse).toList())
                 .build();
     }
 }

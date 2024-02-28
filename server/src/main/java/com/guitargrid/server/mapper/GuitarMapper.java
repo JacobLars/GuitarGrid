@@ -1,13 +1,19 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.GuitarRequest;
+import com.guitargrid.server.controller.dto.response.GuitarListResponse;
 import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.model.products.Guitar;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+@RequiredArgsConstructor
 @Component
 public class GuitarMapper {
 
+    private final BrandMapper brandMapper;
     public Guitar mapToGuitar(GuitarRequest guitarRequest) {
         return Guitar.builder()
                 .name(guitarRequest.name())
@@ -36,6 +42,13 @@ public class GuitarMapper {
                 .frets(guitar.getFrets())
                 .scale(guitar.getScale())
                 .images(guitar.getImages())
+                .brand(brandMapper.mapToBrandResponse(guitar.getBrand()))
+                .build();
+    }
+
+    public GuitarListResponse mapToGuitarListResponse(List<Guitar> guitars) {
+        return GuitarListResponse.builder()
+                .guitars(guitars.stream().map(this::mapToGuitarResponse).toList())
                 .build();
     }
 }

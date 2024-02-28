@@ -1,6 +1,7 @@
 package com.guitargrid.server.controller;
 
 import com.guitargrid.server.controller.dto.request.GuitarRequest;
+import com.guitargrid.server.controller.dto.response.GuitarListResponse;
 import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.service.GuitarService;
@@ -21,7 +22,7 @@ public class GuitarController {
     }
 
     @GetMapping
-    public List<Guitar> getAllGuitars() {
+    public GuitarListResponse getAllGuitars() {
         return guitarService.getAllGuitars();
     }
 

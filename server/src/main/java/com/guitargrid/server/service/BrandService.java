@@ -1,6 +1,7 @@
 package com.guitargrid.server.service;
 
 import com.guitargrid.server.controller.dto.request.BrandRequest;
+import com.guitargrid.server.controller.dto.response.BrandListResponse;
 import com.guitargrid.server.controller.dto.response.BrandResponse;
 import com.guitargrid.server.mapper.BrandMapper;
 import com.guitargrid.server.model.Brand;
@@ -24,4 +25,7 @@ public class BrandService {
         return brandMapper.mapToBrandResponse(brandRepository.findById(id).orElseThrow());
     }
 
+    public BrandListResponse getAllBrands() {
+        return brandMapper.mapToBrandListResponse(brandRepository.findAll());
+    }
 }

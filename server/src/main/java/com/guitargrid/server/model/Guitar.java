@@ -12,20 +12,29 @@ import lombok.Setter;
 public class Guitar extends Product{
 
     private String type;
-
     private String color;
-
+    private String bodyType;
+    private String neckType;
+    private String fretboardType;
+    private String pickups;
+    private int frets;
+    private int scale;
 
     public Guitar () {
     }
 
     @Builder
-    public Guitar(String name, double price, String brand, String type, String color) {
+    public Guitar(String name, double price, String brand, String type, String color,
+                  String bodyType, String neckType, String fretboardType, String pickups,
+                  int frets, int scale) {
         super(name, price, brand);
         this.type = type;
         this.color = color;
+        this.bodyType = bodyType;
+        this.neckType = neckType;
+        this.fretboardType = fretboardType;
+        this.pickups = pickups;
+        this.frets = frets;
+        this.scale = scale;
     }
-
-
-
 }

@@ -30,6 +30,7 @@ public class GuitarMapper {
 
     public GuitarResponse mapToGuitarResponse(Guitar guitar) {
         return GuitarResponse.builder()
+                .id(guitar.getId())
                 .name(guitar.getName())
                 .price(guitar.getPrice())
                 .type(guitar.getType())

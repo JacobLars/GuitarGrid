@@ -1,4 +1,4 @@
-package com.guitargrid.server.model;
+package com.guitargrid.server.model.products;
 
 import jakarta.persistence.Entity;
 import lombok.Getter;

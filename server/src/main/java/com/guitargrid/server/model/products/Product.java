@@ -1,5 +1,6 @@
-package com.guitargrid.server.model;
+package com.guitargrid.server.model.products;
 
+import com.guitargrid.server.model.Image;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

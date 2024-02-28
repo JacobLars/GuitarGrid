@@ -1,8 +1,7 @@
 package com.guitargrid.server.controller;
 
-import com.guitargrid.server.model.Guitar;
+import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.service.GuitarService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

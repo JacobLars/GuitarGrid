@@ -1,8 +1,7 @@
 package com.guitargrid.server.service;
 
-import com.guitargrid.server.model.Guitar;
+import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.repository.GuitarRepository;
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

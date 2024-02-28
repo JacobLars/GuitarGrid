@@ -1,13 +1,9 @@
 package com.guitargrid.server.model;
 
-import com.guitargrid.server.model.products.Product;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
-
-import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,15 +11,10 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-public class Image {
-
+public class Brand {
     @Id
     @UuidGenerator
-    private UUID id;
-    private String url;
-
-    @ManyToOne
-    private Product product;
-
-
+    private String id;
+    private String name;
+    private String logo;
 }

@@ -29,8 +29,8 @@ public class Guitar extends Product{
     @Builder
     public Guitar(String name, double price, String type, String color,
                   String bodyType, String neckType, String fretboardType, String pickups,
-                  int frets, int scale) {
-        super(name, price);
+                  int frets, int scale, int rating) {
+        super(name, price, rating);
         this.type = type;
         this.color = color;
         this.bodyType = bodyType;

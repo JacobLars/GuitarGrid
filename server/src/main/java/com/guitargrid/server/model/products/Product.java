@@ -24,14 +24,16 @@ public class Product {
     private UUID id;
     private String name;
     private double price;
+    private int rating;
 
     @ManyToOne
     private Brand brand;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Image> images;
-    public Product(String name, double price) {
+    public Product(String name, double price, int rating) {
         this.name = name;
         this.price = price;
+        this.rating = rating;
     }
 }

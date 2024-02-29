@@ -22,6 +22,7 @@ public class Image {
     @UuidGenerator
     private UUID id;
     private String url;
+    private Boolean isMain;
 
     @ManyToOne
     @JsonIgnore

@@ -1,6 +1,6 @@
 import Rating from "@mui/material/Rating";
 import { Card } from "@nextui-org/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 type Props = {
   guitar: Guitar;
@@ -20,6 +20,7 @@ type Guitar = {
   brandName: string;
   brandLogo: string;
   rating: number;
+  product_quantity: number;
 };
 type Image = {
   id: string;
@@ -27,9 +28,16 @@ type Image = {
   isMain: boolean;
 };
 export const GuitarCard = ({ guitar }: Props) => {
+  const [isAvailable, setIsAvailable] = useState<boolean>(true);
+  useEffect(() => {
+    if (guitar.product_quantity === 0) {
+      setIsAvailable(false);
+    }
+  }, []);
+
   return (
     <div>
-      <Card className="flex items-center h-40 shadow-lg m-5 border border-[#c5c5c5]">
+      <Card className="flex items-center shadow-lg m-5 border border-[#c5c5c5]">
         <img
           className="w-40 max-h-40 self-start p-5 object-contain -ml-10"
           src={guitar.images.filter((img) => img.isMain === true)[0].url}
@@ -40,12 +48,17 @@ export const GuitarCard = ({ guitar }: Props) => {
             <p>{guitar.name}</p>
           </div>
           <Rating
-            className="mt-5"
+            className="mt-2"
             name="read-only"
             value={guitar.rating}
             readOnly
           />
-          <p className="mt-5 text-lg">{guitar.price}$</p>
+          <p className="mt-2 text-lg">{guitar.price}$</p>
+          {isAvailable ? (
+            <p className="text-green-400 mt-2">In stock</p>
+          ) : (
+            <p className="text-red-600 mt-2">Out of stock</p>
+          )}
         </div>
       </Card>
     </div>

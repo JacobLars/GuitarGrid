@@ -26,6 +26,7 @@ public class GuitarMapper {
                 .frets(guitarRequest.frets())
                 .scale(guitarRequest.scale())
                 .rating(guitarRequest.rating())
+                .product_quantity(guitarRequest.product_quantity())
                 .build();
     }
 
@@ -46,6 +47,7 @@ public class GuitarMapper {
                 .brandName(guitar.getBrand().getName())
                 .brandLogo(guitar.getBrand().getLogo())
                 .rating(guitar.getRating())
+                .product_quantity(guitar.getProduct_quantity())
                 .build();
     }
 

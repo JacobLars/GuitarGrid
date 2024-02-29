@@ -15,8 +15,8 @@ public class Tuner extends Product{
     public Tuner() {
     }
 
-    public Tuner(String name, double price, String type, int rating) {
-        super(name, price, rating);
+    public Tuner(String name, double price, String type, int rating, int product_quantity) {
+        super(name, price, rating, product_quantity);
         this.type = type;
     }
 

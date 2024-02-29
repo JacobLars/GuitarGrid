@@ -29,7 +29,7 @@ type Image = {
 export const GuitarCard = ({ guitar }: Props) => {
   return (
     <div>
-      <Card className="flex items-center h-40 shadow-md m-5">
+      <Card className="flex items-center h-40 shadow-lg m-5 border border-[#c5c5c5]">
         <img
           className="w-40 max-h-40 self-start p-5 object-contain -ml-10"
           src={guitar.images.filter((img) => img.isMain === true)[0].url}

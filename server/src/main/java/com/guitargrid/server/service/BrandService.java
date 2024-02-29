@@ -9,6 +9,7 @@ import com.guitargrid.server.repository.BrandRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @Service
@@ -22,7 +23,8 @@ public class BrandService {
     }
 
     public BrandResponse getBrandById(UUID id) {
-        return brandMapper.mapToBrandResponse(brandRepository.findById(id).orElseThrow());
+        return brandMapper.mapToBrandResponse(brandRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Brand not found")));
     }
 
     public BrandListResponse getAllBrands() {

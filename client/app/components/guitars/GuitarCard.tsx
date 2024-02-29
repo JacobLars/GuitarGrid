@@ -31,7 +31,7 @@ export const GuitarCard = ({ guitar }: Props) => {
     <div>
       <Card className="flex items-center h-40 shadow-md m-5">
         <img
-          className="max-w-20 max-h-40 self-start p-5"
+          className="w-40 max-h-40 self-start p-5 object-contain -ml-10"
           src={guitar.images.filter((img) => img.isMain === true)[0].url}
         />
         <div className="-mt-36 ml-20">

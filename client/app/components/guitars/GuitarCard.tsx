@@ -1,3 +1,4 @@
+import Rating from "@mui/material/Rating";
 import { Card } from "@nextui-org/react";
 import React from "react";
 
@@ -33,13 +34,18 @@ export const GuitarCard = ({ guitar }: Props) => {
           className="max-w-20 max-h-40 self-start p-5"
           src={guitar.images.filter((img) => img.isMain === true)[0].url}
         />
-        <div className="-mt-32 ml-20">
+        <div className="-mt-36 ml-20">
           <div className="flex">
             <p className="mr-2 font-bold">{guitar.brandName}</p>
             <p>{guitar.name}</p>
           </div>
-          <p className="mt-5">Rating {guitar.rating}</p>
-          <p className="mt-5">{guitar.price}$</p>
+          <Rating
+            className="mt-5"
+            name="read-only"
+            value={guitar.rating}
+            readOnly
+          />
+          <p className="mt-5 text-lg">{guitar.price}$</p>
         </div>
       </Card>
     </div>

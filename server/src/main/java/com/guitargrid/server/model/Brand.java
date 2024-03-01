@@ -18,6 +18,7 @@ import java.util.UUID;
 @Setter
 @Entity
 public class Brand {
+
     @Id
     @UuidGenerator
     private UUID id;

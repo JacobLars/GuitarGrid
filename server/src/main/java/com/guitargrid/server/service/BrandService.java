@@ -18,6 +18,7 @@ public class BrandService {
 
     private final BrandRepository brandRepository;
     private final BrandMapper brandMapper;
+
     public BrandResponse saveBrand(BrandRequest brandRequest) {
         return brandMapper.mapToBrandResponse(brandRepository.save(brandMapper.mapToBrand(brandRequest)));
     }

@@ -26,11 +26,13 @@ public class Product {
     private double price;
     private int rating;
     private int product_quantity;
+
     @ManyToOne
     private Brand brand;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Image> images;
+
     public Product(String name, double price, int rating, int product_quantity) {
         this.name = name;
         this.price = price;

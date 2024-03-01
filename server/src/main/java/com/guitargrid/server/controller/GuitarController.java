@@ -25,6 +25,7 @@ public class GuitarController {
         this.guitarService = guitarService;
     }
 
+
     @GetMapping
     public GuitarListResponse getAllGuitars() {
         return guitarService.getAllGuitars();
@@ -35,6 +36,10 @@ public class GuitarController {
         return guitarService.getGuitarById(id);
     }
 
+    @GetMapping("/type/{guitarType}")
+    public GuitarListResponse getGuitarsByType(@PathVariable String guitarType) {
+        return guitarService.getGuitarsByType(guitarType);
+    }
     @PostMapping("/{brandId}")
     @ResponseStatus(CREATED)
     public GuitarResponse saveGuitar(@RequestBody GuitarRequest guitarRequest, @PathVariable UUID brandId) {

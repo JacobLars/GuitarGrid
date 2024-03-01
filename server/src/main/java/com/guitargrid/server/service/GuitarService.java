@@ -40,4 +40,8 @@ public class GuitarService {
         return guitarMapper.mapToGuitarResponse(
                 guitarRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Guitar not found")));
     }
+
+    public GuitarListResponse getGuitarsByType(String guitarType) {
+        return guitarMapper.mapToGuitarListResponse(guitarRepository.findAllByType(guitarType));
+    }
 }

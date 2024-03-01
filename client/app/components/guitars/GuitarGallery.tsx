@@ -2,15 +2,19 @@ import React, { useEffect, useState } from "react";
 import { GuitarCard } from "./GuitarCard";
 import { Guitar } from "@/app/types/Types";
 import { useParams } from "next/navigation";
-
-export const GuitarGallery = () => {
+type Props = {
+  type: string;
+};
+export const GuitarGallery = ({ type }: Props) => {
   const [guitars, setGuitars] = useState<Guitar[]>([]);
   const [isLoading, setIsloading] = useState<boolean>(true);
   const guitarType = useParams();
   console.log(guitarType);
   useEffect(() => {
     const fetchGuitars = async () => {
-      const response = await fetch("http://localhost:8080/api/v1/guitars");
+      const response = await fetch(
+        `http://localhost:8080/api/v1/guitars/type/${type}`
+      );
       const jsonResponse = await response.json();
       setGuitars(jsonResponse.guitars);
       setIsloading(false);

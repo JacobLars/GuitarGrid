@@ -13,7 +13,7 @@ export const NavBar = () => {
         </Link>
         <Link
           className="hover:bg-slate-700 h-full w-full flex justify-center"
-          href="/guitars"
+          href="/selection"
         >
           <p>Guitars</p>
         </Link>

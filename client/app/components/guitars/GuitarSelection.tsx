@@ -1,12 +1,21 @@
 import { Link } from "@nextui-org/react";
-import React from "react";
+import React, { useState } from "react";
 
 export const GuitarSelection = () => {
+  const [selected, setSelected] = useState<String>("");
+
+  const handleElectricClick = () => {
+    setSelected("electric");
+  };
+  const handleAcousticClikc = () => {
+    setSelected("acoustic");
+  };
+
   return (
     <div>
       <div className="flex flex-col h-10 items-center">
         <Link
-          href="/guitars"
+          href="/guitars/electric"
           className="flex flex-col items-center border border-neutral-500 m-5 w-52 shadow-md"
         >
           <img
@@ -16,7 +25,7 @@ export const GuitarSelection = () => {
           <p>Electric</p>
         </Link>
         <Link
-          href="/guitars"
+          href="/guitars/acoustic"
           className="flex flex-col items-center border border-neutral-500 m-5 w-52 shadow-md"
         >
           <img

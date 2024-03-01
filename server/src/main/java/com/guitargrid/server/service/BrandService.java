@@ -22,10 +22,7 @@ public class BrandService {
         return brandMapper.mapToBrandResponse(brandRepository.save(brandMapper.mapToBrand(brandRequest)));
     }
 
-    public BrandResponse getBrandById(UUID id) {
-        return brandMapper.mapToBrandResponse(brandRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Brand not found")));
-    }
+
 
     public BrandListResponse getAllBrands() {
         return brandMapper.mapToBrandListResponse(brandRepository.findAll());

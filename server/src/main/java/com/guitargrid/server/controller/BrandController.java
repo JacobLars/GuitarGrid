@@ -25,10 +25,6 @@ public class BrandController {
        return brandService.saveBrand(brandRequest);
     }
 
-    @GetMapping("/{id}")
-    public BrandResponse getBrandById(@PathVariable UUID id) {
-        return brandService.getBrandById(id);
-    }
 
     @GetMapping
     public BrandListResponse getAllBrands() {

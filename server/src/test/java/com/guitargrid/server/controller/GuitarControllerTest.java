@@ -57,4 +57,14 @@ class GuitarControllerTest {
                         .value(guitarListResponse.guitars().get(0).name()));
     }
 
+    @Test
+    @SneakyThrows
+    void shouldReturnGuitarByIdAndHaveStatus200Ok() {
+  
+        mockMvc.perform(get(BASE_URL_GUITARS + "/" + GUITAR_ID))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value(createGuitarResponse().name()));
+    }
+
 }

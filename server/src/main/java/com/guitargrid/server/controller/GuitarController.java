@@ -7,9 +7,11 @@ import com.guitargrid.server.service.GuitarService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
 @RequestMapping("api/v1/guitars")
@@ -28,10 +30,22 @@ public class GuitarController {
         return guitarService.getAllGuitars();
     }
 
+    @GetMapping("/{id}")
+    public GuitarResponse getGuitarById(@PathVariable UUID id) {
+        return guitarService.getGuitarById(id);
+    }
+
     @PostMapping("/{brandId}")
     @ResponseStatus(CREATED)
     public GuitarResponse saveGuitar(@RequestBody GuitarRequest guitarRequest, @PathVariable UUID brandId) {
         return guitarService.saveGuitar(guitarRequest, brandId);
     }
+
+    @ExceptionHandler({NoSuchElementException.class})
+    @ResponseStatus(NOT_FOUND)
+    private String handleNoSuchElementException(NoSuchElementException e) {
+        return e.getMessage();
+    }
+
 
 }

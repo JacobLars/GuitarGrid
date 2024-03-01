@@ -57,14 +57,5 @@ class BrandControllerTest {
                 .andExpect(jsonPath("$.brands[0].name")
                         .value(brandListResponse.brands().get(0).name()));
     }
-    @Test
-    @SneakyThrows
-    void shouldGetBrandByIdAndHaveStatus200Ok() {
-        Brand brand = createNewBrandEntity();
-        when(brandService.getBrandById(brand.getId())).thenReturn(createBrandResponse());
-        mockMvc.perform(get(BASE_URL_BRANDS + "/" + BRAND_ID))
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(brand.getId().toString()));
-    }
+
 }

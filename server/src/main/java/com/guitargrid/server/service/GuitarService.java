@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -35,5 +36,8 @@ public class GuitarService {
     }
 
 
-
+    public GuitarResponse getGuitarById(UUID id) {
+        return guitarMapper.mapToGuitarResponse(
+                guitarRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Guitar not found")));
+    }
 }

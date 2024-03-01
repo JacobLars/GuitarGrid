@@ -3,6 +3,7 @@ package com.guitargrid.server.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.guitargrid.server.controller.dto.request.GuitarRequest;
 import com.guitargrid.server.controller.dto.response.GuitarListResponse;
+import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.service.GuitarService;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static com.guitargrid.server.utils.GuitarTestData.*;
 import static org.mockito.Mockito.when;
@@ -60,11 +62,21 @@ class GuitarControllerTest {
     @Test
     @SneakyThrows
     void shouldReturnGuitarByIdAndHaveStatus200Ok() {
-  
+        GuitarResponse guitarResponse = createGuitarResponse();
+        when(guitarService.getGuitarById(GUITAR_ID)).thenReturn(guitarResponse);
         mockMvc.perform(get(BASE_URL_GUITARS + "/" + GUITAR_ID))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value(createGuitarResponse().name()));
+                .andExpect(jsonPath("$.name").value(guitarResponse.name()));
+    }
+
+    @Test
+    @SneakyThrows
+    void shouldReturnStatus404NotFound() {
+        when(guitarService.getGuitarById(GUITAR_ID)).thenThrow(new NoSuchElementException("Guitar not found"));
+        mockMvc.perform(get(BASE_URL_GUITARS + "/" + GUITAR_ID))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Guitar not found"));
     }
 
 }

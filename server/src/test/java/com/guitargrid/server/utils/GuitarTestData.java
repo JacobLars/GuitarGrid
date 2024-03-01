@@ -15,7 +15,7 @@ public class GuitarTestData {
     public static final UUID GUITAR_ID = UUID.randomUUID();
     public static final String GUITAR_NAME = "Stratocaster";
     public static final int GUITAR_PRICE = 100;
-    public static final String GUITAR_TYPE = "Electric";
+    public static final String GUITAR_TYPE = "electric";
     public static final String GUITAR_COLOR = "Sunburst";
     public static final String GUITAR_BODY_TYPE = "Maple";
     public static final String GUITAR_NECK_TYPE = "Maple";

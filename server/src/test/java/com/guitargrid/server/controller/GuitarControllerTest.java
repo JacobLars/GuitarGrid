@@ -72,6 +72,19 @@ class GuitarControllerTest {
 
     @Test
     @SneakyThrows
+    void shouldReturnGuitarsByTypeAndHaveStatus200Ok() {
+        GuitarListResponse guitarListResponse = GuitarListResponse.builder().guitars(List.of(createGuitarResponse())).build();
+        when(guitarService.getGuitarsByType(GUITAR_TYPE)).thenReturn(guitarListResponse);
+        mockMvc.perform(get(BASE_URL_GUITARS + "/type/" + GUITAR_TYPE))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.guitars[0].name")
+                        .value(guitarListResponse.guitars().get(0).name()))
+                .andExpect(jsonPath("$.guitars[0].type").value(GUITAR_TYPE));
+    }
+
+    @Test
+    @SneakyThrows
     void shouldReturnStatus404NotFound() {
         when(guitarService.getGuitarById(GUITAR_ID)).thenThrow(new NoSuchElementException("Guitar not found"));
         mockMvc.perform(get(BASE_URL_GUITARS + "/" + GUITAR_ID))

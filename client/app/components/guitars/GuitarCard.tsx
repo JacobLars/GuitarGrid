@@ -22,7 +22,7 @@ export const GuitarCard = ({ guitar }: Props) => {
           className="w-40 max-h-40 self-start p-5 object-contain -ml-10 overflow-hidden"
           src={guitar.images.filter((img) => img.isMain === true)[0].url}
         />
-        <div>
+        <div className="ml-10 -mt-36">
           <div className="flex">
             <p className="mr-2 font-bold">{guitar.brandName}</p>
             <p>{guitar.name}</p>

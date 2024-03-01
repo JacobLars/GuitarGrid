@@ -1,3 +1,4 @@
+import { Guitar } from "@/app/types/Types";
 import Rating from "@mui/material/Rating";
 import { Card } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
@@ -5,28 +6,7 @@ import React, { useEffect, useState } from "react";
 type Props = {
   guitar: Guitar;
 };
-type Guitar = {
-  id: string;
-  name: string;
-  price: number;
-  color: string;
-  bodyType: string;
-  neckType: string;
-  fretboardType: string;
-  pickups: string;
-  frets: number;
-  scale: number;
-  images: Image[];
-  brandName: string;
-  brandLogo: string;
-  rating: number;
-  product_quantity: number;
-};
-type Image = {
-  id: string;
-  url: string;
-  isMain: boolean;
-};
+
 export const GuitarCard = ({ guitar }: Props) => {
   const [isAvailable, setIsAvailable] = useState<boolean>(true);
   useEffect(() => {

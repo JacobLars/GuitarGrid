@@ -1,28 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { GuitarCard } from "./GuitarCard";
-import { Spinner } from "@nextui-org/react";
-type Guitar = {
-  id: string;
-  name: string;
-  price: number;
-  color: string;
-  bodyType: string;
-  neckType: string;
-  fretboardType: string;
-  pickups: string;
-  frets: number;
-  scale: number;
-  images: Image[];
-  brandName: string;
-  brandLogo: string;
-  rating: number;
-  product_quantity: number;
-};
-type Image = {
-  id: string;
-  url: string;
-  isMain: boolean;
-};
+import { Guitar } from "@/app/types/Types";
+
 export const GuitarGallery = () => {
   const [guitars, setGuitars] = useState<Guitar[]>([]);
   const [isLoading, setIsloading] = useState<boolean>(true);

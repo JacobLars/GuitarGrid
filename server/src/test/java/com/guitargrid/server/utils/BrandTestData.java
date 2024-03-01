@@ -12,7 +12,7 @@ public class BrandTestData {
 
     public static final UUID BRAND_ID = UUID.randomUUID();
     public static final String BRAND_NAME = "Fender";
-    public static final String BRAND_LOGO = "https://www.fender.com";
+    public static final String BRAND_LOGO = "fender-logo.png";
     public static final String BASE_URL_BRANDS = "/api/v1/brands";
 
     public static BrandRequest createBrandRequest() {

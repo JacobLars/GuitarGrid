@@ -10,7 +10,7 @@ export default function ProductCategory({
   return (
     <div className="">
       <NavBar />
-      <ProductGallery category={params.category} />
+      <ProductGallery category={params.category} guitarType={""} />
     </div>
   );
 }

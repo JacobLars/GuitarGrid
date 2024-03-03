@@ -16,6 +16,16 @@ export type Guitar = {
   product_quantity: number;
 };
 
+export type Product = {
+  id: string;
+  name: string;
+  price: number;
+  rating: number;
+  product_quantity: number;
+  images: Image[];
+  brandName: string;
+};
+
 export type Image = {
   id: string;
   url: string;

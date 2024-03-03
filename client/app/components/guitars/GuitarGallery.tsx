@@ -10,7 +10,6 @@ export const GuitarGallery = ({ type }: Props) => {
   const [guitars, setGuitars] = useState<Guitar[]>([]);
   const [isLoading, setIsloading] = useState<boolean>(true);
   const guitarType = useParams();
-  console.log(guitarType);
   useEffect(() => {
     const fetchGuitars = async () => {
       const response = await fetch(
@@ -29,16 +28,7 @@ export const GuitarGallery = ({ type }: Props) => {
         <img className="h-20 mx-auto my-40" src="/loading.gif" />
       ) : (
         guitars.map((guitar, index) => (
-          <ProductCard
-            key={index}
-            id={guitar.id}
-            name={guitar.name}
-            price={guitar.price}
-            rating={guitar.rating}
-            product_quantity={guitar.product_quantity}
-            images={guitar.images}
-            brandName={guitar.brandName}
-          />
+          <ProductCard key={index} product={guitar} />
         ))
       )}
     </div>

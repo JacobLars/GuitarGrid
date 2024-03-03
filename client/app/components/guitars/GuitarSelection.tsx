@@ -1,16 +1,6 @@
 import { Link } from "@nextui-org/react";
-import React, { useState } from "react";
 
 export const GuitarSelection = () => {
-  const [selected, setSelected] = useState<String>("");
-
-  const handleElectricClick = () => {
-    setSelected("electric");
-  };
-  const handleAcousticClikc = () => {
-    setSelected("acoustic");
-  };
-
   return (
     <div>
       <div className="flex flex-col h-10 items-center">

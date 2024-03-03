@@ -1,5 +1,4 @@
 "use client";
-import { GuitarGallery } from "@/app/components/guitars/GuitarGallery";
 import { GuitarSelection } from "@/app/components/guitars/GuitarSelection";
 import { NavBar } from "@/app/components/navbar/NavBar";
 

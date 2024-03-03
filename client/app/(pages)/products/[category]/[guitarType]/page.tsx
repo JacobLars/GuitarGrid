@@ -2,7 +2,7 @@
 import { NavBar } from "@/app/components/navbar/NavBar";
 import { ProductGallery } from "@/app/components/products/ProductGallery";
 
-export default function Guitars({
+export default function Products({
   params,
 }: {
   params: { guitarType: string; category: string };

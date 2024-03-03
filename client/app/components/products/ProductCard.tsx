@@ -1,6 +1,6 @@
 import { Image, Product } from "@/app/types/Types";
 import Rating from "@mui/material/Rating";
-import { Card } from "@nextui-org/react";
+import { Card, Link } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 type Props = {
   product: Product;

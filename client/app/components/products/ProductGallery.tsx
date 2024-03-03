@@ -2,6 +2,7 @@ import { Product } from "@/app/types/Types";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { ProductCard } from "./ProductCard";
+import { Link } from "@nextui-org/react";
 type Props = {
   category: string;
   guitarType: string;
@@ -35,7 +36,12 @@ export const ProductGallery = ({ category, guitarType }: Props) => {
         <img className="h-20 mx-auto my-40" src="/loading.gif" />
       ) : (
         products.map((product, index) => (
-          <ProductCard key={index} product={product} />
+          <Link
+            key={index}
+            href={`/products/${category}/product/${product.id}`}
+          >
+            <ProductCard product={product} />
+          </Link>
         ))
       )}
     </div>

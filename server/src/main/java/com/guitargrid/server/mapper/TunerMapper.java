@@ -1,8 +1,12 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.TunerRequest;
+import com.guitargrid.server.controller.dto.response.TunerListResponse;
+import com.guitargrid.server.controller.dto.response.TunerResponse;
 import com.guitargrid.server.model.products.Tuner;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class TunerMapper {
@@ -18,6 +22,29 @@ public class TunerMapper {
                 .integrated_microphone(tunerRequest.integrated_microphone())
                 .rating(tunerRequest.rating())
                 .product_quantity(tunerRequest.product_quantity())
+                .build();
+    }
+
+    public TunerResponse mapToTunerResponse(Tuner tuner) {
+        return TunerResponse.builder()
+                .name(tuner.getName())
+                .price(tuner.getPrice())
+                .display(tuner.getDisplay())
+                .design(tuner.getDesign())
+                .chromatic(tuner.getChromatic())
+                .integrated_metronome(tuner.getIntegrated_metronome())
+                .integrated_microphone(tuner.getIntegrated_microphone())
+                .images(tuner.getImages())
+                .brandName(tuner.getBrand().getName())
+                .brandLogo(tuner.getBrand().getLogo())
+                .rating(tuner.getRating())
+                .product_quantity(tuner.getProduct_quantity())
+                .build();
+    }
+
+    public TunerListResponse mapToTunerListResponse(List<Tuner> tuners) {
+        return TunerListResponse.builder()
+                .tuners(tuners.stream().map(this::mapToTunerResponse).toList())
                 .build();
     }
 

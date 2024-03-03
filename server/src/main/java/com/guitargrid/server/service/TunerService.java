@@ -1,6 +1,7 @@
 package com.guitargrid.server.service;
 
 import com.guitargrid.server.controller.dto.request.TunerRequest;
+import com.guitargrid.server.controller.dto.response.TunerListResponse;
 import com.guitargrid.server.mapper.TunerMapper;
 import com.guitargrid.server.model.products.Tuner;
 import com.guitargrid.server.repository.BrandRepository;
@@ -24,6 +25,10 @@ public class TunerService {
         tuner.setImages(tunerRequest.images());
         tuner.setBrand(brandRepository.findById(brandId).orElse(null));
         return tunerRepository.save(tuner);
+    }
+
+    public TunerListResponse getAllTuners() {
+        return tunerMapper.mapToTunerListResponse(tunerRepository.findAll());
     }
 
 }

@@ -27,6 +27,7 @@ public class TunerMapper {
 
     public TunerResponse mapToTunerResponse(Tuner tuner) {
         return TunerResponse.builder()
+                .id(tuner.getId())
                 .name(tuner.getName())
                 .price(tuner.getPrice())
                 .display(tuner.getDisplay())

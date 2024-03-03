@@ -16,6 +16,22 @@ export type Guitar = {
   product_quantity: number;
 };
 
+export type Tuner = {
+  id: string;
+  name: string;
+  price: number;
+  display: string;
+  design: string;
+  chromatic: boolean;
+  integrated_metronome: boolean;
+  integrated_microphone: boolean;
+  images: Image[];
+  brandName: string;
+  brandLogo: string;
+  rating: number;
+  product_quantity: number;
+};
+
 export type Product = {
   id: string;
   name: string;

@@ -1,6 +1,7 @@
 package com.guitargrid.server.service;
 
 import com.guitargrid.server.controller.dto.request.TunerRequest;
+import com.guitargrid.server.mapper.TunerMapper;
 import com.guitargrid.server.model.products.Tuner;
 import com.guitargrid.server.repository.BrandRepository;
 import com.guitargrid.server.repository.TunerRepository;
@@ -15,18 +16,9 @@ public class TunerService {
 
     private final TunerRepository tunerRepository;
     private final BrandRepository brandRepository;
+    private final TunerMapper tunerMapper;
     public Tuner saveTuner(TunerRequest tunerRequest, UUID brandId) {
-        Tuner tuner = Tuner.builder()
-                .name(tunerRequest.name())
-                .price(tunerRequest.price())
-                .display(tunerRequest.display())
-                .design(tunerRequest.design())
-                .chromatic(tunerRequest.chromatic())
-                .integrated_metronome(tunerRequest.integrated_metronome())
-                .integrated_microphone(tunerRequest.integrated_microphone())
-                .rating(tunerRequest.rating())
-                .product_quantity(tunerRequest.product_quantity())
-                .build();
+        Tuner tuner = tunerMapper.mapToTuner(tunerRequest);
         tunerRepository.save(tuner);
         tunerRequest.images().forEach(image -> image.setProduct(tuner));
         tuner.setImages(tunerRequest.images());

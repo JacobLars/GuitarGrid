@@ -4,14 +4,20 @@ import React, { useEffect, useState } from "react";
 import { ProductCard } from "./ProductCard";
 type Props = {
   category: string;
+  guitarType: string;
 };
-export const ProductGallery = ({ category }: Props) => {
+export const ProductGallery = ({ category, guitarType }: Props) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsloading] = useState<boolean>(true);
-
+  let url = "";
+  if (guitarType === "electric" || guitarType === "acoustic") {
+    url = `http://localhost:8080/api/v1/${category}${guitarType}`;
+  } else {
+    url = `http://localhost:8080/api/v1/${category}`;
+  }
   useEffect(() => {
     const fetchTuners = async () => {
-      const response = await fetch(`http://localhost:8080/api/v1/${category}`);
+      const response = await fetch(url);
       const jsonResponse = await response.json();
       if (category === "guitars") {
         setProducts(jsonResponse.guitars);

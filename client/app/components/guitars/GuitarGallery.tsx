@@ -9,7 +9,6 @@ type Props = {
 export const GuitarGallery = ({ type }: Props) => {
   const [guitars, setGuitars] = useState<Guitar[]>([]);
   const [isLoading, setIsloading] = useState<boolean>(true);
-  const guitarType = useParams();
   useEffect(() => {
     const fetchGuitars = async () => {
       const response = await fetch(

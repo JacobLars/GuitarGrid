@@ -1,4 +1,4 @@
-"use client";
+/* "use client";
 import { GuitarGallery } from "@/app/components/guitars/GuitarGallery";
 import { NavBar } from "@/app/components/navbar/NavBar";
 import { TunerGallery } from "@/app/components/tuners/TunerGallery";
@@ -10,4 +10,4 @@ export default function Guitars({ params }: { params: { type: string } }) {
       <GuitarGallery type={params.type} />
     </div>
   );
-}
+} */

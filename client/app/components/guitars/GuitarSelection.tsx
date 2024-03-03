@@ -15,7 +15,7 @@ export const GuitarSelection = () => {
     <div>
       <div className="flex flex-col h-10 items-center">
         <Link
-          href="/guitars/electric"
+          href="/products/guitars/electric"
           className="flex flex-col items-center border border-neutral-500 m-5 w-52 shadow-md"
         >
           <img
@@ -25,7 +25,7 @@ export const GuitarSelection = () => {
           <p>Electric</p>
         </Link>
         <Link
-          href="/guitars/acoustic"
+          href="/products/guitars/acoustic"
           className="flex flex-col items-center border border-neutral-500 m-5 w-52 shadow-md"
         >
           <img

@@ -12,7 +12,7 @@ export default function Guitars({
     <div className="">
       <NavBar />
       <ProductGallery
-        category={"/" + params.category + "/"}
+        category={params.category}
         guitarType={params.guitarType}
       />
     </div>

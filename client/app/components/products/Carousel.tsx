@@ -3,7 +3,6 @@ import { image } from "@nextui-org/react";
 import React, { useState } from "react";
 type Props = {
   images: Image[];
-  onToggleDetail: (image: Image) => void;
 };
 
 const CarouselArrow = ({
@@ -64,7 +63,7 @@ const CarouselArrow = ({
   </button>
 );
 
-export const Carousel = ({ images, onToggleDetail }: Props) => {
+export const Carousel = ({ images }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const goToPrevSlide = () => {
@@ -86,7 +85,6 @@ export const Carousel = ({ images, onToggleDetail }: Props) => {
             style={{
               transform: `translateX(${(index - activeIndex) * 100}%)`,
             }}
-            onClick={() => onToggleDetail(image)}
           >
             <img
               src={image.url}

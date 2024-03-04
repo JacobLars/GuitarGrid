@@ -11,7 +11,7 @@ type Props = {
 export const ProductPage = ({ productId }: Props) => {
   const [guitar, setGuitar] = useState<Guitar>();
   const [tuner, setTuner] = useState<Tuner>();
-  const [selectedImage, setSelectedImage] = useState<Image>();
+
   useEffect(() => {
     const fetchProductById = async () => {
       const response = await fetch(
@@ -29,20 +29,11 @@ export const ProductPage = ({ productId }: Props) => {
     console.log(guitar);
     console.log(tuner);
   }, []);
-  const toggleDetail = (image: Image) => {
-    setSelectedImage(image);
-  };
 
   return (
     <div>
-      {guitar ? (
-        <Carousel images={guitar!.images} onToggleDetail={toggleDetail} />
-      ) : (
-        <img className="h-20 mx-auto my-40" src="/loading.gif" />
-      )}
-      {tuner && (
-        <Carousel images={tuner!.images} onToggleDetail={toggleDetail} />
-      )}
+      {guitar && <Carousel images={guitar!.images} />}
+      {tuner && <Carousel images={tuner!.images} />}
     </div>
   );
 };

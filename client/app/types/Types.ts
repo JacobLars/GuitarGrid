@@ -1,3 +1,9 @@
+export type Brand = {
+  id: string;
+  name: string;
+  logo: string;
+};
+
 export type Guitar = {
   id: string;
   name: string;
@@ -15,6 +21,7 @@ export type Guitar = {
   rating: number;
   product_quantity: number;
   category: string;
+  brand: Brand;
 };
 
 export type Tuner = {
@@ -32,6 +39,7 @@ export type Tuner = {
   rating: number;
   product_quantity: number;
   category: string;
+  brand: Brand;
 };
 
 export type Product = {

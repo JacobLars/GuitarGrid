@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { GuitarInfo } from "../guitars/GuitarInfo";
 import { TunerInfo } from "../tuners/TunerInfo";
 import { Carousel } from "./Carousel";
+import { ProductHeader } from "./ProductHeader";
 
 type Props = {
   productId: string;
@@ -26,13 +27,20 @@ export const ProductPage = ({ productId }: Props) => {
       }
     };
     fetchProductById();
-    console.log(guitar);
-    console.log(tuner);
   }, []);
 
   return (
     <div>
-      {guitar && <Carousel images={guitar!.images} />}
+      {guitar && (
+        <>
+          <ProductHeader
+            productName={guitar.name}
+            productRating={guitar.rating}
+            brandLogo={guitar.brand.logo}
+          />
+          <Carousel images={guitar!.images} />
+        </>
+      )}
       {tuner && <Carousel images={tuner!.images} />}
     </div>
   );

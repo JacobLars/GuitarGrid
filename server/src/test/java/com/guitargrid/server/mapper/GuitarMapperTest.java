@@ -32,7 +32,7 @@ class GuitarMapperTest {
         assertEquals("Stratocaster", guitar.getName());
         assertEquals("Fender", guitar.getBrand().getName());
         assertEquals(100, guitar.getPrice());
-        assertEquals("Electric", guitar.getType());
+        assertEquals("electric", guitar.getType());
     }
 
     @Test
@@ -44,7 +44,7 @@ class GuitarMapperTest {
         assertEquals("Stratocaster", guitarResponse.name());
         assertEquals("Fender", guitarResponse.brandName());
         assertEquals(100, guitarResponse.price());
-        assertEquals("Electric", guitarResponse.type());
+        assertEquals("electric", guitarResponse.type());
     }
 
     @Test
@@ -56,6 +56,6 @@ class GuitarMapperTest {
         assertEquals("Stratocaster", guitarResponse.guitars().get(0).name());
         assertEquals("Fender", guitarResponse.guitars().get(0).brandName());
         assertEquals(100, guitarResponse.guitars().get(0).price());
-        assertEquals("Electric", guitarResponse.guitars().get(0).type());
+        assertEquals("electric", guitarResponse.guitars().get(0).type());
     }
 }

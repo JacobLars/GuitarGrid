@@ -2,6 +2,7 @@ package com.guitargrid.server.controller;
 
 import com.guitargrid.server.controller.dto.request.TunerRequest;
 import com.guitargrid.server.controller.dto.response.TunerListResponse;
+import com.guitargrid.server.controller.dto.response.TunerResponse;
 import com.guitargrid.server.model.products.Tuner;
 import com.guitargrid.server.service.TunerService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,7 @@ public class TunerController {
 
     @PostMapping("/{brandId}")
     @ResponseStatus(CREATED)
-    public Tuner saveTuner(@RequestBody TunerRequest tunerRequest, @PathVariable UUID brandId) {
+    public TunerResponse saveTuner(@RequestBody TunerRequest tunerRequest, @PathVariable UUID brandId) {
         return service.saveTuner(tunerRequest, brandId);
     }
 

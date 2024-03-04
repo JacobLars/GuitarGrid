@@ -26,6 +26,7 @@ public class Product {
     private double price;
     private int rating;
     private int product_quantity;
+    private String category;
 
     @ManyToOne
     private Brand brand;
@@ -33,10 +34,11 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Image> images;
 
-    public Product(String name, double price, int rating, int product_quantity) {
+    public Product(String name, double price, int rating, int product_quantity, String category) {
         this.name = name;
         this.price = price;
         this.rating = rating;
         this.product_quantity = product_quantity;
+        this.category = category;
     }
 }

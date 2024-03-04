@@ -11,5 +11,5 @@ public record TunerResponse(UUID id, String name, double price,
                             String display, String design,
                             boolean chromatic, boolean integrated_metronome,
                             boolean integrated_microphone, List<Image> images,
-                            String brandName, String brandLogo, double rating, int product_quantity) {
+                            String brandName, String brandLogo, double rating, int product_quantity, String category) {
 }

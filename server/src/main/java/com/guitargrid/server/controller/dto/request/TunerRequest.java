@@ -8,5 +8,5 @@ import java.util.List;
 @Builder
 public record TunerRequest(String name, double price, List<Image> images, String display, String design,
                            Boolean chromatic, Boolean integrated_metronome, Boolean integrated_microphone,
-                           int rating, int product_quantity) {
+                           int rating, int product_quantity, String category) {
 }

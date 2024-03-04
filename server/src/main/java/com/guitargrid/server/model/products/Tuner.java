@@ -25,8 +25,8 @@ public class Tuner extends Product{
 
     public Tuner(String name, double price, int rating, int product_quantity,
                  String display, String design, Boolean chromatic,
-                 Boolean integrated_metronome, Boolean integrated_microphone) {
-        super(name, price, rating, product_quantity);
+                 Boolean integrated_metronome, Boolean integrated_microphone, String category) {
+        super(name, price, rating, product_quantity, category);
         this.display = display;
         this.design = design;
         this.chromatic = chromatic;

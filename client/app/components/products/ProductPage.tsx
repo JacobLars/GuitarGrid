@@ -35,8 +35,10 @@ export const ProductPage = ({ productId }: Props) => {
 
   return (
     <div>
-      {guitar && (
+      {guitar ? (
         <Carousel images={guitar!.images} onToggleDetail={toggleDetail} />
+      ) : (
+        <img className="h-20 mx-auto my-40" src="/loading.gif" />
       )}
       {tuner && (
         <Carousel images={tuner!.images} onToggleDetail={toggleDetail} />

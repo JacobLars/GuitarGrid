@@ -1,7 +1,8 @@
-import { Guitar, Tuner } from "@/app/types/Types";
+import { Guitar, Image, Tuner } from "@/app/types/Types";
 import React, { useEffect, useState } from "react";
 import { GuitarInfo } from "../guitars/GuitarInfo";
 import { TunerInfo } from "../tuners/TunerInfo";
+import { Carousel } from "./Carousel";
 
 type Props = {
   productId: string;
@@ -10,6 +11,7 @@ type Props = {
 export const ProductPage = ({ productId }: Props) => {
   const [guitar, setGuitar] = useState<Guitar>();
   const [tuner, setTuner] = useState<Tuner>();
+  const [selectedImage, setSelectedImage] = useState<Image>();
   useEffect(() => {
     const fetchProductById = async () => {
       const response = await fetch(
@@ -27,11 +29,18 @@ export const ProductPage = ({ productId }: Props) => {
     console.log(guitar);
     console.log(tuner);
   }, []);
+  const toggleDetail = (image: Image) => {
+    setSelectedImage(image);
+  };
 
   return (
     <div>
-      {guitar && <GuitarInfo guitar={guitar} />}
-      {tuner && <TunerInfo tuner={tuner} />}
+      {guitar && (
+        <Carousel images={guitar!.images} onToggleDetail={toggleDetail} />
+      )}
+      {tuner && (
+        <Carousel images={tuner!.images} onToggleDetail={toggleDetail} />
+      )}
     </div>
   );
 };

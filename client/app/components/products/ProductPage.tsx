@@ -5,7 +5,9 @@ type Props = {
 };
 
 export const ProductPage = ({ productId }: Props) => {
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const fetchProductById = async () => {};
+  }, []);
 
   return (
     <div>

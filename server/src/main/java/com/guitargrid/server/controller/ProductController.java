@@ -5,15 +5,15 @@ import com.guitargrid.server.repository.ProductRepository;
 import com.guitargrid.server.service.ProductService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/products")
+@CrossOrigin
 public class ProductController {
 
 
@@ -24,5 +24,9 @@ public class ProductController {
         return service.getAllProducts();
     }
 
+    @GetMapping("/{id}")
+    public Product getProductById(@PathVariable UUID id) {
+        return service.getProductById(id);
+    }
 
 }

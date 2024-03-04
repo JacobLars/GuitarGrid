@@ -18,6 +18,7 @@ public class TunerService {
     private final TunerRepository tunerRepository;
     private final BrandRepository brandRepository;
     private final TunerMapper tunerMapper;
+
     public Tuner saveTuner(TunerRequest tunerRequest, UUID brandId) {
         Tuner tuner = tunerMapper.mapToTuner(tunerRequest);
         tunerRepository.save(tuner);

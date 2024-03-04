@@ -19,7 +19,6 @@ public class Tuner extends Product{
     }
 
     @Builder
-
     public Tuner(String name, double price, int rating, int product_quantity,
                  String display, String design, Boolean chromatic,
                  Boolean integrated_metronome, Boolean integrated_microphone, String category) {

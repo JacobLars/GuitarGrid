@@ -1,9 +1,7 @@
 package com.guitargrid.server.controller;
 
 import com.guitargrid.server.model.products.Product;
-import com.guitargrid.server.repository.ProductRepository;
 import com.guitargrid.server.service.ProductService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

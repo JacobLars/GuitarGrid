@@ -6,7 +6,6 @@ import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.service.GuitarService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
 

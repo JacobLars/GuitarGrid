@@ -4,13 +4,10 @@ import com.guitargrid.server.controller.dto.request.BrandRequest;
 import com.guitargrid.server.controller.dto.response.BrandListResponse;
 import com.guitargrid.server.controller.dto.response.BrandResponse;
 import com.guitargrid.server.mapper.BrandMapper;
-import com.guitargrid.server.model.Brand;
 import com.guitargrid.server.repository.BrandRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.NoSuchElementException;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor

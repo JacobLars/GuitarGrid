@@ -9,6 +9,7 @@ export type Guitar = {
   name: string;
   price: number;
   color: string;
+  type: string;
   bodyType: string;
   neckType: string;
   fretboardType: string;

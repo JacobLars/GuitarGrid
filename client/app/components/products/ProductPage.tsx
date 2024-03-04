@@ -39,6 +39,7 @@ export const ProductPage = ({ productId }: Props) => {
             brandLogo={guitar.brand.logo}
           />
           <Carousel images={guitar!.images} />
+          <GuitarInfo guitar={guitar} />
         </>
       )}
       {tuner && <Carousel images={tuner!.images} />}

@@ -5,10 +5,10 @@ type Props = {
 };
 export const GuitarInfo = ({ guitar }: Props) => {
   return (
-    <div className="flex flex-row justify-around">
-      <ul className="w-44 text-lg shadow-lg p-2">
+    <div className="flex flex-col text-xl items-center md:flex-row md:items-start md:justify-center">
+      <ul className="w-3/4 shadow-lg m-2 md:w-1/3 p-5">
         <li className="flex flex-row justify-between border-slate-600 border-b-2">
-          <p className="mb-1">Brand:</p>
+          <p className="mb-1 md:mt-1">Brand:</p>
           <p className="mb-1">{guitar.brand.name}</p>
         </li>
         <li className="flex flex-row justify-between border-slate-600 border-b-2">
@@ -28,7 +28,7 @@ export const GuitarInfo = ({ guitar }: Props) => {
           <p className="mb-1 mt-1">{guitar.frets}</p>
         </li>
       </ul>
-      <ul className="w-44 text-lg shadow-lg p-2">
+      <ul className="w-3/4 shadow-lg m-2 md:w-1/3 p-5">
         <li className="flex flex-row justify-between border-slate-600 border-b-2">
           <p className="mb-1 mt-1">Color:</p>
           <p className="mb-1 mt-1">{guitar.color}</p>

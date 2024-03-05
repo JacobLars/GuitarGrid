@@ -1,18 +1,12 @@
 import { Image, Product } from "@/app/types/Types";
 import Rating from "@mui/material/Rating";
 import { Card, Link } from "@nextui-org/react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { InStock } from "./InStock";
 type Props = {
   product: Product;
 };
 export const ProductCard = ({ product }: Props) => {
-  const [isAvailable, setIsAvailable] = useState<boolean>(true);
-  useEffect(() => {
-    if (product.product_quantity === 0) {
-      setIsAvailable(false);
-    }
-  }, []);
   return (
     <div>
       <Card className="flex items-center shadow-lg m-5 border border-[#c5c5c5]">

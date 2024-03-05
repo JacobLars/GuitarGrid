@@ -9,7 +9,6 @@ export const InStock = ({ product_quantity }: Props) => {
       setIsAvailable(false);
     }
   }, []);
-  console.log(product_quantity);
   return (
     <div>
       {isAvailable ? (

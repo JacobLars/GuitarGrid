@@ -7,7 +7,6 @@ export const TunerInfo = ({ tuner }: Props) => {
   const Ischromatic = tuner.chromatic ? "Yes" : "No";
   const hasIntegratedMicrophone = tuner.integrated_microphone ? "Yes" : "No";
   const hasIntegratedMetronome = tuner.integrated_metronome ? "Yes" : "No";
-  console.log(tuner.integrated_metronome);
   return (
     <div className="flex flex-col text-xl items-center md:flex-row md:items-start md:justify-center">
       <ul className="w-3/4 shadow-lg m-2 md:w-1/3 p-5">

@@ -10,7 +10,6 @@ export const ProductHeader = ({
   productRating,
   brandLogo,
 }: Props) => {
-  console.log(brandLogo);
   return (
     <div className="p-5">
       <div className="flex flex-row">

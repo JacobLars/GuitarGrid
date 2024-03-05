@@ -2,6 +2,7 @@ import { Image, Product } from "@/app/types/Types";
 import Rating from "@mui/material/Rating";
 import { Card, Link } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
+import { InStock } from "./InStock";
 type Props = {
   product: Product;
 };
@@ -31,11 +32,7 @@ export const ProductCard = ({ product }: Props) => {
             readOnly
           />
           <p className="mt-2 text-lg">{product.price}$</p>
-          {isAvailable ? (
-            <p className="text-green-400 mt-2">In stock</p>
-          ) : (
-            <p className="text-red-600 mt-2">Out of stock</p>
-          )}
+          <InStock product_quantity={product.product_quantity} />
         </div>
       </Card>
     </div>

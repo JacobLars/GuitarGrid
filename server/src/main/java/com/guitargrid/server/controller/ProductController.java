@@ -14,7 +14,6 @@ import java.util.UUID;
 @CrossOrigin
 public class ProductController {
 
-
     private final ProductService service;
 
     @GetMapping

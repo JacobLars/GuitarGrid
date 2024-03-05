@@ -12,7 +12,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ProductService {
 
-    private final ProductRepository productRepository;
+    private final ProductRepository<Product> productRepository;
 
     public List<Product> getAllProducts() {
         return productRepository.findAll();

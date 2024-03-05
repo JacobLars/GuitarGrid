@@ -1,4 +1,5 @@
 "use client";
+import { Header } from "@/app/components/home/Header";
 import { NavBar } from "@/app/components/navbar/NavBar";
 import { ProductPage } from "@/app/components/products/ProductPage";
 
@@ -7,10 +8,9 @@ export default function ProductById({
 }: {
   params: { category: string; id: string };
 }) {
-  console.log(params.category);
-  console.log(params.id);
   return (
     <div className="">
+      <Header />
       <NavBar />
       <ProductPage productId={params.id} />
     </div>

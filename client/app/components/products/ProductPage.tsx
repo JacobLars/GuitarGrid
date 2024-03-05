@@ -1,7 +1,7 @@
 import { Guitar, Image, Tuner } from "@/app/types/Types";
 import React, { useEffect, useState } from "react";
-import { GuitarInfo } from "../guitars/GuitarInfo";
-import { TunerInfo } from "../tuners/TunerInfo";
+import { GuitarInfo } from "./guitars/GuitarInfo";
+import { TunerInfo } from "./tuners/TunerInfo";
 import { Carousel } from "./Carousel";
 import { ProductHeader } from "./ProductHeader";
 import { PriceInfo } from "./PriceInfo";

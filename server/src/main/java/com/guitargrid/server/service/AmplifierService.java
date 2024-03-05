@@ -23,6 +23,7 @@ public class AmplifierService {
 
     public Amplifier saveAmplifier(Amplifier amplifier, UUID brandId) {
         amplifier.setBrand(brandRepository.findById(brandId).orElse(null));
+        amplifier.getImages().forEach(image -> image.setProduct(amplifier));
         return amplifierRepository.save(amplifier);
     }
 

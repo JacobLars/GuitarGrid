@@ -53,7 +53,22 @@ export const ProductPage = ({ productId }: Props) => {
               <GuitarInfo guitar={guitar} />
             </>
           )}
-          {tuner && <Carousel images={tuner.images} />}
+          {tuner && (
+            <>
+              <ProductHeader
+                productName={tuner.name}
+                productRating={tuner.rating}
+                brandLogo={tuner.brand.logo}
+                product_quantity={tuner.product_quantity}
+              />
+              <Carousel images={tuner.images} />
+              <PriceInfo
+                product_price={tuner.price}
+                product_quantity={tuner.product_quantity}
+              />
+              <TunerInfo tuner={tuner} />
+            </>
+          )}
         </>
       )}
     </div>

@@ -14,16 +14,17 @@ export const ProductGallery = ({ category, guitarType }: Props) => {
   if (guitarType === "electric" || guitarType === "acoustic") {
     url = `http://localhost:8080/api/v1/${category}/type/${guitarType}`;
   } else {
-    url = `http://localhost:8080/api/v1/${category}`;
+    url = `http://localhost:8080/api/v1/products?category=${category}`;
   }
   useEffect(() => {
     const fetchTuners = async () => {
       const response = await fetch(url);
       const jsonResponse = await response.json();
+      console.log(jsonResponse);
       if (category === "guitars") {
         setProducts(jsonResponse.guitars);
       } else if (category === "tuners") {
-        setProducts(jsonResponse.tuners);
+        setProducts(jsonResponse);
       }
 
       setIsloading(false);

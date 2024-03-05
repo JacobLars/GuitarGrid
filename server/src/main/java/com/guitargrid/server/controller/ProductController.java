@@ -1,5 +1,6 @@
 package com.guitargrid.server.controller;
 
+import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.model.products.Product;
 import com.guitargrid.server.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +18,8 @@ public class ProductController {
     private final ProductService service;
 
     @GetMapping
-    public List<Product> getAllProducts() {
-        return service.getAllProducts();
+    public List<Product> getAllProductsByCategory(@RequestParam String category) {
+        return service.getAllByCategory(category);
     }
 
     @GetMapping("/{id}")

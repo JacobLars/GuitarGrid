@@ -23,7 +23,7 @@ const CarouselArrow = ({
       transition: "background-color 0.3s",
     }}
     onMouseEnter={(e) => {
-      e.currentTarget.style.backgroundColor = "rgba(229, 231, 235, 0.5)"; // Mimics Tailwind's gray-200
+      e.currentTarget.style.backgroundColor = "rgba(229, 231, 235, 0.5)";
     }}
     onMouseLeave={(e) => {
       e.currentTarget.style.backgroundColor = "transparent";

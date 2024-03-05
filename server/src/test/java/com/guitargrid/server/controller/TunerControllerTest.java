@@ -47,16 +47,6 @@ class TunerControllerTest {
                 .andExpect(jsonPath("$.name").value(tunerRequest.name()));
     }
 
-    @Test
-    @SneakyThrows
-    void shouldReturnListOfTunersAndHaveStatus200Ok() {
-        TunerListResponse tunerListResponse = TunerListResponse.builder().tuners(List.of(createTunerResponse())).build();
-        when(tunerService.getAllTuners()).thenReturn(tunerListResponse);
-        mockMvc.perform(get(BASE_URL_TUNERS))
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.tuners[0].name")
-                        .value(tunerListResponse.tuners().get(0).name()));
-    }
+
 
 }

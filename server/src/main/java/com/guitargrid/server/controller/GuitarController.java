@@ -25,16 +25,6 @@ public class GuitarController {
     }
 
 
-    @GetMapping
-    public GuitarListResponse getAllGuitars() {
-        return guitarService.getAllGuitars();
-    }
-
-    @GetMapping("/{id}")
-    public GuitarResponse getGuitarById(@PathVariable UUID id) {
-        return guitarService.getGuitarById(id);
-    }
-
     @GetMapping("/type/{guitarType}")
     public GuitarListResponse getGuitarsByType(@PathVariable String guitarType) {
         return guitarService.getGuitarsByType(guitarType);

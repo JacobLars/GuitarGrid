@@ -22,6 +22,7 @@ public class TunerMapper {
                 .integrated_microphone(tunerRequest.integrated_microphone())
                 .rating(tunerRequest.rating())
                 .product_quantity(tunerRequest.product_quantity())
+                .category(tunerRequest.category())
                 .build();
     }
 
@@ -40,6 +41,7 @@ public class TunerMapper {
                 .brandLogo(tuner.getBrand().getLogo())
                 .rating(tuner.getRating())
                 .product_quantity(tuner.getProduct_quantity())
+                .category(tuner.getCategory())
                 .build();
     }
 

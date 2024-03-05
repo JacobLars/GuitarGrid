@@ -1,5 +1,6 @@
 package com.guitargrid.server.controller;
 
+import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.model.products.Product;
 import com.guitargrid.server.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -25,12 +26,5 @@ public class ProductController {
     public Product getProductById(@PathVariable UUID id) {
         return service.getProductById(id);
     }
-
-    @PostMapping("/{brandId}")
-    public Product saveProduct(@RequestBody Product product, @PathVariable UUID brandId) {
-        return service.saveProduct(product, brandId);
-    }
-
-
 
 }

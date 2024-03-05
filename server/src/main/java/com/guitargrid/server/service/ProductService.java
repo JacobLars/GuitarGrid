@@ -4,7 +4,6 @@ import com.guitargrid.server.model.products.Amplifier;
 import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.model.products.Product;
 import com.guitargrid.server.model.products.Tuner;
-import com.guitargrid.server.repository.AmplifierRepository;
 import com.guitargrid.server.repository.BrandRepository;
 import com.guitargrid.server.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;

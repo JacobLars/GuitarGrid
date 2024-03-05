@@ -6,18 +6,17 @@ import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.mapper.GuitarMapper;
 import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.repository.BrandRepository;
-import com.guitargrid.server.repository.GuitarRepository;
+import com.guitargrid.server.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
 public class GuitarService {
 
-    private final GuitarRepository guitarRepository;
+    private final ProductRepository<Guitar> guitarRepository;
     private final BrandRepository brandRepository;
     private final GuitarMapper guitarMapper;
 
@@ -29,17 +28,7 @@ public class GuitarService {
         guitarRepository.save(guitar);
        return guitarMapper.mapToGuitarResponse(guitar);
     }
-
-    public GuitarListResponse getAllGuitars() {
-        return guitarMapper.mapToGuitarListResponse(guitarRepository.findAll());
-    }
-
-
-    public GuitarResponse getGuitarById(UUID id) {
-        return guitarMapper.mapToGuitarResponse(
-                guitarRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Guitar not found")));
-    }
-
+    
     public GuitarListResponse getGuitarsByType(String guitarType) {
         return guitarMapper.mapToGuitarListResponse(guitarRepository.findAllByType(guitarType));
     }

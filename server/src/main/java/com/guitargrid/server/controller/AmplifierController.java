@@ -15,11 +15,6 @@ public class AmplifierController {
 
     private final AmplifierService amplifierService;
 
-    @GetMapping
-    public List<Amplifier> getAllAmplifiers() {
-        return amplifierService.getAllAmplifiers();
-    }
-
     @PostMapping("/{brandId}")
     public Amplifier saveAmplifier(@RequestBody Amplifier amplifier, @PathVariable UUID brandId) {
         return amplifierService.saveAmplifier(amplifier, brandId);

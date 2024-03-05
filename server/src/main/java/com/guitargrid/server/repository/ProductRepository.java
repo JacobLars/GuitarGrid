@@ -4,8 +4,10 @@ import com.guitargrid.server.model.products.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface ProductRepository<A extends Product> extends JpaRepository<Product, UUID>{
+public interface ProductRepository<T extends Product> extends JpaRepository<T, UUID>{
+    List<T> findByCategory(String category);
 }

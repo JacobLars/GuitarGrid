@@ -17,13 +17,20 @@ public class ProductController {
     private final ProductService service;
 
     @GetMapping
-    public List<Product> getAllProducts() {
-        return service.getAllProducts();
+    public List<Product> getAllProductsByCategory(@RequestParam String category) {
+        return service.getAllByCategory(category);
     }
 
     @GetMapping("/{id}")
     public Product getProductById(@PathVariable UUID id) {
         return service.getProductById(id);
     }
+
+    @PostMapping("/{brandId}")
+    public Product saveProduct(@RequestBody Product product, @PathVariable UUID brandId) {
+        return service.saveProduct(product, brandId);
+    }
+
+
 
 }

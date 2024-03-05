@@ -27,6 +27,7 @@ public class GuitarMapper {
                 .scale(guitarRequest.scale())
                 .rating(guitarRequest.rating())
                 .product_quantity(guitarRequest.product_quantity())
+                .category(guitarRequest.category())
                 .build();
     }
 
@@ -48,6 +49,7 @@ public class GuitarMapper {
                 .brandLogo(guitar.getBrand().getLogo())
                 .rating(guitar.getRating())
                 .product_quantity(guitar.getProduct_quantity())
+                .category(guitar.getCategory())
                 .build();
     }
 

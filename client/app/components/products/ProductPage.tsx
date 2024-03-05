@@ -4,6 +4,7 @@ import { GuitarInfo } from "../guitars/GuitarInfo";
 import { TunerInfo } from "../tuners/TunerInfo";
 import { Carousel } from "./Carousel";
 import { ProductHeader } from "./ProductHeader";
+import { PriceInfo } from "./PriceInfo";
 
 type Props = {
   productId: string;
@@ -42,8 +43,13 @@ export const ProductPage = ({ productId }: Props) => {
                 productName={guitar.name}
                 productRating={guitar.rating}
                 brandLogo={guitar.brand.logo}
+                product_quantity={guitar.product_quantity}
               />
               <Carousel images={guitar.images} />
+              <PriceInfo
+                product_price={guitar.price}
+                product_quantity={guitar.product_quantity}
+              />
               <GuitarInfo guitar={guitar} />
             </>
           )}

@@ -1,5 +1,6 @@
 package com.guitargrid.server.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
 import com.guitargrid.server.model.products.Product;
 import com.guitargrid.server.service.ProductService;
@@ -30,7 +31,7 @@ public class ProductController {
     }
 
     @PostMapping("/{brandId}")
-    public Product saveProduct(@RequestBody String product, @PathVariable UUID brandId) {
+    public Product saveProduct(@RequestBody String product, @PathVariable UUID brandId) throws JsonProcessingException {
         return service.handleRequest(product, brandId);
     }
 }

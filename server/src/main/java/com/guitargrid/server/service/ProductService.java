@@ -1,5 +1,6 @@
 package com.guitargrid.server.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.guitargrid.server.controller.dto.request.GuitarRequestV2;
 import com.guitargrid.server.controller.dto.request.ProductRequestV2;
@@ -23,24 +24,25 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
     private final BrandRepository brandRepository;
-    ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
+
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
-    public Product handleRequest(String productRequestV2, UUID brandId) {
-        try {
-            if(productRequestV2.contains("guitars")){
-            GuitarRequestV2 productRequest = objectMapper.readValue(productRequestV2, GuitarRequestV2.class);
-            return saveProduct(productRequest, brandId);
-            } else if(productRequestV2.contains("tuners")){
-                TunerRequestV2 tunerRequest = objectMapper.readValue(productRequestV2, TunerRequestV2.class);
-                return saveProduct(tunerRequest, brandId);
+    public Product handleRequest(String productRequestV2, UUID brandId) throws JsonProcessingException {
+            String productCategory = objectMapper.readValue(productRequestV2, ProductRequestV2.class).getCategory();
+            switch (productCategory) {
+                case "guitars" -> {
+                    GuitarRequestV2 guitarRequest = objectMapper.readValue(productRequestV2, GuitarRequestV2.class);
+                    return saveProduct(guitarRequest, brandId);
+                }
+                case "tuners" -> {
+                    TunerRequestV2 tunerRequest = objectMapper.readValue(productRequestV2, TunerRequestV2.class);
+                    return saveProduct(tunerRequest, brandId);
+                }
+                default -> throw new IllegalStateException("Unexpected value: " + productCategory);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
 

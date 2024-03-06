@@ -1,14 +1,11 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.TunerRequest;
-import com.guitargrid.server.controller.dto.response.TunerListResponse;
 import com.guitargrid.server.controller.dto.response.TunerResponse;
 import com.guitargrid.server.model.Brand;
 import com.guitargrid.server.model.products.Tuner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static com.guitargrid.server.utils.BrandTestData.createNewBrandEntity;
 import static com.guitargrid.server.utils.TunerTestData.createTunerEntity;

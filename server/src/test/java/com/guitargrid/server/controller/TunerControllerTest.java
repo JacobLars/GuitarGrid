@@ -1,9 +1,7 @@
 package com.guitargrid.server.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.guitargrid.server.controller.dto.request.GuitarRequest;
 import com.guitargrid.server.controller.dto.request.TunerRequest;
-import com.guitargrid.server.controller.dto.response.TunerListResponse;
 import com.guitargrid.server.service.TunerService;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
@@ -13,9 +11,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.List;
-
-import static com.guitargrid.server.utils.GuitarTestData.*;
 import static com.guitargrid.server.utils.TunerTestData.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

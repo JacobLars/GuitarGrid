@@ -1,12 +1,10 @@
 package com.guitargrid.server.utils;
 
 import com.guitargrid.server.controller.dto.request.TunerRequest;
-import com.guitargrid.server.controller.dto.response.TunerListResponse;
 import com.guitargrid.server.controller.dto.response.TunerResponse;
 import com.guitargrid.server.model.products.Tuner;
 import lombok.experimental.UtilityClass;
 
-import java.util.List;
 import java.util.UUID;
 
 @UtilityClass

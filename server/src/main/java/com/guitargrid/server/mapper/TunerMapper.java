@@ -1,12 +1,9 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.TunerRequest;
-import com.guitargrid.server.controller.dto.response.TunerListResponse;
 import com.guitargrid.server.controller.dto.response.TunerResponse;
 import com.guitargrid.server.model.products.Tuner;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class TunerMapper {

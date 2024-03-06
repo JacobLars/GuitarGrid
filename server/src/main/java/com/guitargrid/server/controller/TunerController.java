@@ -1,15 +1,11 @@
 package com.guitargrid.server.controller;
 
 import com.guitargrid.server.controller.dto.request.TunerRequest;
-import com.guitargrid.server.controller.dto.response.TunerListResponse;
 import com.guitargrid.server.controller.dto.response.TunerResponse;
-import com.guitargrid.server.model.products.Product;
-import com.guitargrid.server.model.products.Tuner;
 import com.guitargrid.server.service.TunerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 import static org.springframework.http.HttpStatus.CREATED;

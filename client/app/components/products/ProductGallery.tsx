@@ -24,7 +24,7 @@ export const ProductGallery = ({ category, guitarType }: Props) => {
       if (category === "guitars") {
         setProducts(jsonResponse.guitars);
       } else if (category === "tuners") {
-        setProducts(jsonResponse);
+        setProducts(jsonResponse.tuners);
       }
 
       setIsloading(false);

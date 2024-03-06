@@ -45,10 +45,4 @@ public class TunerMapper {
                 .build();
     }
 
-    public TunerListResponse mapToTunerListResponse(List<Tuner> tuners) {
-        return TunerListResponse.builder()
-                .tuners(tuners.stream().map(this::mapToTunerResponse).toList())
-                .build();
-    }
-
 }

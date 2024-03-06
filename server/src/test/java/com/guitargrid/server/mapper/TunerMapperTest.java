@@ -44,15 +44,4 @@ class TunerMapperTest {
         assertInstanceOf(TunerResponse.class, tunerResponse);
     }
 
-    @Test
-    void shouldMapTunerListToTunerListResponse() {
-        Tuner tuner = createTunerEntity();
-        Brand brand = createNewBrandEntity();
-        tuner.setBrand(brand);
-        List<Tuner> tuners = List.of(tuner);
-        TunerListResponse tunerListResponse = tunerMapper.mapToTunerListResponse(tuners);
-        assertEquals("Tuner", tunerListResponse.tuners().get(0).name());
-        assertEquals(100, tunerListResponse.tuners().get(0).price());
-        assertInstanceOf(TunerListResponse.class, tunerListResponse);
-    }
 }

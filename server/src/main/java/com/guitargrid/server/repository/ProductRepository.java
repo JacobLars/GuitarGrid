@@ -10,6 +10,6 @@ import java.util.UUID;
 
 @Repository
 public interface ProductRepository<T extends Product> extends JpaRepository<Product, UUID>{
-    List<T> findByCategory(String category);
+    List<Product> findByCategory(String category);
     List<Guitar> findAllByType(String type);
 }

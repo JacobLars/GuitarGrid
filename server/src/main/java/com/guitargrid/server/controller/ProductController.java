@@ -1,5 +1,6 @@
 package com.guitargrid.server.controller;
 
+import com.guitargrid.server.controller.dto.response.ProductListResponse;
 import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.model.products.Product;
 import com.guitargrid.server.service.ProductService;
@@ -18,7 +19,7 @@ public class ProductController {
     private final ProductService service;
 
     @GetMapping
-    public List<Product> getAllProductsByCategory(@RequestParam String category) {
+    public ProductListResponse getAllProductsByCategory(@RequestParam String category) {
         return service.getAllByCategory(category);
     }
 

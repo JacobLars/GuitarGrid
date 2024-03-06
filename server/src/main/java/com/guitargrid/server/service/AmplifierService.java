@@ -12,7 +12,7 @@ import java.util.UUID;
 @Service
 public class AmplifierService {
 
-    private final ProductRepository<Amplifier> amplifierRepository;
+    private final ProductRepository amplifierRepository;
     private final BrandRepository brandRepository;
 
     public Amplifier saveAmplifier(Amplifier amplifier, UUID brandId) {

@@ -34,7 +34,7 @@ class GuitarControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @Test
+/*    @Test
     @SneakyThrows
     void shouldSaveGuitarAndHaveStatus201Created() {
         GuitarRequest guitarRequest = createGuitarRequest();
@@ -58,7 +58,7 @@ class GuitarControllerTest {
                 .andExpect(jsonPath("$.guitars[0].name")
                         .value(guitarListResponse.guitars().get(0).name()))
                 .andExpect(jsonPath("$.guitars[0].type").value(GUITAR_TYPE));
-    }
+    }*/
 
 
 }

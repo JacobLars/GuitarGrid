@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class ProductServiceTest {
     @Mock
-    private ProductRepository<Product> productRepository;
+    private ProductRepository productRepository;
 
     @Mock
     private ProductMapper productMapper;

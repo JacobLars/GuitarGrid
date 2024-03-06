@@ -1,6 +1,7 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.GuitarRequest;
+import com.guitargrid.server.controller.dto.request.GuitarRequestV2;
 import com.guitargrid.server.controller.dto.response.GuitarListResponse;
 import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.model.products.Guitar;
@@ -13,21 +14,21 @@ import java.util.List;
 @Component
 public class GuitarMapper {
 
-    public Guitar mapToGuitar(GuitarRequest guitarRequest) {
+    public Guitar mapToGuitar(GuitarRequestV2 guitarRequest) {
         return Guitar.builder()
-                .name(guitarRequest.name())
-                .price(guitarRequest.price())
-                .type(guitarRequest.type())
-                .color(guitarRequest.color())
-                .bodyType(guitarRequest.bodyType())
-                .neckType(guitarRequest.neckType())
-                .fretboardType(guitarRequest.fretboardType())
-                .pickups(guitarRequest.pickups())
-                .frets(guitarRequest.frets())
-                .scale(guitarRequest.scale())
-                .rating(guitarRequest.rating())
-                .product_quantity(guitarRequest.product_quantity())
-                .category(guitarRequest.category())
+                .name(guitarRequest.getName())
+                .price(guitarRequest.getPrice())
+                .type(guitarRequest.getType())
+                .color(guitarRequest.getColor())
+                .bodyType(guitarRequest.getBodyType())
+                .neckType(guitarRequest.getNeckType())
+                .fretboardType(guitarRequest.getFretboardType())
+                .pickups(guitarRequest.getPickups())
+                .frets(guitarRequest.getFrets())
+                .scale(guitarRequest.getScale())
+                .rating(guitarRequest.getRating())
+                .product_quantity(guitarRequest.getProduct_quantity())
+                .category(guitarRequest.getCategory())
                 .build();
     }
 

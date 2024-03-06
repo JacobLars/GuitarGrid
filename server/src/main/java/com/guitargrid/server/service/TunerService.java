@@ -17,15 +17,15 @@ public class TunerService {
 
     private final BrandRepository brandRepository;
     private final TunerMapper tunerMapper;
-    private final ProductRepository<Tuner> tunerRepository;
+    private final ProductRepository tunerRepository;
 
-    public TunerResponse saveTuner(TunerRequest tunerRequest, UUID brandId) {
+/*    public TunerResponse saveTuner(TunerRequest tunerRequest, UUID brandId) {
         Tuner tuner = tunerMapper.mapToTuner(tunerRequest);
         tunerRepository.save(tuner);
         tunerRequest.images().forEach(image -> image.setProduct(tuner));
         tuner.setImages(tunerRequest.images());
         tuner.setBrand(brandRepository.findById(brandId).orElse(null));
         return tunerMapper.mapToTunerResponse(tunerRepository.save(tuner));
-    }
+    }*/
 
 }

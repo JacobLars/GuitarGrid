@@ -29,4 +29,8 @@ public class ProductController {
         return service.getProductById(id);
     }
 
+    @PostMapping("/{brandId}")
+    public Product saveProduct(@RequestBody String product, @PathVariable UUID brandId) {
+        return service.handleRequest(product, brandId);
+    }
 }

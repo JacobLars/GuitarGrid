@@ -1,6 +1,7 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.TunerRequest;
+import com.guitargrid.server.controller.dto.request.TunerRequestV2;
 import com.guitargrid.server.controller.dto.response.TunerResponse;
 import com.guitargrid.server.model.products.Tuner;
 import org.springframework.stereotype.Component;
@@ -8,18 +9,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class TunerMapper {
 
-    public Tuner mapToTuner(TunerRequest tunerRequest) {
+    public Tuner mapToTuner(TunerRequestV2 tunerRequest) {
         return Tuner.builder()
-                .name(tunerRequest.name())
-                .price(tunerRequest.price())
-                .display(tunerRequest.display())
-                .design(tunerRequest.design())
-                .chromatic(tunerRequest.chromatic())
-                .integrated_metronome(tunerRequest.integrated_metronome())
-                .integrated_microphone(tunerRequest.integrated_microphone())
-                .rating(tunerRequest.rating())
-                .product_quantity(tunerRequest.product_quantity())
-                .category(tunerRequest.category())
+                .name(tunerRequest.getName())
+                .price(tunerRequest.getPrice())
+                .display(tunerRequest.getDisplay())
+                .design(tunerRequest.getDesign())
+                .chromatic(tunerRequest.getChromatic())
+                .integrated_metronome(tunerRequest.getIntegrated_metronome())
+                .integrated_microphone(tunerRequest.getIntegrated_microphone())
+                .rating(tunerRequest.getRating())
+                .product_quantity(tunerRequest.getProduct_quantity())
+                .category(tunerRequest.getCategory())
                 .build();
     }
 

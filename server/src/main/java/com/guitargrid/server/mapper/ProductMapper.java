@@ -1,5 +1,8 @@
 package com.guitargrid.server.mapper;
 
+import com.guitargrid.server.controller.dto.request.GuitarRequestV2;
+import com.guitargrid.server.controller.dto.request.ProductRequestV2;
+import com.guitargrid.server.controller.dto.request.TunerRequestV2;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
 import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.model.products.Product;
@@ -27,6 +30,15 @@ public class ProductMapper {
         return new ProductListResponse(null, null);
     }
 
+    public Product mapRequestToProduct(ProductRequestV2 product) {
+        System.out.println(product.getCategory());
+           if (product.getCategory().equals("guitars")) {
+                return guitarMapper.mapToGuitar((GuitarRequestV2) product);
+            } else if (product.getCategory().equals("tuners")) {
+                return tunerMapper.mapToTuner((TunerRequestV2) product);
+            }
+            return null;
+    }
     private <T extends Product> List<T> filterProductsByType(List<Product> products, Class<T> type) {
         return products.stream()
                 .filter(type::isInstance)

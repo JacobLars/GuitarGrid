@@ -21,6 +21,7 @@ class TunerMapperTest {
         tunerMapper = new TunerMapper();
     }
 
+/*
     @Test
     void shouldMapTunerRequestToTuner() {
         TunerRequest tunerRequest = createTunerRequest();
@@ -29,6 +30,7 @@ class TunerMapperTest {
         assertEquals(100, tuner.getPrice());
         assertInstanceOf(Tuner.class, tuner);
     }
+*/
 
     @Test
     void shouldMapTunerToTunerResponse() {

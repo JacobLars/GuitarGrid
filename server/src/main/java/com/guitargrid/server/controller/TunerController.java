@@ -18,10 +18,10 @@ public class TunerController {
 
     private final TunerService service;
 
-    @PostMapping("/{brandId}")
+/*    @PostMapping("/{brandId}")
     @ResponseStatus(CREATED)
     public TunerResponse saveTuner(@RequestBody TunerRequest tunerRequest, @PathVariable UUID brandId) {
         return service.saveTuner(tunerRequest, brandId);
-    }
+    }*/
 
 }

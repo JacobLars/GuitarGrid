@@ -24,11 +24,11 @@ public class GuitarController {
         this.guitarService = guitarService;
     }
 
-    @PostMapping("/{brandId}")
+/*    @PostMapping("/{brandId}")
     @ResponseStatus(CREATED)
     public GuitarResponse saveGuitar(@RequestBody GuitarRequest guitarRequest, @PathVariable UUID brandId) {
         return guitarService.saveGuitar(guitarRequest, brandId);
-    }
+    }*/
 
     @ExceptionHandler({NoSuchElementException.class})
     @ResponseStatus(NOT_FOUND)

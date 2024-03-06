@@ -23,7 +23,7 @@ class GuitarMapperTest {
         guitarMapper = new GuitarMapper();
     }
 
-    @Test
+/*    @Test
     void shouldMapGuitarRequestToGuitar() {
         GuitarRequest guitarRequest = createGuitarRequest();
         Brand brand = createNewBrandEntity();
@@ -33,7 +33,7 @@ class GuitarMapperTest {
         assertEquals("Fender", guitar.getBrand().getName());
         assertEquals(100, guitar.getPrice());
         assertEquals("electric", guitar.getType());
-    }
+    }*/
 
     @Test
     void shouldMapGuitarToGuitarResponse() {

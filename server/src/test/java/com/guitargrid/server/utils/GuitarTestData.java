@@ -39,7 +39,7 @@ public class GuitarTestData {
                 .build();
     }
 
-    public static Guitar createNewGuitarEntity() {
+    public static Guitar createElectricGuitarEntity() {
         return Guitar.builder()
                 .name(GUITAR_NAME)
                 .price(GUITAR_PRICE)
@@ -54,6 +54,20 @@ public class GuitarTestData {
                 .build();
     }
 
+    public static Guitar createAcousticGuitarEntity() {
+        return Guitar.builder()
+                .name(GUITAR_NAME)
+                .price(GUITAR_PRICE)
+                .type("acoustic")
+                .color(GUITAR_COLOR)
+                .bodyType(GUITAR_BODY_TYPE)
+                .neckType(GUITAR_NECK_TYPE)
+                .fretboardType(GUITAR_FRETBOARD_TYPE)
+                .pickups(GUITAR_PICKUPS)
+                .scale(GUITAR_SCALE)
+                .frets(GUITAR_FRETS)
+                .build();
+    }
     public static GuitarResponse createGuitarResponse() {
         return GuitarResponse.builder()
                 .id(GUITAR_ID)

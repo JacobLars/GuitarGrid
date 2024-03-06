@@ -12,7 +12,7 @@ import java.util.List;
 
 import static com.guitargrid.server.utils.BrandTestData.createNewBrandEntity;
 import static com.guitargrid.server.utils.GuitarTestData.createGuitarRequest;
-import static com.guitargrid.server.utils.GuitarTestData.createNewGuitarEntity;
+import static com.guitargrid.server.utils.GuitarTestData.createElectricGuitarEntity;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GuitarMapperTest {
@@ -37,7 +37,7 @@ class GuitarMapperTest {
 
     @Test
     void shouldMapGuitarToGuitarResponse() {
-        Guitar guitar = createNewGuitarEntity();
+        Guitar guitar = createElectricGuitarEntity();
         Brand brand = createNewBrandEntity();
         guitar.setBrand(brand);
         GuitarResponse guitarResponse = guitarMapper.mapToGuitarResponse(guitar);
@@ -49,7 +49,7 @@ class GuitarMapperTest {
 
     @Test
     void shouldMapGuitarListToGuitarListResponse() {
-        Guitar guitar = createNewGuitarEntity();
+        Guitar guitar = createElectricGuitarEntity();
         Brand brand = createNewBrandEntity();
         guitar.setBrand(brand);
         GuitarListResponse guitarResponse = guitarMapper.mapToGuitarListResponse(List.of(guitar));

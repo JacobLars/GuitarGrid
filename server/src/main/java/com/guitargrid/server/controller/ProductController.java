@@ -1,13 +1,12 @@
 package com.guitargrid.server.controller;
 
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
-import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.model.products.Product;
 import com.guitargrid.server.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -19,8 +18,10 @@ public class ProductController {
     private final ProductService service;
 
     @GetMapping
-    public ProductListResponse getAllProductsByCategory(@RequestParam String category) {
-        return service.getAllByCategory(category);
+    public ProductListResponse getAllProductsByCategory(@RequestParam String category,
+                                                        @RequestParam(required = false) String type) {
+        System.out.println(type);
+        return service.getAllByCategory(category, type);
     }
 
     @GetMapping("/{id}")

@@ -29,12 +29,19 @@ public class ProductService {
         return productRepository.findById(id).orElse(null);
     }
 
-
-
-    public ProductListResponse getAllByCategory(String category) {
-        return productMapper.mapToProductListResponse(productRepository.findByCategory(category));
+    public ProductListResponse getAllByCategory(String category, String type) {
+       if(type != null && category.equals("guitars")){
+           return productMapper.mapToProductListResponse(
+                   filterGuitarsByType(type, productRepository.findByCategory(category)));
+       }
+       return productMapper.mapToProductListResponse(productRepository.findByCategory(category));
     }
 
-
+    private List<Product> filterGuitarsByType(String type, List<Product> products) {
+        return products.stream()
+                .filter(product -> product instanceof Guitar)
+                .filter(product -> ((Guitar) product).getType().equals(type))
+                .toList();
+    }
 
 }

@@ -31,10 +31,9 @@ public class ProductMapper {
     }
 
     public Product mapRequestToProduct(ProductRequestV2 product) {
-        System.out.println(product.getCategory());
-           if (product.getCategory().equals("guitars")) {
+           if (product instanceof GuitarRequestV2) {
                 return guitarMapper.mapToGuitar((GuitarRequestV2) product);
-            } else if (product.getCategory().equals("tuners")) {
+            } else if (product instanceof TunerRequestV2) {
                 return tunerMapper.mapToTuner((TunerRequestV2) product);
             }
             return null;

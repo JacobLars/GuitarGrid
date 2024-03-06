@@ -28,8 +28,5 @@ public class GuitarService {
         guitarRepository.save(guitar);
        return guitarMapper.mapToGuitarResponse(guitar);
     }
-    
-    public GuitarListResponse getGuitarsByType(String guitarType) {
-        return guitarMapper.mapToGuitarListResponse(guitarRepository.findAllByType(guitarType));
-    }
+
 }

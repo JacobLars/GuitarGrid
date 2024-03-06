@@ -12,7 +12,7 @@ export const ProductGallery = ({ category, guitarType }: Props) => {
   const [isLoading, setIsloading] = useState<boolean>(true);
   let url = "";
   if (guitarType === "electric" || guitarType === "acoustic") {
-    url = `http://localhost:8080/api/v1/${category}/type/${guitarType}`;
+    url = `http://localhost:8080/api/v1/products?category=${category}&type=${guitarType}`;
   } else {
     url = `http://localhost:8080/api/v1/products?category=${category}`;
   }

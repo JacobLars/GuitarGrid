@@ -1,6 +1,5 @@
 package com.guitargrid.server.mapper;
 
-import com.guitargrid.server.controller.dto.request.GuitarRequest;
 import com.guitargrid.server.controller.dto.response.GuitarListResponse;
 import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.model.Brand;
@@ -11,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static com.guitargrid.server.utils.BrandTestData.createNewBrandEntity;
-import static com.guitargrid.server.utils.GuitarTestData.createGuitarRequest;
 import static com.guitargrid.server.utils.GuitarTestData.createElectricGuitarEntity;
 import static org.junit.jupiter.api.Assertions.*;
 

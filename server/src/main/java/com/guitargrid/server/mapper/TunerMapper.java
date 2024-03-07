@@ -1,7 +1,6 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.TunerRequest;
-import com.guitargrid.server.controller.dto.request.TunerRequestV2;
 import com.guitargrid.server.controller.dto.response.TunerResponse;
 import com.guitargrid.server.model.products.Tuner;
 import org.springframework.stereotype.Component;
@@ -9,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TunerMapper {
 
-    public Tuner mapToTuner(TunerRequestV2 tunerRequest) {
+    public Tuner mapToTuner(TunerRequest tunerRequest) {
         return Tuner.builder()
                 .name(tunerRequest.getName())
                 .price(tunerRequest.getPrice())

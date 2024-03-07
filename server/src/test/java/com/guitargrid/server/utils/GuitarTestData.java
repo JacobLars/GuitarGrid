@@ -1,6 +1,5 @@
 package com.guitargrid.server.utils;
 
-import com.guitargrid.server.controller.dto.request.GuitarRequest;
 import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.model.products.Guitar;
 import lombok.experimental.UtilityClass;
@@ -24,20 +23,7 @@ public class GuitarTestData {
     public static final int GUITAR_SCALE = 255;
     public static final int GUITAR_FRETS = 22;
 
-    public static GuitarRequest createGuitarRequest() {
-        return GuitarRequest.builder()
-                .name(GUITAR_NAME)
-                .price(GUITAR_PRICE)
-                .type(GUITAR_TYPE)
-                .color(GUITAR_COLOR)
-                .bodyType(GUITAR_BODY_TYPE)
-                .neckType(GUITAR_NECK_TYPE)
-                .fretboardType(GUITAR_FRETBOARD_TYPE)
-                .pickups(GUITAR_PICKUPS)
-                .scale(GUITAR_SCALE)
-                .frets(GUITAR_FRETS)
-                .build();
-    }
+
 
     public static Guitar createElectricGuitarEntity() {
         return Guitar.builder()

@@ -2,9 +2,9 @@ package com.guitargrid.server.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.guitargrid.server.controller.dto.request.GuitarRequestV2;
-import com.guitargrid.server.controller.dto.request.ProductRequestV2;
-import com.guitargrid.server.controller.dto.request.TunerRequestV2;
+import com.guitargrid.server.controller.dto.request.GuitarRequest;
+import com.guitargrid.server.controller.dto.request.ProductRequest;
+import com.guitargrid.server.controller.dto.request.TunerRequest;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
 import com.guitargrid.server.mapper.ProductMapper;
 import com.guitargrid.server.model.products.Guitar;
@@ -31,14 +31,14 @@ public class ProductService {
     }
 
     public Product handleRequest(String productRequestV2, UUID brandId) throws JsonProcessingException {
-            String productCategory = objectMapper.readValue(productRequestV2, ProductRequestV2.class).getCategory();
+            String productCategory = objectMapper.readValue(productRequestV2, ProductRequest.class).getCategory();
             switch (productCategory) {
                 case "guitars" -> {
-                    GuitarRequestV2 guitarRequest = objectMapper.readValue(productRequestV2, GuitarRequestV2.class);
+                    GuitarRequest guitarRequest = objectMapper.readValue(productRequestV2, GuitarRequest.class);
                     return saveProduct(guitarRequest, brandId);
                 }
                 case "tuners" -> {
-                    TunerRequestV2 tunerRequest = objectMapper.readValue(productRequestV2, TunerRequestV2.class);
+                    TunerRequest tunerRequest = objectMapper.readValue(productRequestV2, TunerRequest.class);
                     return saveProduct(tunerRequest, brandId);
                 }
                 default -> throw new IllegalStateException("Unexpected value: " + productCategory);
@@ -46,7 +46,7 @@ public class ProductService {
     }
 
 
-    private Product saveProduct(ProductRequestV2 productRequest, UUID brandId) {
+    private Product saveProduct(ProductRequest productRequest, UUID brandId) {
         Product product = productMapper.mapRequestToProduct(productRequest);
         productRequest.getImages().forEach(image -> image.setProduct(product));
         product.setImages(productRequest.getImages());

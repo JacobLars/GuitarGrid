@@ -1,8 +1,8 @@
 package com.guitargrid.server.mapper;
 
-import com.guitargrid.server.controller.dto.request.GuitarRequestV2;
-import com.guitargrid.server.controller.dto.request.ProductRequestV2;
-import com.guitargrid.server.controller.dto.request.TunerRequestV2;
+import com.guitargrid.server.controller.dto.request.GuitarRequest;
+import com.guitargrid.server.controller.dto.request.ProductRequest;
+import com.guitargrid.server.controller.dto.request.TunerRequest;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
 import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.model.products.Product;
@@ -30,11 +30,11 @@ public class ProductMapper {
         return new ProductListResponse(null, null);
     }
 
-    public Product mapRequestToProduct(ProductRequestV2 product) {
-           if (product instanceof GuitarRequestV2) {
-                return guitarMapper.mapToGuitar((GuitarRequestV2) product);
-            } else if (product instanceof TunerRequestV2) {
-                return tunerMapper.mapToTuner((TunerRequestV2) product);
+    public Product mapRequestToProduct(ProductRequest product) {
+           if (product instanceof GuitarRequest) {
+                return guitarMapper.mapToGuitar((GuitarRequest) product);
+            } else if (product instanceof TunerRequest) {
+                return tunerMapper.mapToTuner((TunerRequest) product);
             }
             return null;
     }

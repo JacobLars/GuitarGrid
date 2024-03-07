@@ -1,6 +1,5 @@
 package com.guitargrid.server.utils;
 
-import com.guitargrid.server.controller.dto.request.TunerRequest;
 import com.guitargrid.server.controller.dto.response.TunerResponse;
 import com.guitargrid.server.model.products.Tuner;
 import lombok.experimental.UtilityClass;
@@ -23,20 +22,7 @@ public class TunerTestData {
     public static boolean TUNER_INTEGRATED_MICROPHONE = true;
     public static String TUNER_CATEGORY = "Tuner";
 
-    public static TunerRequest createTunerRequest(){
-        return TunerRequest.builder()
-                .name(TUNER_NAME)
-                .price(TUNER_PRICE)
-                .rating(TUNER_RATING)
-                .product_quantity(TUNER_PRODUCT_QUANTITY)
-                .display(TUNER_DISPLAY)
-                .design(TUNER_DESIGN)
-                .chromatic(TUNER_CHROMATIC)
-                .integrated_metronome(TUNER_INTEGRATED_METRONOME)
-                .integrated_microphone(TUNER_INTEGRATED_MICROPHONE)
-                .category(TUNER_CATEGORY)
-                .build();
-    }
+
     public static Tuner createTunerEntity() {
         return Tuner.builder()
                 .name(TUNER_NAME)

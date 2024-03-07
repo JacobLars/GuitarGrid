@@ -1,7 +1,6 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.GuitarRequest;
-import com.guitargrid.server.controller.dto.request.GuitarRequestV2;
 import com.guitargrid.server.controller.dto.response.GuitarListResponse;
 import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.model.products.Guitar;
@@ -14,7 +13,7 @@ import java.util.List;
 @Component
 public class GuitarMapper {
 
-    public Guitar mapToGuitar(GuitarRequestV2 guitarRequest) {
+    public Guitar mapToGuitar(GuitarRequest guitarRequest) {
         return Guitar.builder()
                 .name(guitarRequest.getName())
                 .price(guitarRequest.getPrice())

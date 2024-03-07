@@ -16,10 +16,7 @@ public class BrandTestData {
     public static final String BASE_URL_BRANDS = "/api/v1/brands";
 
     public static BrandRequest createBrandRequest() {
-        return BrandRequest.builder()
-                .name(BRAND_NAME)
-                .logo(BRAND_LOGO)
-                .build();
+        return new BrandRequest(BRAND_NAME, BRAND_LOGO);
     }
 
     public static BrandResponse createBrandResponse() {

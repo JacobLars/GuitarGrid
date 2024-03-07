@@ -1,5 +1,6 @@
 package com.guitargrid.server.mapper;
 
+import com.guitargrid.server.controller.dto.request.GuitarRequest;
 import com.guitargrid.server.controller.dto.response.GuitarListResponse;
 import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.model.Brand;
@@ -11,6 +12,7 @@ import java.util.List;
 
 import static com.guitargrid.server.utils.BrandTestData.createNewBrandEntity;
 import static com.guitargrid.server.utils.GuitarTestData.createElectricGuitarEntity;
+import static com.guitargrid.server.utils.GuitarTestData.createGuitarRequest;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GuitarMapperTest {
@@ -21,7 +23,7 @@ class GuitarMapperTest {
         guitarMapper = new GuitarMapper();
     }
 
-/*    @Test
+    @Test
     void shouldMapGuitarRequestToGuitar() {
         GuitarRequest guitarRequest = createGuitarRequest();
         Brand brand = createNewBrandEntity();
@@ -31,7 +33,7 @@ class GuitarMapperTest {
         assertEquals("Fender", guitar.getBrand().getName());
         assertEquals(100, guitar.getPrice());
         assertEquals("electric", guitar.getType());
-    }*/
+    }
 
     @Test
     void shouldMapGuitarToGuitarResponse() {

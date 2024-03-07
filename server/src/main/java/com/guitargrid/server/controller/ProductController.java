@@ -33,7 +33,7 @@ public class ProductController {
 
     @PostMapping("/{brandId}")
     @ResponseStatus(CREATED)
-    public Product saveProduct(@RequestBody String productRequest, @PathVariable UUID brandId) {
+    public ProductResponse saveProduct(@RequestBody String productRequest, @PathVariable UUID brandId) {
         return service.handleRequest(productRequest, brandId);
     }
 }

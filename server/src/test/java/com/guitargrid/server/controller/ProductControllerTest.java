@@ -3,6 +3,7 @@ package com.guitargrid.server.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
+import com.guitargrid.server.controller.dto.response.ProductResponse;
 import com.guitargrid.server.controller.dto.response.TunerResponse;
 import com.guitargrid.server.model.Brand;
 import com.guitargrid.server.model.products.Product;
@@ -17,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static com.guitargrid.server.utils.BrandTestData.createNewBrandEntity;
+import static com.guitargrid.server.utils.GuitarTestData.createElectricGuitarEntity;
 import static com.guitargrid.server.utils.GuitarTestData.createElectricGuitarResponse;
 import static com.guitargrid.server.utils.ProductTestData.*;
 import static com.guitargrid.server.utils.TunerTestData.createTunerEntity;
@@ -40,16 +42,18 @@ public class ProductControllerTest {
     @Test
     @SneakyThrows
     void shouldSaveNewProductAndHaveStatus201Created() {
-        Product request = createTunerEntity();
+        Product request = createElectricGuitarEntity();
+        GuitarResponse guitarResponse = createElectricGuitarResponse();
+        ProductResponse response = createProductResponseWithGuitar(guitarResponse);
         Brand brand = createNewBrandEntity();
         when(productService.handleRequest(objectMapper.writeValueAsString(request), brand.getId()))
-                .thenReturn(request);
+                .thenReturn(response);
         mockMvc.perform(MockMvcRequestBuilders.post(BASE_URL_PRODUCTS + "/" + brand.getId())
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.name").value(request.getName()));
+                .andExpect(jsonPath("$.guitar.name").value(response.guitar().name()));
     }
 
     @Test

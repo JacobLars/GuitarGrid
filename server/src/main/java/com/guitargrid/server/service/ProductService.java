@@ -28,18 +28,18 @@ public class ProductService {
     private final ObjectMapper objectMapper;
 
 
-    public Product handleRequest(String productRequest, UUID brandId){
+    public ProductResponse handleRequest(String productRequest, UUID brandId){
         String productCategory;
         try {
             productCategory = objectMapper.readValue(productRequest, ProductRequest.class).getCategory();
         switch (productCategory) {
                 case "guitars" -> {
                     GuitarRequest guitarRequest = objectMapper.readValue(productRequest, GuitarRequest.class);
-                    return saveProduct(guitarRequest, brandId);
+                    return productMapper.mapToProductResponse(saveProduct(guitarRequest, brandId));
                 }
                 case "tuners" -> {
                     TunerRequest tunerRequest = objectMapper.readValue(productRequest, TunerRequest.class);
-                    return saveProduct(tunerRequest, brandId);
+                    return productMapper.mapToProductResponse(saveProduct(tunerRequest, brandId));
                 }
                 default -> throw new IllegalStateException("Unexpected value: " + productCategory);
             }

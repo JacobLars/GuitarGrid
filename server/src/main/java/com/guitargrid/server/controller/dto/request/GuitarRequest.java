@@ -11,7 +11,6 @@ import java.util.List;
 
 @Getter
 @Setter
-
 public class GuitarRequest extends ProductRequest {
 
     private String color;

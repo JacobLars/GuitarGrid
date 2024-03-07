@@ -24,14 +24,12 @@ export const ProductPage = ({ productId, productCategory }: Props) => {
       const responseToJson = await response.json();
       if (productCategory === "guitars") {
         setGuitar(responseToJson.guitar);
-        setIsLoading(false);
       } else if (productCategory === "tuners") {
         setTuner(responseToJson.tuner);
-        setIsLoading(false);
       } else if (productCategory === "amplifiers") {
         setAmplifier(responseToJson.amplifier);
-        setIsLoading(false);
       }
+      setIsLoading(false);
     };
     fetchProductById();
   }, []);

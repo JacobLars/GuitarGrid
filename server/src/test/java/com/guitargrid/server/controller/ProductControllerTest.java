@@ -5,6 +5,7 @@ import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
 import com.guitargrid.server.controller.dto.response.ProductResponse;
 import com.guitargrid.server.controller.dto.response.TunerResponse;
+import com.guitargrid.server.exception.ProductNotFoundException;
 import com.guitargrid.server.model.Brand;
 import com.guitargrid.server.model.products.Product;
 import com.guitargrid.server.service.ProductService;
@@ -17,11 +18,14 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.UUID;
+
 import static com.guitargrid.server.utils.BrandTestData.createNewBrandEntity;
 import static com.guitargrid.server.utils.GuitarTestData.createElectricGuitarEntity;
 import static com.guitargrid.server.utils.GuitarTestData.createElectricGuitarResponse;
 import static com.guitargrid.server.utils.ProductTestData.*;
 import static com.guitargrid.server.utils.TunerTestData.createTunerResponse;
+import static java.lang.String.format;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -85,4 +89,29 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$.tuners").doesNotExist());
     }
 
+    @Test
+    @SneakyThrows
+    void shouldFindProductByIdAndHaveStatus200Ok() {
+        GuitarResponse guitarResponse = createElectricGuitarResponse();
+        ProductResponse productResponse = createProductResponseWithGuitar(guitarResponse);
+        when(productService.getProductById(guitarResponse.id()))
+                .thenReturn(productResponse);
+        mockMvc.perform(get(BASE_URL_PRODUCTS + "/" + guitarResponse.id()))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.guitar.name")
+                        .value(productResponse.guitar().name()));
+    }
+
+    @Test
+    @SneakyThrows
+    void shouldReturnNotFoundStatusWhenProductIsNotFound() {
+        UUID id = UUID.fromString("ba191c98-4f3a-4eef-b214-ccfde594ba4");
+        String message = format("Product with id %s not found", id);
+         when(productService.getProductById(id))
+                .thenThrow(new ProductNotFoundException(id));
+        mockMvc.perform(get(BASE_URL_PRODUCTS + "/" + id))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string(message));
+    }
 }

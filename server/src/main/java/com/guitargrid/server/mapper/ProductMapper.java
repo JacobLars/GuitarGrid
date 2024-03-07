@@ -1,10 +1,12 @@
 package com.guitargrid.server.mapper;
 
+import com.guitargrid.server.controller.dto.request.AmplifierRequest;
 import com.guitargrid.server.controller.dto.request.GuitarRequest;
 import com.guitargrid.server.controller.dto.request.ProductRequest;
 import com.guitargrid.server.controller.dto.request.TunerRequest;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
 import com.guitargrid.server.controller.dto.response.ProductResponse;
+import com.guitargrid.server.model.products.Amplifier;
 import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.model.products.Product;
 import com.guitargrid.server.model.products.Tuner;
@@ -19,6 +21,7 @@ public class ProductMapper {
 
     private final GuitarMapper guitarMapper;
     private final TunerMapper tunerMapper;
+    private final AmplifierMapper amplifierMapper;
 
     public ProductListResponse mapToProductListResponse(List<Product> products) {
         if (products.get(0) instanceof Guitar) {
@@ -27,8 +30,10 @@ public class ProductMapper {
         } else if (products.get(0) instanceof Tuner) {
             List<Tuner> tuners = filterProductsByType(products, Tuner.class);
             return buildProductListResponseWithTuners(tuners);
+        }else if(products.get(0) instanceof Amplifier){
+            return buildProductListResponseWithAmplifiers(filterProductsByType(products, Amplifier.class));
         }
-        return new ProductListResponse(null, null);
+        return new ProductListResponse(null, null, null);
     }
 
     public Product mapRequestToProduct(ProductRequest product) {
@@ -36,6 +41,8 @@ public class ProductMapper {
                 return guitarMapper.mapToGuitar((GuitarRequest) product);
             } else if (product instanceof TunerRequest) {
                 return tunerMapper.mapToTuner((TunerRequest) product);
+            }else if (product instanceof AmplifierRequest) {
+                return amplifierMapper.mapToAmplifier((AmplifierRequest) product);
             }
             return null;
     }
@@ -48,6 +55,10 @@ public class ProductMapper {
         } else if (product instanceof Tuner) {
             return ProductResponse.builder()
                     .tuner(tunerMapper.mapToTunerResponse((Tuner) product))
+                    .build();
+        }else if (product instanceof Amplifier) {
+            return ProductResponse.builder()
+                    .amplifier(amplifierMapper.mapToAmplifierResponse((Amplifier) product))
                     .build();
         }
         return null;
@@ -71,4 +82,12 @@ public class ProductMapper {
                 .tuners(tuners.stream().map(tunerMapper::mapToTunerResponse).toList())
                 .build();
     }
+
+    private ProductListResponse buildProductListResponseWithAmplifiers(List<Amplifier> amplifiers) {
+        return ProductListResponse.builder()
+                .amplifiers(amplifiers.stream().map(amplifierMapper::mapToAmplifierResponse).toList())
+                .build();
+    }
+
+
 }

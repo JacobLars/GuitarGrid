@@ -1,7 +1,6 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.GuitarRequest;
-import com.guitargrid.server.controller.dto.response.GuitarListResponse;
 import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.model.products.Guitar;
 import lombok.RequiredArgsConstructor;
@@ -53,9 +52,4 @@ public class GuitarMapper {
                 .build();
     }
 
-    public GuitarListResponse mapToGuitarListResponse(List<Guitar> guitars) {
-        return GuitarListResponse.builder()
-                .guitars(guitars.stream().map(this::mapToGuitarResponse).toList())
-                .build();
-    }
 }

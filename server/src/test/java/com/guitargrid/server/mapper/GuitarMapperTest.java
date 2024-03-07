@@ -1,7 +1,6 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.GuitarRequest;
-import com.guitargrid.server.controller.dto.response.GuitarListResponse;
 import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.model.Brand;
 import com.guitargrid.server.model.products.Guitar;
@@ -47,15 +46,5 @@ class GuitarMapperTest {
         assertEquals("electric", guitarResponse.type());
     }
 
-    @Test
-    void shouldMapGuitarListToGuitarListResponse() {
-        Guitar guitar = createElectricGuitarEntity();
-        Brand brand = createNewBrandEntity();
-        guitar.setBrand(brand);
-        GuitarListResponse guitarResponse = guitarMapper.mapToGuitarListResponse(List.of(guitar));
-        assertEquals("Stratocaster", guitarResponse.guitars().get(0).name());
-        assertEquals("Fender", guitarResponse.guitars().get(0).brandName());
-        assertEquals(100, guitarResponse.guitars().get(0).price());
-        assertEquals("electric", guitarResponse.guitars().get(0).type());
-    }
+
 }

@@ -12,7 +12,7 @@ export default function ProductById({
     <div className="">
       <Header />
       <NavBar />
-      <ProductPage productId={params.id} />
+      <ProductPage productId={params.id} productCategory={params.category} />
     </div>
   );
 }

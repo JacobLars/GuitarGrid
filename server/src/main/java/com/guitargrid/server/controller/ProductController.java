@@ -1,6 +1,7 @@
 package com.guitargrid.server.controller;
 
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
+import com.guitargrid.server.controller.dto.response.ProductResponse;
 import com.guitargrid.server.model.products.Product;
 import com.guitargrid.server.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable UUID id) {
+    public ProductResponse getProductById(@PathVariable UUID id) {
         return service.getProductById(id);
     }
 

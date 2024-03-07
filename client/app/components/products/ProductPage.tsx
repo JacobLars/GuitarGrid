@@ -8,9 +8,10 @@ import { PriceInfo } from "./PriceInfo";
 
 type Props = {
   productId: string;
+  productCategory: string;
 };
 
-export const ProductPage = ({ productId }: Props) => {
+export const ProductPage = ({ productId, productCategory }: Props) => {
   const [guitar, setGuitar] = useState<Guitar>();
   const [tuner, setTuner] = useState<Tuner>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -20,11 +21,11 @@ export const ProductPage = ({ productId }: Props) => {
         `http://localhost:8080/api/v1/products/${productId}`
       );
       const responseToJson = await response.json();
-      if (responseToJson.category === "guitars") {
-        setGuitar(responseToJson);
+      if (productCategory === "guitars") {
+        setGuitar(responseToJson.guitar);
         setIsLoading(false);
-      } else if (responseToJson.category === "tuners") {
-        setTuner(responseToJson);
+      } else if (productCategory === "tuners") {
+        setTuner(responseToJson.tuner);
         setIsLoading(false);
       }
     };
@@ -42,7 +43,7 @@ export const ProductPage = ({ productId }: Props) => {
               <ProductHeader
                 productName={guitar.name}
                 productRating={guitar.rating}
-                brandLogo={guitar.brand.logo}
+                brandLogo={guitar.brandLogo}
                 product_quantity={guitar.product_quantity}
               />
               <Carousel images={guitar.images} />
@@ -58,7 +59,7 @@ export const ProductPage = ({ productId }: Props) => {
               <ProductHeader
                 productName={tuner.name}
                 productRating={tuner.rating}
-                brandLogo={tuner.brand.logo}
+                brandLogo={tuner.brandLogo}
                 product_quantity={tuner.product_quantity}
               />
               <Carousel images={tuner.images} />

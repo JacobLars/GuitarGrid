@@ -6,6 +6,7 @@ import com.guitargrid.server.controller.dto.request.GuitarRequest;
 import com.guitargrid.server.controller.dto.request.ProductRequest;
 import com.guitargrid.server.controller.dto.request.TunerRequest;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
+import com.guitargrid.server.controller.dto.response.ProductResponse;
 import com.guitargrid.server.mapper.ProductMapper;
 import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.model.products.Product;
@@ -57,8 +58,8 @@ public class ProductService {
     }
 
 
-    public Product getProductById(UUID id) {
-        return productRepository.findById(id).orElse(null);
+    public ProductResponse getProductById(UUID id) {
+        return productMapper.mapToProductResponse(productRepository.findById(id).orElse(null));
     }
 
     public ProductListResponse getQueriedProducts(String category, String type) {

@@ -4,6 +4,7 @@ import com.guitargrid.server.controller.dto.request.GuitarRequest;
 import com.guitargrid.server.controller.dto.request.ProductRequest;
 import com.guitargrid.server.controller.dto.request.TunerRequest;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
+import com.guitargrid.server.controller.dto.response.ProductResponse;
 import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.model.products.Product;
 import com.guitargrid.server.model.products.Tuner;
@@ -37,6 +38,19 @@ public class ProductMapper {
                 return tunerMapper.mapToTuner((TunerRequest) product);
             }
             return null;
+    }
+
+    public ProductResponse mapToProductResponse(Product product) {
+        if (product instanceof Guitar) {
+            return ProductResponse.builder()
+                    .guitar(guitarMapper.mapToGuitarResponse((Guitar) product))
+                    .build();
+        } else if (product instanceof Tuner) {
+            return ProductResponse.builder()
+                    .tuner(tunerMapper.mapToTunerResponse((Tuner) product))
+                    .build();
+        }
+        return null;
     }
     private <T extends Product> List<T> filterProductsByType(List<Product> products, Class<T> type) {
         return products.stream()

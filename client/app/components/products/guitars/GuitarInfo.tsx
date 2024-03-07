@@ -9,7 +9,7 @@ export const GuitarInfo = ({ guitar }: Props) => {
       <ul className="w-3/4 shadow-lg m-2 md:w-1/3 p-5">
         <li className="flex flex-row justify-between border-slate-600 border-b-2">
           <p className="mb-1 md:mt-1">Brand:</p>
-          <p className="mb-1">{guitar.brand.name}</p>
+          <p className="mb-1">{guitar.brandName}</p>
         </li>
         <li className="flex flex-row justify-between border-slate-600 border-b-2">
           <p className="mb-1 mt-1">Type:</p>

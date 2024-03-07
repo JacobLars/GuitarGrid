@@ -26,9 +26,6 @@ public class ProductService {
     private final BrandRepository brandRepository;
     private final ObjectMapper objectMapper;
 
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
-    }
 
     public Product handleRequest(String productRequest, UUID brandId){
         String productCategory;

@@ -74,7 +74,7 @@ public class GuitarTestData {
                 .frets(GUITAR_FRETS)
                 .build();
     }
-    public static GuitarResponse createGuitarResponse() {
+    public static GuitarResponse createElectricGuitarResponse() {
         return GuitarResponse.builder()
                 .id(GUITAR_ID)
                 .name(GUITAR_NAME)

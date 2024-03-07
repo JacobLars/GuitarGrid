@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+import static org.springframework.http.HttpStatus.CREATED;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/products")
@@ -30,6 +32,7 @@ public class ProductController {
     }
 
     @PostMapping("/{brandId}")
+    @ResponseStatus(CREATED)
     public Product saveProduct(@RequestBody String productRequest, @PathVariable UUID brandId) {
         return service.handleRequest(productRequest, brandId);
     }

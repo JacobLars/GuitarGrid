@@ -2,6 +2,7 @@ package com.guitargrid.server.controller;
 
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
 import com.guitargrid.server.controller.dto.response.ProductResponse;
+import com.guitargrid.server.exception.ProductNotFoundException;
 import com.guitargrid.server.model.products.Product;
 import com.guitargrid.server.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RequiredArgsConstructor
 @RestController
@@ -36,4 +38,11 @@ public class ProductController {
     public ProductResponse saveProduct(@RequestBody String productRequest, @PathVariable UUID brandId) {
         return service.handleRequest(productRequest, brandId);
     }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    @ResponseStatus(NOT_FOUND)
+    public String handleProductNotFoundException(ProductNotFoundException e) {
+        return e.getMessage();
+    }
+
 }

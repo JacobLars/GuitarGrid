@@ -52,6 +52,7 @@ public class ProductMapper {
         }
         return null;
     }
+
     private <T extends Product> List<T> filterProductsByType(List<Product> products, Class<T> type) {
         return products.stream()
                 .filter(type::isInstance)

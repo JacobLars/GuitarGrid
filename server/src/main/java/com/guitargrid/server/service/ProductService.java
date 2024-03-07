@@ -7,6 +7,7 @@ import com.guitargrid.server.controller.dto.request.ProductRequest;
 import com.guitargrid.server.controller.dto.request.TunerRequest;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
 import com.guitargrid.server.controller.dto.response.ProductResponse;
+import com.guitargrid.server.exception.ProductNotFoundException;
 import com.guitargrid.server.mapper.ProductMapper;
 import com.guitargrid.server.model.products.Guitar;
 import com.guitargrid.server.model.products.Product;
@@ -59,7 +60,8 @@ public class ProductService {
 
 
     public ProductResponse getProductById(UUID id) {
-        return productMapper.mapToProductResponse(productRepository.findById(id).orElse(null));
+        return productMapper.mapToProductResponse(productRepository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException(id)));
     }
 
     public ProductListResponse getQueriedProducts(String category, String type) {

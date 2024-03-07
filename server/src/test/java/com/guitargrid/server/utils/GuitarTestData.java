@@ -16,9 +16,11 @@ public class GuitarTestData {
     public static final String GUITAR_NAME = "Stratocaster";
     public static final int GUITAR_PRICE = 100;
 
+    public static final String GUITAR_CATEGORY = "guitars";
     public static final int GUITAR_RATING = 5;
     public static final int GUITAR_PRODUCT_QUANTITY = 10;
-    public static final String GUITAR_TYPE = "electric";
+    public static final String GUITAR_ELECTRIC_TYPE = "electric";
+    public static final String GUITAR_ACOUSTIC_TYPE = "acoustic";
     public static final String GUITAR_COLOR = "Sunburst";
     public static final String GUITAR_BODY_TYPE = "Maple";
     public static final String GUITAR_NECK_TYPE = "Maple";
@@ -34,7 +36,7 @@ public class GuitarTestData {
                 new ArrayList<Image>(),
                 GUITAR_RATING,
                 GUITAR_PRODUCT_QUANTITY,
-                "guitar",
+                "guitars",
                 GUITAR_COLOR,
                 GUITAR_BODY_TYPE,
                 GUITAR_NECK_TYPE,
@@ -42,14 +44,14 @@ public class GuitarTestData {
                 GUITAR_PICKUPS,
                 GUITAR_FRETS,
                 GUITAR_SCALE,
-                GUITAR_TYPE);
+                GUITAR_ELECTRIC_TYPE);
     }
 
     public static Guitar createElectricGuitarEntity() {
         return Guitar.builder()
                 .name(GUITAR_NAME)
                 .price(GUITAR_PRICE)
-                .type(GUITAR_TYPE)
+                .type(GUITAR_ELECTRIC_TYPE)
                 .color(GUITAR_COLOR)
                 .bodyType(GUITAR_BODY_TYPE)
                 .neckType(GUITAR_NECK_TYPE)
@@ -64,7 +66,7 @@ public class GuitarTestData {
         return Guitar.builder()
                 .name(GUITAR_NAME)
                 .price(GUITAR_PRICE)
-                .type("acoustic")
+                .type(GUITAR_ACOUSTIC_TYPE)
                 .color(GUITAR_COLOR)
                 .bodyType(GUITAR_BODY_TYPE)
                 .neckType(GUITAR_NECK_TYPE)
@@ -79,7 +81,23 @@ public class GuitarTestData {
                 .id(GUITAR_ID)
                 .name(GUITAR_NAME)
                 .price(GUITAR_PRICE)
-                .type(GUITAR_TYPE)
+                .type(GUITAR_ELECTRIC_TYPE)
+                .color(GUITAR_COLOR)
+                .bodyType(GUITAR_BODY_TYPE)
+                .neckType(GUITAR_NECK_TYPE)
+                .fretboardType(GUITAR_FRETBOARD_TYPE)
+                .pickups(GUITAR_PICKUPS)
+                .scale(GUITAR_SCALE)
+                .frets(GUITAR_FRETS)
+                .build();
+    }
+
+    public static GuitarResponse createAcousticGuitarResponse(){
+        return GuitarResponse.builder()
+                .id(GUITAR_ID)
+                .name(GUITAR_NAME)
+                .price(GUITAR_PRICE)
+                .type(GUITAR_ACOUSTIC_TYPE)
                 .color(GUITAR_COLOR)
                 .bodyType(GUITAR_BODY_TYPE)
                 .neckType(GUITAR_NECK_TYPE)

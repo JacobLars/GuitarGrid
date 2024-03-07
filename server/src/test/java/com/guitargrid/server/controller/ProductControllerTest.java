@@ -21,8 +21,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.UUID;
 
 import static com.guitargrid.server.utils.BrandTestData.createNewBrandEntity;
-import static com.guitargrid.server.utils.GuitarTestData.createElectricGuitarEntity;
-import static com.guitargrid.server.utils.GuitarTestData.createElectricGuitarResponse;
+import static com.guitargrid.server.utils.GuitarTestData.*;
 import static com.guitargrid.server.utils.ProductTestData.*;
 import static com.guitargrid.server.utils.TunerTestData.createTunerResponse;
 import static java.lang.String.format;
@@ -86,6 +85,26 @@ public class ProductControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.guitars[0].name")
                         .value(productListResponse.guitars().get(0).name()))
+                .andExpect(jsonPath("$.guitars[0].type")
+                        .value("electric"))
+                .andExpect(jsonPath("$.tuners").doesNotExist());
+    }
+
+    @Test
+    @SneakyThrows
+    void shouldGetAcousticGuitarsByCategoryAndTypeAndHaveStatus200Ok(){
+        GuitarResponse guitarResponse = createAcousticGuitarResponse();
+        ProductListResponse productListResponse = createProductListResponseWithGuitars(guitarResponse);
+        when(productService.getQueriedProducts("guitars", "acoustic"))
+                .thenReturn(productListResponse);
+        mockMvc.perform(get(BASE_URL_PRODUCTS + "?category=guitars&type=acoustic"))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.guitars[0].name")
+                        .value(productListResponse.guitars().get(0).name()))
+                .andExpect(jsonPath("$.guitars[0].type")
+                        .value("acoustic"))
+
                 .andExpect(jsonPath("$.tuners").doesNotExist());
     }
 

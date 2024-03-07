@@ -55,7 +55,7 @@ class ProductServiceTest {
                 ProductListResponse.builder()
                         .guitars(List.of(guitarResponse1, guitarResponse2))
                         .build());
-        ProductListResponse response = productService.getAllByCategory("guitars", "acoustic");
+        ProductListResponse response = productService.getQueriedProducts("guitars", "acoustic");
 
         assertEquals(2, response.guitars().size());
         assertEquals("acoustic", response.guitars().get(0).type());

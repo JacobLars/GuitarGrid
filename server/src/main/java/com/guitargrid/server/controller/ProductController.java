@@ -1,6 +1,5 @@
 package com.guitargrid.server.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
 import com.guitargrid.server.model.products.Product;
 import com.guitargrid.server.service.ProductService;
@@ -23,7 +22,7 @@ public class ProductController {
     @GetMapping
     public ProductListResponse getAllProductsByCategory(@RequestParam String category,
                                                         @RequestParam(required = false) String type) {
-        return service.getAllByCategory(category, type);
+        return service.getQueriedProducts(category, type);
     }
 
     @GetMapping("/{id}")

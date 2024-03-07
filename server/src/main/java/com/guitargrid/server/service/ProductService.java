@@ -61,7 +61,7 @@ public class ProductService {
         return productRepository.findById(id).orElse(null);
     }
 
-    public ProductListResponse getAllByCategory(String category, String type) {
+    public ProductListResponse getQueriedProducts(String category, String type) {
        if(type != null && category.equals("guitars")){
            return productMapper.mapToProductListResponse(
                    filterGuitarsByType(type, productRepository.findByCategory(category)));

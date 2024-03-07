@@ -6,7 +6,6 @@ import com.guitargrid.server.controller.dto.response.ProductListResponse;
 import com.guitargrid.server.controller.dto.response.TunerResponse;
 import com.guitargrid.server.model.Brand;
 import com.guitargrid.server.model.products.Product;
-import com.guitargrid.server.model.products.Tuner;
 import com.guitargrid.server.service.ProductService;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
@@ -17,14 +16,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static com.guitargrid.server.utils.BrandTestData.BASE_URL_BRANDS;
 import static com.guitargrid.server.utils.BrandTestData.createNewBrandEntity;
 import static com.guitargrid.server.utils.GuitarTestData.createElectricGuitarResponse;
 import static com.guitargrid.server.utils.ProductTestData.*;
 import static com.guitargrid.server.utils.TunerTestData.createTunerEntity;
 import static com.guitargrid.server.utils.TunerTestData.createTunerResponse;
 import static org.mockito.Mockito.when;
-import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -60,7 +57,7 @@ public class ProductControllerTest {
     void shouldGetAllTunersByCategoryAndHaveStatus200Ok() {
         TunerResponse tunerResponse = createTunerResponse();
         ProductListResponse productListResponse = createProductListResponseWithTuners(tunerResponse);
-        when(productService.getAllByCategory("tuners", null))
+        when(productService.getQueriedProducts("tuners", null))
                 .thenReturn(productListResponse);
         mockMvc.perform(get(BASE_URL_PRODUCTS + "?category=tuners"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -75,7 +72,7 @@ public class ProductControllerTest {
     void shouldGetAllElectricGuitarsByCategoryAndTypeAndHaveStatus200Ok(){
         GuitarResponse guitarResponse = createElectricGuitarResponse();
         ProductListResponse productListResponse = createProductListResponseWithGuitars(guitarResponse);
-        when(productService.getAllByCategory("guitars", "electric"))
+        when(productService.getQueriedProducts("guitars", "electric"))
                 .thenReturn(productListResponse);
         mockMvc.perform(get(BASE_URL_PRODUCTS + "?category=guitars&type=electric"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))

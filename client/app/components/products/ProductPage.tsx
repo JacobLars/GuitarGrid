@@ -1,4 +1,4 @@
-import { Guitar, Image, Tuner } from "@/app/types/Types";
+import { Amplifier, Guitar, Image, Tuner } from "@/app/types/Types";
 import React, { useEffect, useState } from "react";
 import { GuitarInfo } from "./guitars/GuitarInfo";
 import { TunerInfo } from "./tuners/TunerInfo";
@@ -14,6 +14,7 @@ type Props = {
 export const ProductPage = ({ productId, productCategory }: Props) => {
   const [guitar, setGuitar] = useState<Guitar>();
   const [tuner, setTuner] = useState<Tuner>();
+  const [amplifier, setAmplifier] = useState<Amplifier>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
     const fetchProductById = async () => {
@@ -26,6 +27,9 @@ export const ProductPage = ({ productId, productCategory }: Props) => {
         setIsLoading(false);
       } else if (productCategory === "tuners") {
         setTuner(responseToJson.tuner);
+        setIsLoading(false);
+      } else if (productCategory === "amplifiers") {
+        setAmplifier(responseToJson.amplifier);
         setIsLoading(false);
       }
     };
@@ -68,6 +72,21 @@ export const ProductPage = ({ productId, productCategory }: Props) => {
                 product_quantity={tuner.product_quantity}
               />
               <TunerInfo tuner={tuner} />
+            </>
+          )}
+          {amplifier && (
+            <>
+              <ProductHeader
+                productName={amplifier.name}
+                productRating={amplifier.rating}
+                brandLogo={amplifier.brandLogo}
+                product_quantity={amplifier.product_quantity}
+              />
+              <Carousel images={amplifier.images} />
+              <PriceInfo
+                product_price={amplifier.price}
+                product_quantity={amplifier.product_quantity}
+              />
             </>
           )}
         </>

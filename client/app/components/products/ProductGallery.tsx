@@ -20,13 +20,13 @@ export const ProductGallery = ({ category, guitarType }: Props) => {
     const fetchTuners = async () => {
       const response = await fetch(url);
       const jsonResponse = await response.json();
-      console.log(jsonResponse);
       if (category === "guitars") {
         setProducts(jsonResponse.guitars);
       } else if (category === "tuners") {
         setProducts(jsonResponse.tuners);
+      } else if (category === "amplifiers") {
+        setProducts(jsonResponse.amplifiers);
       }
-
       setIsloading(false);
     };
     fetchTuners();

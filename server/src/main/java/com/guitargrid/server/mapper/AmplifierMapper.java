@@ -30,6 +30,7 @@ public class AmplifierMapper {
     public AmplifierResponse mapToAmplifierResponse(Amplifier amplifier) {
         return AmplifierResponse.builder()
                 .id(amplifier.getId())
+                .name(amplifier.getName())
                 .price(amplifier.getPrice())
                 .rating(amplifier.getRating())
                 .product_quantity(amplifier.getProduct_quantity())

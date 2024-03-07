@@ -26,6 +26,16 @@ export const Products = () => {
           ></img>
           <p>Tuners</p>
         </Link>
+        <Link
+          href="/products/amplifiers"
+          className="flex flex-col items-center border border-neutral-500 m-5 w-52 shadow-md"
+        >
+          <img
+            className="h-52"
+            src="https://m.media-amazon.com/images/I/A1BIKnpDo2L.jpg"
+          ></img>
+          <p>Amplifiers</p>
+        </Link>
       </div>
     </div>
   );

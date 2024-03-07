@@ -104,7 +104,6 @@ public class ProductControllerTest {
                         .value(productListResponse.guitars().get(0).name()))
                 .andExpect(jsonPath("$.guitars[0].type")
                         .value("acoustic"))
-
                 .andExpect(jsonPath("$.tuners").doesNotExist());
     }
 

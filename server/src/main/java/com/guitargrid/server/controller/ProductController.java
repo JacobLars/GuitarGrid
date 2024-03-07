@@ -21,7 +21,6 @@ public class ProductController {
     @GetMapping
     public ProductListResponse getAllProductsByCategory(@RequestParam String category,
                                                         @RequestParam(required = false) String type) {
-        System.out.println(type);
         return service.getAllByCategory(category, type);
     }
 
@@ -31,7 +30,7 @@ public class ProductController {
     }
 
     @PostMapping("/{brandId}")
-    public Product saveProduct(@RequestBody String product, @PathVariable UUID brandId) throws JsonProcessingException {
-        return service.handleRequest(product, brandId);
+    public Product saveProduct(@RequestBody String productRequest, @PathVariable UUID brandId) {
+        return service.handleRequest(productRequest, brandId);
     }
 }

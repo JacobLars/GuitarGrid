@@ -30,19 +30,24 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product handleRequest(String productRequestV2, UUID brandId) throws JsonProcessingException {
-            String productCategory = objectMapper.readValue(productRequestV2, ProductRequest.class).getCategory();
-            switch (productCategory) {
+    public Product handleRequest(String productRequest, UUID brandId){
+        String productCategory;
+        try {
+            productCategory = objectMapper.readValue(productRequest, ProductRequest.class).getCategory();
+        switch (productCategory) {
                 case "guitars" -> {
-                    GuitarRequest guitarRequest = objectMapper.readValue(productRequestV2, GuitarRequest.class);
+                    GuitarRequest guitarRequest = objectMapper.readValue(productRequest, GuitarRequest.class);
                     return saveProduct(guitarRequest, brandId);
                 }
                 case "tuners" -> {
-                    TunerRequest tunerRequest = objectMapper.readValue(productRequestV2, TunerRequest.class);
+                    TunerRequest tunerRequest = objectMapper.readValue(productRequest, TunerRequest.class);
                     return saveProduct(tunerRequest, brandId);
                 }
                 default -> throw new IllegalStateException("Unexpected value: " + productCategory);
             }
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

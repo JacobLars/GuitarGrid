@@ -22,7 +22,6 @@ export type Guitar = {
   rating: number;
   product_quantity: number;
   category: string;
-  brand: Brand;
 };
 
 export type Tuner = {
@@ -40,7 +39,28 @@ export type Tuner = {
   rating: number;
   product_quantity: number;
   category: string;
-  brand: Brand;
+};
+
+export type Amplifier = {
+  id: string;
+  name: string;
+  price: number;
+  images: Image[];
+  brandName: string;
+  brandLogo: string;
+  rating: number;
+  product_quantity: number;
+  category: string;
+  weight: number;
+  power: number;
+  channels: number;
+  reverb: boolean;
+  externalFxLoop: boolean;
+  lineInput: boolean;
+  footSwitchConnection: boolean;
+  effectsProcessor: boolean;
+  microphoneInput: boolean;
+  batteryOperation: boolean;
 };
 
 export type Product = {

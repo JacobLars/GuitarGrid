@@ -1,6 +1,5 @@
-import { Spinner } from "@nextui-org/react";
 import { NavBar } from "./components/navbar/NavBar";
-import { Products } from "./components/home/Products";
+import { Categories } from "./components/products/Categories";
 import { Header } from "./components/home/Header";
 
 export default function Home() {
@@ -8,7 +7,7 @@ export default function Home() {
     <div className="">
       <Header />
       <NavBar />
-      <Products />
+      <Categories />
     </div>
   );
 }

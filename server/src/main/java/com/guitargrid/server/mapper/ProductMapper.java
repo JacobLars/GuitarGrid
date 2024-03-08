@@ -1,15 +1,9 @@
 package com.guitargrid.server.mapper;
 
-import com.guitargrid.server.controller.dto.request.AmplifierRequest;
-import com.guitargrid.server.controller.dto.request.GuitarRequest;
-import com.guitargrid.server.controller.dto.request.ProductRequest;
-import com.guitargrid.server.controller.dto.request.TunerRequest;
+import com.guitargrid.server.controller.dto.request.*;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
 import com.guitargrid.server.controller.dto.response.ProductResponse;
-import com.guitargrid.server.model.products.Amplifier;
-import com.guitargrid.server.model.products.Guitar;
-import com.guitargrid.server.model.products.Product;
-import com.guitargrid.server.model.products.Tuner;
+import com.guitargrid.server.model.products.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +16,7 @@ public class ProductMapper {
     private final GuitarMapper guitarMapper;
     private final TunerMapper tunerMapper;
     private final AmplifierMapper amplifierMapper;
+    private final PickupMapper pickupMapper;
 
     public ProductListResponse mapToProductListResponse(List<Product> products) {
         if (products.get(0) instanceof Guitar) {
@@ -32,9 +27,12 @@ public class ProductMapper {
             return buildProductListResponseWithTuners(tuners);
         }else if(products.get(0) instanceof Amplifier){
             return buildProductListResponseWithAmplifiers(filterProductsByType(products, Amplifier.class));
+        }else if(products.get(0) instanceof Pickup){
+            return buildProductListResponseWithPickups(filterProductsByType(products, Pickup.class));
         }
-        return new ProductListResponse(null, null, null);
+        return new ProductListResponse(null, null, null, null);
     }
+
 
     public Product mapRequestToProduct(ProductRequest product) {
            if (product instanceof GuitarRequest) {
@@ -43,6 +41,8 @@ public class ProductMapper {
                 return tunerMapper.mapToTuner((TunerRequest) product);
             }else if (product instanceof AmplifierRequest) {
                 return amplifierMapper.mapToAmplifier((AmplifierRequest) product);
+            }else if(product instanceof PickupRequest){
+                return pickupMapper.mapToPickup((PickupRequest) product);
             }
             return null;
     }
@@ -59,6 +59,10 @@ public class ProductMapper {
         }else if (product instanceof Amplifier) {
             return ProductResponse.builder()
                     .amplifier(amplifierMapper.mapToAmplifierResponse((Amplifier) product))
+                    .build();
+        }else if (product instanceof Pickup){
+            return ProductResponse.builder()
+                    .pickup(pickupMapper.mapToPickupResponse((Pickup) product))
                     .build();
         }
         return null;
@@ -89,5 +93,11 @@ public class ProductMapper {
                 .build();
     }
 
+
+    private ProductListResponse buildProductListResponseWithPickups(List<Pickup> pickups) {
+        return ProductListResponse.builder()
+                .pickups(pickups.stream().map(pickupMapper::mapToPickupResponse).toList())
+                .build();
+    }
 
 }

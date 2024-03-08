@@ -1,6 +1,7 @@
 package com.guitargrid.server.model.products;
 
 import jakarta.persistence.Entity;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +19,7 @@ public class Pickup extends Product{
     public Pickup() {
     }
 
+    @Builder
     public Pickup(String name, double price, int rating, int product_quantity,
                   String wiring, String position, Boolean active,
                   String output, String color, String category) {

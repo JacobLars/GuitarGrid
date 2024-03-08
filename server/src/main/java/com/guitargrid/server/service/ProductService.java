@@ -2,10 +2,7 @@ package com.guitargrid.server.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.guitargrid.server.controller.dto.request.AmplifierRequest;
-import com.guitargrid.server.controller.dto.request.GuitarRequest;
-import com.guitargrid.server.controller.dto.request.ProductRequest;
-import com.guitargrid.server.controller.dto.request.TunerRequest;
+import com.guitargrid.server.controller.dto.request.*;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
 import com.guitargrid.server.controller.dto.response.ProductResponse;
 import com.guitargrid.server.exception.ProductNotFoundException;
@@ -46,6 +43,10 @@ public class ProductService {
                 case "amplifiers" -> {
                     AmplifierRequest amplifierRequest = objectMapper.readValue(productRequest, AmplifierRequest.class);
                     return productMapper.mapToProductResponse(saveProduct(amplifierRequest, brandId));
+                }
+                case "pickups" -> {
+                    PickupRequest pickupRequest = objectMapper.readValue(productRequest, PickupRequest.class);
+                    return productMapper.mapToProductResponse(saveProduct(pickupRequest, brandId));
                 }
                 default -> throw new IllegalStateException("Unexpected value: " + productCategory);
             }

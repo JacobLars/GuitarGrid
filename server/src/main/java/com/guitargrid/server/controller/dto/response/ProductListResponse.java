@@ -9,5 +9,6 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
 @Builder
 @JsonInclude(NON_NULL)
-public record ProductListResponse(List<GuitarResponse> guitars, List<TunerResponse> tuners, List<AmplifierResponse> amplifiers) {
+public record ProductListResponse(List<GuitarResponse> guitars, List<TunerResponse> tuners,
+                                  List<AmplifierResponse> amplifiers, List<PickupResponse> pickups) {
 }

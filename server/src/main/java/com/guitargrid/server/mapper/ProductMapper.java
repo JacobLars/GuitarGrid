@@ -17,6 +17,7 @@ public class ProductMapper {
     private final TunerMapper tunerMapper;
     private final AmplifierMapper amplifierMapper;
     private final PickupMapper pickupMapper;
+    private final PicksMapper picksMapper;
 
     public ProductListResponse mapToProductListResponse(List<Product> products) {
         if (products.get(0) instanceof Guitar) {
@@ -29,9 +30,13 @@ public class ProductMapper {
             return buildProductListResponseWithAmplifiers(filterProductsByType(products, Amplifier.class));
         }else if(products.get(0) instanceof Pickup){
             return buildProductListResponseWithPickups(filterProductsByType(products, Pickup.class));
+        }else if(products.get(0) instanceof Picks){
+            return buildProductListResponseWithPicks(filterProductsByType(products, Picks.class));
         }
-        return new ProductListResponse(null, null, null, null);
+        return new ProductListResponse(null, null, null, null, null);
     }
+
+
 
 
     public Product mapRequestToProduct(ProductRequest product) {
@@ -43,6 +48,8 @@ public class ProductMapper {
                 return amplifierMapper.mapToAmplifier((AmplifierRequest) product);
             }else if(product instanceof PickupRequest){
                 return pickupMapper.mapToPickup((PickupRequest) product);
+            }else if (product instanceof PicksRequest){
+                return picksMapper.mapToPicks((PicksRequest) product);
             }
             return null;
     }
@@ -63,6 +70,10 @@ public class ProductMapper {
         }else if (product instanceof Pickup){
             return ProductResponse.builder()
                     .pickup(pickupMapper.mapToPickupResponse((Pickup) product))
+                    .build();
+        }else if (product instanceof Picks){
+            return ProductResponse.builder()
+                    .picks(picksMapper.mapToPicksResponse((Picks) product))
                     .build();
         }
         return null;
@@ -97,6 +108,12 @@ public class ProductMapper {
     private ProductListResponse buildProductListResponseWithPickups(List<Pickup> pickups) {
         return ProductListResponse.builder()
                 .pickups(pickups.stream().map(pickupMapper::mapToPickupResponse).toList())
+                .build();
+    }
+
+    private ProductListResponse buildProductListResponseWithPicks(List<Picks> picks) {
+        return ProductListResponse.builder()
+                .picks(picks.stream().map(picksMapper::mapToPicksResponse).toList())
                 .build();
     }
 

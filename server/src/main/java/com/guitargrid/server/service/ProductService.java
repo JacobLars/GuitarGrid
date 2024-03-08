@@ -47,6 +47,9 @@ public class ProductService {
                 case "pickups" -> {
                     PickupRequest pickupRequest = objectMapper.readValue(productRequest, PickupRequest.class);
                     return productMapper.mapToProductResponse(saveProduct(pickupRequest, brandId));
+                }case "picks" -> {
+                    PicksRequest picksRequest = objectMapper.readValue(productRequest, PicksRequest.class);
+                    return productMapper.mapToProductResponse(saveProduct(picksRequest, brandId));
                 }
                 default -> throw new IllegalStateException("Unexpected value: " + productCategory);
             }

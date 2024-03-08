@@ -1,7 +1,9 @@
 package com.guitargrid.server.utils;
 
 import com.guitargrid.server.controller.dto.request.AmplifierRequest;
+import com.guitargrid.server.controller.dto.response.AmplifierResponse;
 import com.guitargrid.server.model.Image;
+import com.guitargrid.server.model.products.Amplifier;
 import lombok.experimental.UtilityClass;
 
 import java.util.ArrayList;
@@ -34,6 +36,24 @@ public class AmplifierTestData {
                 AMPLIFIER_EFFECTS_PROCESSOR, AMPLIFIER_MICROPHONE_INPUT, AMPLIFIER_BATTERY_OPERATION);
     }
 
-
+    public static Amplifier createAmplifierEntity(){
+        return Amplifier.builder()
+                .name(AMPLIFIER_NAME)
+                .price(AMPLIFIER_PRICE)
+                .rating(AMPLIFIER_RATING)
+                .product_quantity(PRODUCT_QUANTITY)
+                .category(AMPLIFIER_CATEGORY)
+                .weight(AMPLIFIER_WEIGHT)
+                .power(AMPLIFIER_POWER)
+                .channels(AMPLIFIER_CHANNELS)
+                .reverb(AMPLIFIER_REVERB)
+                .externalFxLoop(AMPLIFIER_EXTERNAL_FX_LOOP)
+                .lineInput(AMPLIFIER_LINE_INPUT)
+                .footSwitchConnection(AMPLIFIER_FOOT_SWITCH_CONNECTION)
+                .effectsProcessor(AMPLIFIER_EFFECTS_PROCESSOR)
+                .microphoneInput(AMPLIFIER_MICROPHONE_INPUT)
+                .batteryOperation(AMPLIFIER_BATTERY_OPERATION)
+                .build();
+    }
 
 }

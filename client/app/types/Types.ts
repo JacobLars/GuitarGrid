@@ -81,6 +81,20 @@ export type Pickup = {
   type: string;
 };
 
+export type Picks = {
+  id: string;
+  name: string;
+  price: number;
+  images: Image[];
+  brandName: string;
+  brandLogo: string;
+  rating: number;
+  product_quantity: number;
+  category: string;
+  delivery_quantity: number;
+  thickness: number;
+};
+
 export type Product = {
   id: string;
   name: string;

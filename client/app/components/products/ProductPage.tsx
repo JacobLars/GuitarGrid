@@ -1,4 +1,11 @@
-import { Amplifier, Guitar, Image, Pickup, Tuner } from "@/app/types/Types";
+import {
+  Amplifier,
+  Guitar,
+  Image,
+  Picks,
+  Pickup,
+  Tuner,
+} from "@/app/types/Types";
 import React, { useEffect, useState } from "react";
 import { GuitarInfo } from "./guitars/GuitarInfo";
 import { TunerInfo } from "./tuners/TunerInfo";
@@ -7,6 +14,7 @@ import { ProductHeader } from "./ProductHeader";
 import { PriceInfo } from "./PriceInfo";
 import { AmplifierInfo } from "./amplifiers/AmplifierInfo";
 import { PickupInfo } from "../pickups/PickupInfo";
+import { PicksInfo } from "./picks/PicksInfo";
 
 type Props = {
   productId: string;
@@ -18,6 +26,7 @@ export const ProductPage = ({ productId, productCategory }: Props) => {
   const [tuner, setTuner] = useState<Tuner>();
   const [amplifier, setAmplifier] = useState<Amplifier>();
   const [pickup, setPickup] = useState<Pickup>();
+  const [picks, setPicks] = useState<Picks>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
     const fetchProductById = async () => {
@@ -33,6 +42,8 @@ export const ProductPage = ({ productId, productCategory }: Props) => {
         setAmplifier(responseToJson.amplifier);
       } else if (productCategory === "pickups") {
         setPickup(responseToJson.pickup);
+      } else if (productCategory === "picks") {
+        setPicks(responseToJson.picks);
       }
       setIsLoading(false);
     };
@@ -107,6 +118,22 @@ export const ProductPage = ({ productId, productCategory }: Props) => {
                 product_quantity={pickup.product_quantity}
               />
               <PickupInfo pickup={pickup} />
+            </>
+          )}
+          {picks && (
+            <>
+              <ProductHeader
+                productName={picks.name}
+                productRating={picks.rating}
+                brandLogo={picks.brandLogo}
+                product_quantity={picks.product_quantity}
+              />
+              <Carousel images={picks.images} />
+              <PriceInfo
+                product_price={picks.price}
+                product_quantity={picks.product_quantity}
+              />
+              <PicksInfo picks={picks} />
             </>
           )}
         </>

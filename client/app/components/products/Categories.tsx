@@ -46,6 +46,16 @@ export const Categories = () => {
           ></img>
           <p>Pickups</p>
         </Link>
+        <Link
+          href="/products/picks"
+          className="flex flex-col items-center rounded-md border border-neutral-500 m-5 w-52 shadow-md"
+        >
+          <img
+            className="h-52 rounded-md"
+            src="https://m.media-amazon.com/images/I/81qUghPO9AL.jpg"
+          ></img>
+          <p>Picks</p>
+        </Link>
       </div>
     </div>
   );

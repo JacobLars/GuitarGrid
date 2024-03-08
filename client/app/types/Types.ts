@@ -78,6 +78,7 @@ export type Pickup = {
   active: boolean;
   output: string;
   color: string;
+  type: string;
 };
 
 export type Product = {

@@ -13,6 +13,10 @@ export const PickupInfo = ({ pickup }: Props) => {
           <p className="mb-1">{pickup.brandName}</p>
         </li>
         <li className="flex flex-row justify-between border-slate-600 border-b-2">
+          <p className="mb-1 mt-1">Type:</p>
+          <p className="mb-1 mt-1">{pickup.type}</p>
+        </li>
+        <li className="flex flex-row justify-between border-slate-600 border-b-2">
           <p className="mb-1 mt-1">Wiring:</p>
           <p className="mb-1 mt-1">{pickup.wiring}</p>
         </li>

@@ -15,20 +15,21 @@ public class Pickup extends Product{
     private Boolean active;
     private String output;
     private String color;
-
+    private String type;
     public Pickup() {
     }
 
     @Builder
     public Pickup(String name, double price, int rating, int product_quantity,
                   String wiring, String position, Boolean active,
-                  String output, String color, String category) {
+                  String output, String color, String type, String category) {
         super(name, price, rating, product_quantity, category);
         this.wiring = wiring;
         this.position = position;
         this.active = active;
         this.output = output;
         this.color = color;
+        this.type = type;
     }
 
 }

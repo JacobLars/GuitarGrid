@@ -19,6 +19,7 @@ public class PickupMapper {
                 .active(pickupRequest.getActive())
                 .output(pickupRequest.getOutput())
                 .color(pickupRequest.getColor())
+                .type(pickupRequest.getType())
                 .category(pickupRequest.getCategory())
                 .build();
     }
@@ -35,6 +36,7 @@ public class PickupMapper {
                 .active(pickup.getActive())
                 .output(pickup.getOutput())
                 .color(pickup.getColor())
+                .type(pickup.getType())
                 .category(pickup.getCategory())
                 .brandName(pickup.getBrand().getName())
                 .brandLogo(pickup.getBrand().getLogo())

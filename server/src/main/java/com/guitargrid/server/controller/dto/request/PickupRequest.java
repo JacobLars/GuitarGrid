@@ -15,15 +15,16 @@ public class PickupRequest extends ProductRequest{
     private Boolean active;
     private String output;
     private String color;
-
+    private String type;
     public PickupRequest(String name, double price, List<Image> images, int rating, int product_quantity,
                          String category, String wiring, String position, Boolean active,
-                         String output, String color) {
+                         String output, String color, String type) {
         super(name, price, images, rating, product_quantity, category);
         this.wiring = wiring;
         this.position = position;
         this.active = active;
         this.output = output;
         this.color = color;
+        this.type = type;
     }
 }

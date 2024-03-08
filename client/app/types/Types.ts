@@ -63,6 +63,23 @@ export type Amplifier = {
   batteryOperation: boolean;
 };
 
+export type Pickup = {
+  id: string;
+  name: string;
+  price: number;
+  images: Image[];
+  brandName: string;
+  brandLogo: string;
+  rating: number;
+  product_quantity: number;
+  category: string;
+  wiring: string;
+  position: string;
+  active: boolean;
+  output: string;
+  color: string;
+};
+
 export type Product = {
   id: string;
   name: string;

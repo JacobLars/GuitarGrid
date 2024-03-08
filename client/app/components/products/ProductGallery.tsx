@@ -26,6 +26,8 @@ export const ProductGallery = ({ category, guitarType }: Props) => {
         setProducts(jsonResponse.tuners);
       } else if (category === "amplifiers") {
         setProducts(jsonResponse.amplifiers);
+      } else if (category === "pickups") {
+        setProducts(jsonResponse.pickups);
       }
       setIsloading(false);
     };

@@ -1,7 +1,6 @@
 package com.guitargrid.server.utils;
 
 import com.guitargrid.server.controller.dto.request.AmplifierRequest;
-import com.guitargrid.server.controller.dto.response.AmplifierResponse;
 import com.guitargrid.server.model.Image;
 import com.guitargrid.server.model.products.Amplifier;
 import lombok.experimental.UtilityClass;

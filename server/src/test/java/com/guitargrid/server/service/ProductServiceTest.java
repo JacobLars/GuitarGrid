@@ -35,6 +35,7 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ProductServiceTest {
+
     @Mock
     private ProductRepository productRepository;
 
@@ -45,6 +46,7 @@ class ProductServiceTest {
 
     @Mock
     ObjectMapper objectMapper;
+    
     @InjectMocks
     private ProductService productService;
 

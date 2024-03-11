@@ -41,6 +41,7 @@ class ProductServiceTest {
 
     @Mock
     private BrandRepository brandRepository;
+    
     @Mock
     private ProductMapper productMapper;
 

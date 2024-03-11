@@ -25,18 +25,12 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ProductMapperTest {
-
-
-
+    
     @Mock
     private TunerMapper tunerMapper;
 
-
-
     @Mock
     private PickupMapper pickupMapper;
-
-
 
     @InjectMocks
     private ProductMapper productMapper;

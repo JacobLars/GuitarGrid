@@ -46,7 +46,7 @@ class ProductServiceTest {
 
     @Mock
     ObjectMapper objectMapper;
-    
+
     @InjectMocks
     private ProductService productService;
 
@@ -62,6 +62,7 @@ class ProductServiceTest {
        assertEquals(response.guitars().get(0), accousticGuitarResponse);
        assertEquals(response.guitars().size(), 1);
        assertEquals(response.guitars().get(0).name(), accousticGuitar.getName());
+         assertInstanceOf(GuitarResponse.class, response.guitars().get(0));
     }
 
     @Test
@@ -75,6 +76,7 @@ class ProductServiceTest {
         assertEquals(response.tuners().get(0), tunerResponse);
         assertEquals(response.tuners().size(), 1);
         assertEquals(response.tuners().get(0).name(), tuner.getName());
+        assertInstanceOf(TunerResponse.class, response.tuners().get(0));
     }
 
     @Test

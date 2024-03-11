@@ -41,12 +41,12 @@ class ProductServiceTest {
 
     @Mock
     private BrandRepository brandRepository;
-    
+
     @Mock
     private ProductMapper productMapper;
 
     @Mock
-    ObjectMapper objectMapper;
+    private ObjectMapper objectMapper;
 
     @InjectMocks
     private ProductService productService;

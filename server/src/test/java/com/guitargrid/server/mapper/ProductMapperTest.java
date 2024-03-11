@@ -58,6 +58,7 @@ class ProductMapperTest {
         assertEquals(tunerResponse, productResponse.tuner());
         assertInstanceOf(TunerResponse.class, productResponse.tuner());
     }
+    
     @Test
     void shouldMapPickupRequestToPickup() {
         PickupRequest pickupRequest = createPickupRequest();

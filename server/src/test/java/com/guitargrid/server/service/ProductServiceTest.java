@@ -22,7 +22,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import static com.guitargrid.server.utils.BrandTestData.createNewBrandEntity;
 import static com.guitargrid.server.utils.GuitarTestData.*;
@@ -78,7 +77,7 @@ class ProductServiceTest {
 
     @Test
     @SneakyThrows
-    void shouldReturnProductResponseWhenHandlingRequest(){
+    void shouldReturnGuitarResponseWhenHandlingGuitarRequest(){
         String electricGuitarRequest = createProductRequestString();
         ProductRequest productRequest = createProductRequest();
         Guitar electricGuitar = createElectricGuitarEntity();
@@ -94,6 +93,7 @@ class ProductServiceTest {
         when(productMapper.mapToProductResponse(electricGuitar)).thenReturn(productResponse);
         ProductResponse product = productService.handleRequest(electricGuitarRequest, brand.getId());
         assertEquals(product.guitar().name(), guitarRequest.getName());
+        assertInstanceOf(GuitarResponse.class, product.guitar());
     }
 
 }

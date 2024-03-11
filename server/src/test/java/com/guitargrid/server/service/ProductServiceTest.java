@@ -2,9 +2,10 @@ package com.guitargrid.server.service;
 
 import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
+import com.guitargrid.server.controller.dto.response.TunerResponse;
 import com.guitargrid.server.mapper.ProductMapper;
 import com.guitargrid.server.model.products.Guitar;
-import com.guitargrid.server.model.products.Product;
+import com.guitargrid.server.model.products.Tuner;
 import com.guitargrid.server.repository.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,10 +13,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.guitargrid.server.utils.GuitarTestData.*;
+
+import static com.guitargrid.server.utils.TunerTestData.createTunerEntity;
+import static com.guitargrid.server.utils.TunerTestData.createTunerResponse;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
@@ -31,35 +34,30 @@ class ProductServiceTest {
     private ProductService productService;
 
     @Test
-    void testGetAllProductsByCategory() {
-        List<Product> mockProducts = new ArrayList<>();
-        Guitar mockGuitar = createElectricGuitarEntity();
-        Guitar mockGuitar2 = createAcousticGuitarEntity();
-        mockProducts.add(mockGuitar);
-        mockProducts.add(mockGuitar2);
-        GuitarResponse guitarResponse1 = GuitarResponse.builder()
-                .id(mockGuitar.getId())
-                .name(mockGuitar.getName())
-                .price(mockGuitar.getPrice())
-                .type(mockGuitar.getType())
-                .build();
-        GuitarResponse guitarResponse2 = GuitarResponse.builder()
-                .id(mockGuitar2.getId())
-                .name(mockGuitar2.getName())
-                .price(mockGuitar2.getPrice())
-                .type(mockGuitar2.getType())
-                .build();
+    void shouldReturnListContainingAcousticGuitarsWhenQueryingProducts() {
+       Guitar accousticGuitar = createAcousticGuitarEntity();
+       Guitar electricGuitar = createElectricGuitarEntity();
+       GuitarResponse accousticGuitarResponse = createAcousticGuitarResponse();
+       when(productRepository.findByCategory("guitars")).thenReturn(List.of(accousticGuitar, electricGuitar));
+       when(productMapper.mapToProductListResponse(List.of(accousticGuitar)))
+               .thenReturn(ProductListResponse.builder().guitars(List.of(accousticGuitarResponse)).build());
+       ProductListResponse response = productService.getQueriedProducts("guitars", "acoustic");
+       assertEquals(response.guitars().get(0), accousticGuitarResponse);
+       assertEquals(response.guitars().size(), 1);
+       assertEquals(response.guitars().get(0).name(), accousticGuitar.getName());
+    }
 
-        when(productRepository.findByCategory("guitars")).thenReturn(mockProducts);
-        when(productMapper.mapToProductListResponse(mockProducts)).thenReturn(
-                ProductListResponse.builder()
-                        .guitars(List.of(guitarResponse1, guitarResponse2))
-                        .build());
-        ProductListResponse response = productService.getQueriedProducts("guitars", "acoustic");
-
-        assertEquals(2, response.guitars().size());
-        assertEquals("acoustic", response.guitars().get(0).type());
-
+    @Test
+    void shouldReturnListContainingTunerWhenQueryingProducts(){
+        Tuner tuner = createTunerEntity();
+        TunerResponse tunerResponse = createTunerResponse();
+        when(productRepository.findByCategory("tuners")).thenReturn(List.of(tuner));
+        when(productMapper.mapToProductListResponse(List.of(tuner)))
+                .thenReturn(ProductListResponse.builder().tuners(List.of(tunerResponse)).build());
+        ProductListResponse response = productService.getQueriedProducts("tuners", null);
+        assertEquals(response.tuners().get(0), tunerResponse);
+        assertEquals(response.tuners().size(), 1);
+        assertEquals(response.tuners().get(0).name(), tuner.getName());
     }
 
 }

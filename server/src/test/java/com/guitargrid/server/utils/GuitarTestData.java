@@ -64,7 +64,7 @@ public class GuitarTestData {
 
     public static Guitar createAcousticGuitarEntity() {
         return Guitar.builder()
-                .name(GUITAR_NAME)
+                .name("acoustic guitar")
                 .price(GUITAR_PRICE)
                 .type(GUITAR_ACOUSTIC_TYPE)
                 .color(GUITAR_COLOR)
@@ -95,7 +95,7 @@ public class GuitarTestData {
     public static GuitarResponse createAcousticGuitarResponse(){
         return GuitarResponse.builder()
                 .id(GUITAR_ID)
-                .name(GUITAR_NAME)
+                .name("acoustic guitar")
                 .price(GUITAR_PRICE)
                 .type(GUITAR_ACOUSTIC_TYPE)
                 .color(GUITAR_COLOR)

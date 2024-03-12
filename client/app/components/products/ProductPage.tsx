@@ -13,7 +13,7 @@ import { Carousel } from "./Carousel";
 import { ProductHeader } from "./ProductHeader";
 import { PriceInfo } from "./PriceInfo";
 import { AmplifierInfo } from "./amplifiers/AmplifierInfo";
-import { PickupInfo } from "../pickups/PickupInfo";
+import { PickupInfo } from "./pickups/PickupInfo";
 import { PicksInfo } from "./picks/PicksInfo";
 
 type Props = {

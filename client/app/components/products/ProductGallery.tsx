@@ -3,6 +3,7 @@ import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { ProductCard } from "./ProductCard";
 import { Link } from "@nextui-org/react";
+import { SearchBar } from "../searchbar/SearchBar";
 type Props = {
   category: string;
   guitarType: string;
@@ -10,6 +11,7 @@ type Props = {
 export const ProductGallery = ({ category, guitarType }: Props) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsloading] = useState<boolean>(true);
+  const [searchTerm, setSearchTerm] = useState<string>("");
   let url = "";
   if (guitarType === "electric" || guitarType === "acoustic") {
     url = `http://localhost:8080/api/v1/products?category=${category}&type=${guitarType}`;
@@ -35,12 +37,18 @@ export const ProductGallery = ({ category, guitarType }: Props) => {
     };
     fetchTuners();
   }, []);
+  const filteredProducts = products.filter(
+    (product) =>
+      product.brandName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   return (
     <div>
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       {isLoading ? (
         <img className="h-20 mx-auto my-40" src="/loading.gif" />
       ) : (
-        products.map((product, index) => (
+        filteredProducts.map((product, index) => (
           <Link
             key={index}
             href={`/products/${category}/product/${product.id}`}

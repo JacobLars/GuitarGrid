@@ -8,9 +8,6 @@ import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-
-
-
 @ActiveProfiles("test")
 @DataJpaTest
 public class BrandRepositoryIntegrationTest {
@@ -26,8 +23,8 @@ public class BrandRepositoryIntegrationTest {
                 .build();
         Brand savedBrand = brandRepository.save(newBrand);
         Brand foundBrand = brandRepository.findById(savedBrand.getId()).orElse(null);
-        assertThat(foundBrand).isNotNull();
         assert foundBrand != null;
+        assertThat(foundBrand.getId()).isNotNull();
         assertThat(foundBrand.getName()).isEqualTo(newBrand.getName());
     }
 

@@ -11,11 +11,11 @@ export const SearchBar = ({ setSearchTerm, searchTerm }: Props) => {
   };
 
   return (
-    <div>
+    <div className="w-full flex">
       <input
         value={searchTerm}
-        placeholder="Search"
-        className="border border-slate-900"
+        placeholder=" Search product or brand"
+        className="border border-slate-600 mx-auto w-3/4 h-10 mt-5 shadow-md rounded-md"
         onChange={handleOnChange}
       ></input>
     </div>

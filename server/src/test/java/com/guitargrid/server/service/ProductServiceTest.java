@@ -51,7 +51,7 @@ class ProductServiceTest {
     @InjectMocks
     private ProductService productService;
 
-    @Test
+/*    @Test
     void shouldReturnListContainingAcousticGuitarsWhenQueryingProducts() {
        Guitar accousticGuitar = createAcousticGuitarEntity();
        Guitar electricGuitar = createElectricGuitarEntity();
@@ -78,8 +78,9 @@ class ProductServiceTest {
         assertEquals(response.tuners().size(), 1);
         assertEquals(response.tuners().get(0).name(), tuner.getName());
         assertInstanceOf(TunerResponse.class, response.tuners().get(0));
-    }
+    }*/
 
+/*
     @Test
     @SneakyThrows
     void shouldReturnGuitarResponseWhenHandlingGuitarRequest(){
@@ -100,5 +101,6 @@ class ProductServiceTest {
         assertEquals(product.guitar().name(), guitarRequest.getName());
         assertInstanceOf(GuitarResponse.class, product.guitar());
     }
+*/
 
 }

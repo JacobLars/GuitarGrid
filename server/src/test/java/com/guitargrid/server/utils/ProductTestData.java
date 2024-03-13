@@ -1,11 +1,9 @@
 package com.guitargrid.server.utils;
 
 import com.guitargrid.server.controller.dto.request.ProductRequest;
-import com.guitargrid.server.controller.dto.response.GuitarResponse;
-import com.guitargrid.server.controller.dto.response.ProductListResponse;
-import com.guitargrid.server.controller.dto.response.ProductResponse;
-import com.guitargrid.server.controller.dto.response.TunerResponse;
+import com.guitargrid.server.controller.dto.response.*;
 import com.guitargrid.server.model.Image;
+import com.guitargrid.server.model.products.Product;
 import lombok.experimental.UtilityClass;
 
 import java.util.List;
@@ -16,23 +14,27 @@ public class ProductTestData {
     public static final String BASE_URL_PRODUCTS = "/api/v1/products";
 
     List<Image> images = List.of(new Image());
-    public static ProductListResponse createProductListResponseWithTuners(TunerResponse tunerResponse) {
-        return ProductListResponse.builder()
-                .tuners(List.of(tunerResponse))
+
+    public static ProductResponseV2 createProductResponseV2WithGuitar(Product product) {
+        return ProductResponseV2.builder()
+                .id(product.getId())
+                .name(product.getName())
+                .price(product.getPrice())
+                .rating(product.getRating())
+                .product_quantity(product.getProduct_quantity())
+                .category(product.getCategory())
+                .images(images)
+                .brandName(product.getBrand().getName())
+                .brandLogo(product.getBrand().getLogo())
                 .build();
     }
 
-    public static ProductResponse createProductResponseWithGuitar(GuitarResponse guitar) {
-        return ProductResponse.builder()
-                .guitar(guitar)
+    public static ProductListResponseV2 createProductListResponseV2(ProductResponseV2 productResponseV2) {
+        return ProductListResponseV2.builder()
+                .products(List.of(productResponseV2))
                 .build();
     }
 
-    public static ProductListResponse createProductListResponseWithGuitars(GuitarResponse guitarResponse) {
-        return ProductListResponse.builder()
-                .guitars(List.of(guitarResponse))
-                .build();
-    }
 
     public static String createProductRequestString() {
         return "{\n" +

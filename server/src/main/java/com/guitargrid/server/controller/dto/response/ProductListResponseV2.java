@@ -6,5 +6,5 @@ import lombok.Builder;
 import java.util.List;
 
 @Builder
-public record ProductListResponseV2(List<Product> products) {
+public record ProductListResponseV2(List<ProductResponseV2> products) {
 }

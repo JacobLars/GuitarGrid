@@ -74,12 +74,12 @@ public class ProductService {
                 .orElseThrow(() -> new ProductNotFoundException(id)));
     }
 
-    public ProductListResponse getQueriedProducts(String category, String type) {
+    public ProductListResponseV2 getQueriedProducts(String category, String type) {
        if(type != null && category.equals("guitars")){
-           return productMapper.mapCategoryToProductListResponse(
+           return productMapper.mapCategoryToProductListResponseV2(
                    filterGuitarsByType(type, productRepository.findByCategory(category)));
        }
-       return productMapper.mapCategoryToProductListResponse(productRepository.findByCategory(category));
+       return productMapper.mapCategoryToProductListResponseV2(productRepository.findByCategory(category));
     }
 
     public ProductListResponseV2 getProductsByBrandId(UUID brandId) {

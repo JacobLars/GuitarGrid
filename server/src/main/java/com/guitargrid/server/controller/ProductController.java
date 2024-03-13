@@ -25,7 +25,7 @@ public class ProductController {
     private final ProductService service;
 
     @GetMapping
-    public ProductListResponse getAllProductsByCategory(@RequestParam String category,
+    public ProductListResponseV2 getAllProductsByCategory(@RequestParam String category,
                                                         @RequestParam(required = false) String type) {
         return service.getQueriedProducts(category, type);
     }

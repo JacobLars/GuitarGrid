@@ -19,7 +19,7 @@ export const ProductGallery = ({ category, guitarType }: Props) => {
     url = `http://localhost:8080/api/v1/products?category=${category}`;
   }
   useEffect(() => {
-    const fetchTuners = async () => {
+    const fetchProducts = async () => {
       const response = await fetch(url);
       const jsonResponse = await response.json();
       if (category === "guitars") {
@@ -35,7 +35,7 @@ export const ProductGallery = ({ category, guitarType }: Props) => {
       }
       setIsloading(false);
     };
-    fetchTuners();
+    fetchProducts();
   }, []);
   const filteredProducts = products.filter(
     (product) =>

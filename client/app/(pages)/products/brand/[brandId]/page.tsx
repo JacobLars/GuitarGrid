@@ -1,9 +1,15 @@
 "use client";
 
-export default function BrandProducts() {
+import { BrandProductsGallery } from "@/app/components/products/productsByBrand/BrandProductsGallery";
+
+export default function BrandProducts({
+  params,
+}: {
+  params: { brandId: string };
+}) {
   return (
     <div className="">
-      <h2>Brand products page</h2>
+      <BrandProductsGallery brandId={params.brandId} />
     </div>
   );
 }

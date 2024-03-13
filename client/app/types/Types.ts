@@ -3,7 +3,9 @@ export type Brand = {
   name: string;
   logo: string;
 };
-
+export type Products = {
+  guitar: Guitar;
+};
 export type Guitar = {
   id: string;
   name: string;

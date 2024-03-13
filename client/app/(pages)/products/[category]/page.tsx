@@ -1,4 +1,5 @@
 "use client";
+import { BrandGallery } from "@/app/components/brands/BrandGallery";
 import { Header } from "@/app/components/home/Header";
 import { NavBar } from "@/app/components/navbar/NavBar";
 import { ProductGallery } from "@/app/components/products/ProductGallery";

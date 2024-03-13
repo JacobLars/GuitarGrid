@@ -1,6 +1,7 @@
 package com.guitargrid.server.utils;
 
 import com.guitargrid.server.controller.dto.request.GuitarRequest;
+import com.guitargrid.server.controller.dto.response.GuitarResponse;
 import com.guitargrid.server.model.Image;
 import com.guitargrid.server.model.products.Guitar;
 import lombok.experimental.UtilityClass;
@@ -76,7 +77,39 @@ public class GuitarTestData {
                 .build();
     }
 
+    public static GuitarResponse createElectricGuitarResponse() {
+        return GuitarResponse.builder()
+                .id(GUITAR_ID)
+                .name(GUITAR_NAME)
+                .price(GUITAR_PRICE)
+                .type(GUITAR_ELECTRIC_TYPE)
+                .color(GUITAR_COLOR)
+                .category(GUITAR_CATEGORY)
+                .bodyType(GUITAR_BODY_TYPE)
+                .neckType(GUITAR_NECK_TYPE)
+                .fretboardType(GUITAR_FRETBOARD_TYPE)
+                .pickups(GUITAR_PICKUPS)
+                .scale(GUITAR_SCALE)
+                .frets(GUITAR_FRETS)
+                .build();
+    }
 
+    public static GuitarResponse createAcousticGuitarResponse() {
+        return GuitarResponse.builder()
+                .id(GUITAR_ID)
+                .name("acoustic guitar")
+                .price(GUITAR_PRICE)
+                .type(GUITAR_ACOUSTIC_TYPE)
+                .color(GUITAR_COLOR)
+                .category(GUITAR_CATEGORY)
+                .bodyType(GUITAR_BODY_TYPE)
+                .neckType(GUITAR_NECK_TYPE)
+                .fretboardType(GUITAR_FRETBOARD_TYPE)
+                .pickups(GUITAR_PICKUPS)
+                .scale(GUITAR_SCALE)
+                .frets(GUITAR_FRETS)
+                .build();
+    }
 
 
 }

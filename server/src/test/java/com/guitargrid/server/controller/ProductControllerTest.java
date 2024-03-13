@@ -15,12 +15,14 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.List;
 import java.util.UUID;
 
 import static com.guitargrid.server.utils.BrandTestData.createNewBrandEntity;
 import static com.guitargrid.server.utils.GuitarTestData.*;
 import static com.guitargrid.server.utils.ProductTestData.*;
 import static com.guitargrid.server.utils.TunerTestData.createTunerEntity;
+import static com.guitargrid.server.utils.TunerTestData.createTunerResponse;
 import static java.lang.String.format;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -38,84 +40,81 @@ public class ProductControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-/*    @Test
+    @Test
     @SneakyThrows
     void shouldSaveNewProductAndHaveStatus201Created() {
         Product request = createElectricGuitarEntity();
         GuitarResponse guitarResponse = createElectricGuitarResponse();
-        ProductResponse response = createProductResponseWithGuitar(guitarResponse);
         Brand brand = createNewBrandEntity();
         when(productService.handleRequest(objectMapper.writeValueAsString(request), brand.getId()))
-                .thenReturn(response);
+                .thenReturn(guitarResponse);
         mockMvc.perform(MockMvcRequestBuilders.post(BASE_URL_PRODUCTS + "/" + brand.getId())
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.guitar.name").value(response.guitar().name()));
-    }*/
+                .andExpect(jsonPath("$.name").value(guitarResponse.getName()));
+    }
 
-/*    @Test
+    @Test
     @SneakyThrows
     void shouldGetAllTunersByCategoryAndHaveStatus200Ok() {
-        ProductListResponseV2 productListResponse = createProductListResponseV2(
-                createProductResponseV2WithGuitar(createTunerEntity()));
+        TunerResponse tunerResponse = createTunerResponse();
+        ProductListResponse productListResponse = createProductListResponse(tunerResponse);
         when(productService.getQueriedProducts("tuners", null))
                 .thenReturn(productListResponse);
         mockMvc.perform(get(BASE_URL_PRODUCTS + "?category=tuners"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.tuners[0].name")
-                        .value(productListResponse.products().get(0).name()))
-                .andExpect(jsonPath("$.guitars").doesNotExist());
-    }*/
+                .andExpect(jsonPath("$.products[0].name")
+                        .value(productListResponse.products().get(0).getName()));
+    }
 
-/*    @Test
+    @Test
     @SneakyThrows
     void shouldGetAllElectricGuitarsByCategoryAndTypeAndHaveStatus200Ok(){
         GuitarResponse guitarResponse = createElectricGuitarResponse();
-        ProductListResponse productListResponse = createProductListResponseWithGuitars(guitarResponse);
+        ProductListResponse productListResponse = createProductListResponse(guitarResponse);
         when(productService.getQueriedProducts("guitars", "electric"))
                 .thenReturn(productListResponse);
         mockMvc.perform(get(BASE_URL_PRODUCTS + "?category=guitars&type=electric"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.guitars[0].name")
-                        .value(productListResponse.guitars().get(0).name()))
-                .andExpect(jsonPath("$.guitars[0].type")
-                        .value("electric"))
-                .andExpect(jsonPath("$.tuners").doesNotExist());
-    }*/
+                .andExpect(jsonPath("$.products[0].name")
+                        .value(productListResponse.products().get(0).getName()))
+                .andExpect(jsonPath("$.products[0].type")
+                        .value("electric"));
+    }
 
-/*    @Test
+    @Test
     @SneakyThrows
     void shouldGetAcousticGuitarsByCategoryAndTypeAndHaveStatus200Ok(){
         GuitarResponse guitarResponse = createAcousticGuitarResponse();
-        ProductListResponse productListResponse = createProductListResponseWithGuitars(guitarResponse);
+        ProductListResponse productListResponse = createProductListResponse(guitarResponse);
         when(productService.getQueriedProducts("guitars", "acoustic"))
                 .thenReturn(productListResponse);
         mockMvc.perform(get(BASE_URL_PRODUCTS + "?category=guitars&type=acoustic"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.guitars[0].name")
-                        .value(productListResponse.guitars().get(0).name()))
-                .andExpect(jsonPath("$.guitars[0].type")
-                        .value("acoustic"))
-                .andExpect(jsonPath("$.tuners").doesNotExist());
-    }*/
+                .andExpect(jsonPath("$.products[0].name")
+                        .value(productListResponse.products().get(0).getName()))
+                .andExpect(jsonPath("$.products[0].type")
+                        .value("acoustic"));
+    }
 
-/*    @Test
+
+    @Test
     @SneakyThrows
     void shouldFindProductByIdAndHaveStatus200Ok() {
         GuitarResponse guitarResponse = createElectricGuitarResponse();
-        ProductResponse productResponse = createProductResponseWithGuitar(guitarResponse);
-        when(productService.getProductById(guitarResponse.id()))
+        ProductResponse productResponse = createProductResponse(guitarResponse);
+        when(productService.getProductById(guitarResponse.getId()))
                 .thenReturn(productResponse);
-        mockMvc.perform(get(BASE_URL_PRODUCTS + "/" + guitarResponse.id()))
+        mockMvc.perform(get(BASE_URL_PRODUCTS + "/" + guitarResponse.getId()))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.guitar.name")
-                        .value(productResponse.guitar().name()));
+                .andExpect(jsonPath("$.name")
+                        .value(productResponse.getName()));
     }
 
     @Test
@@ -128,5 +127,5 @@ public class ProductControllerTest {
         mockMvc.perform(get(BASE_URL_PRODUCTS + "/" + id))
                 .andExpect(status().isNotFound())
                 .andExpect(content().string(message));
-    }*/
+    }
 }

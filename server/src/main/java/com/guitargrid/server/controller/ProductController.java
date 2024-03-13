@@ -29,7 +29,6 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ProductResponse getProductById(@PathVariable UUID id) {
-        System.out.println("Hello!");
         return service.getProductById(id);
     }
 

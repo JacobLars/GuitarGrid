@@ -11,7 +11,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static com.guitargrid.server.utils.PickupTestData.createPickupEntity;
 import static com.guitargrid.server.utils.PickupTestData.createPickupRequest;
-import static com.guitargrid.server.utils.TunerTestData.createTunerResponse;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 

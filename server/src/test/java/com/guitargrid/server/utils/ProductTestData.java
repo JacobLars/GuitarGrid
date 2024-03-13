@@ -1,6 +1,8 @@
 package com.guitargrid.server.utils;
 
 import com.guitargrid.server.controller.dto.request.ProductRequest;
+import com.guitargrid.server.controller.dto.response.ProductListResponse;
+import com.guitargrid.server.controller.dto.response.ProductResponse;
 import com.guitargrid.server.model.Image;
 import com.guitargrid.server.model.products.Product;
 import lombok.experimental.UtilityClass;
@@ -14,7 +16,15 @@ public class ProductTestData {
 
     List<Image> images = List.of(new Image());
 
+    public <T extends ProductResponse> ProductResponse createProductResponse(T productResponse) {
+        return productResponse;
+    }
 
+    public <T extends ProductResponse> ProductListResponse createProductListResponse(T productResponse) {
+        return ProductListResponse.builder()
+                .products(List.of(productResponse))
+                .build();
+    }
 
     public static String createProductRequestString() {
         return "{\n" +

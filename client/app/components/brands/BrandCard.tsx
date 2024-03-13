@@ -5,8 +5,8 @@ type Props = {
 };
 export const BrandCard = ({ brand }: Props) => {
   return (
-    <div className="flex flex-col">
-      <img className="border border-slate-600 w-40" src={brand.logo} />
+    <div className="flex flex-col border border-slate-600 items-center rounded-md p-2">
+      <img className="w-40" src={brand.logo} />
       <p>{brand.name}</p>
     </div>
   );

@@ -15,8 +15,8 @@ export const BrandGallery = () => {
 
   return (
     <div className="mt-10">
-      <h1 className="text-2xl text-center underline">Our Products</h1>
-      <div className="grid grid-cols-4 gap-5 mt-5">
+      <h1 className="text-2xl text-center underline">Our Brands</h1>
+      <div className="grid grid-cols-3 gap-3 mt-5 m-2">
         {brands.map((brand, index) => (
           <BrandCard brand={brand} key={index} />
         ))}

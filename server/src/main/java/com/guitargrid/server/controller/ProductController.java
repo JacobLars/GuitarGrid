@@ -1,6 +1,7 @@
 package com.guitargrid.server.controller;
 
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
+import com.guitargrid.server.controller.dto.response.ProductListResponseV2;
 import com.guitargrid.server.controller.dto.response.ProductResponse;
 import com.guitargrid.server.exception.ProductNotFoundException;
 import com.guitargrid.server.model.products.Product;
@@ -41,7 +42,7 @@ public class ProductController {
     }
 
     @GetMapping("/brand/{brandId}")
-    public ProductListResponse getProductsByBrandId(@PathVariable UUID brandId) {
+    public ProductListResponseV2 getProductsByBrandId(@PathVariable UUID brandId) {
         return service.getProductsByBrandId(brandId);
     }
 

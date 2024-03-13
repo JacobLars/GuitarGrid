@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.guitargrid.server.controller.dto.request.*;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
+import com.guitargrid.server.controller.dto.response.ProductListResponseV2;
 import com.guitargrid.server.controller.dto.response.ProductResponse;
 import com.guitargrid.server.exception.ProductNotFoundException;
 import com.guitargrid.server.mapper.ProductMapper;
@@ -81,7 +82,7 @@ public class ProductService {
        return productMapper.mapCategoryToProductListResponse(productRepository.findByCategory(category));
     }
 
-    public ProductListResponse getProductsByBrandId(UUID brandId) {
+    public ProductListResponseV2 getProductsByBrandId(UUID brandId) {
         return productMapper.mapToProductListResponse(productRepository.findByBrandId(brandId));
     }
 

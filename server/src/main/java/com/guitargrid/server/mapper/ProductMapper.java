@@ -2,6 +2,7 @@ package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.*;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
+import com.guitargrid.server.controller.dto.response.ProductListResponseV2;
 import com.guitargrid.server.controller.dto.response.ProductResponse;
 import com.guitargrid.server.model.products.*;
 import lombok.RequiredArgsConstructor;
@@ -33,16 +34,12 @@ public class ProductMapper {
         }else if(products.get(0) instanceof Picks){
             return buildProductListResponseWithPicks(filterProductsByType(products, Picks.class));
         }
-        return new ProductListResponse(null, null, null, null, null);
+        return new ProductListResponse(null, null, null, null, null, null);
     }
 
-    public ProductListResponse mapToProductListResponse(List<Product> products){
-        return ProductListResponse.builder()
-                .guitars(filterProductsByType(products, Guitar.class).stream().map(guitarMapper::mapToGuitarResponse).toList())
-                .tuners(filterProductsByType(products, Tuner.class).stream().map(tunerMapper::mapToTunerResponse).toList())
-                .amplifiers(filterProductsByType(products, Amplifier.class).stream().map(amplifierMapper::mapToAmplifierResponse).toList())
-                .pickups(filterProductsByType(products, Pickup.class).stream().map(pickupMapper::mapToPickupResponse).toList())
-                .picks(filterProductsByType(products, Picks.class).stream().map(picksMapper::mapToPicksResponse).toList())
+    public ProductListResponseV2 mapToProductListResponse(List<Product> products){
+        return ProductListResponseV2.builder()
+                .products(products)
                 .build();
     }
 

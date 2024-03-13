@@ -35,15 +35,15 @@ export const ProductPage = ({ productId, productCategory }: Props) => {
       );
       const responseToJson = await response.json();
       if (productCategory === "guitars") {
-        setGuitar(responseToJson.guitar);
+        setGuitar(responseToJson);
       } else if (productCategory === "tuners") {
-        setTuner(responseToJson.tuner);
+        setTuner(responseToJson);
       } else if (productCategory === "amplifiers") {
-        setAmplifier(responseToJson.amplifier);
+        setAmplifier(responseToJson);
       } else if (productCategory === "pickups") {
-        setPickup(responseToJson.pickup);
+        setPickup(responseToJson);
       } else if (productCategory === "picks") {
-        setPicks(responseToJson.picks);
+        setPicks(responseToJson);
       }
       setIsLoading(false);
     };

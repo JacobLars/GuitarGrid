@@ -2,6 +2,7 @@ package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.PickupRequest;
 import com.guitargrid.server.controller.dto.response.PickupResponse;
+import com.guitargrid.server.controller.dto.response.ProductResponse;
 import com.guitargrid.server.model.products.Pickup;
 import org.springframework.stereotype.Component;
 
@@ -23,26 +24,25 @@ public class PickupMapper {
                 .category(pickupRequest.getCategory())
                 .build();
     }
-    public PickupResponse mapToPickupResponse(Pickup pickup) {
+
+
+    public ProductResponse mapToPickupResponse(Pickup product) {
         return PickupResponse.builder()
-                .id(pickup.getId())
-                .name(pickup.getName())
-                .price(pickup.getPrice())
-                .rating(pickup.getRating())
-                .product_quantity(pickup.getProduct_quantity())
-                .images(pickup.getImages())
-                .wiring(pickup.getWiring())
-                .position(pickup.getPosition())
-                .active(pickup.getActive())
-                .output(pickup.getOutput())
-                .color(pickup.getColor())
-                .type(pickup.getType())
-                .category(pickup.getCategory())
-                .brandName(pickup.getBrand().getName())
-                .brandLogo(pickup.getBrand().getLogo())
+                .id(product.getId())
+                .name(product.getName())
+                .price(product.getPrice())
+                .images(product.getImages())
+                .rating(product.getRating())
+                .product_quantity(product.getProduct_quantity())
+                .category(product.getCategory())
+                .brandName(product.getBrand().getName())
+                .brandLogo(product.getBrand().getLogo())
+                .wiring(product.getWiring())
+                .position(product.getPosition())
+                .active(product.getActive())
+                .output(product.getOutput())
+                .color(product.getColor())
+                .type(product.getType())
                 .build();
     }
-
-
-
 }

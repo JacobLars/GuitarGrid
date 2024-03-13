@@ -23,23 +23,22 @@ public class TunerMapper {
                 .build();
     }
 
-    public TunerResponse mapToTunerResponse(Tuner tuner) {
+    public TunerResponse mapToTunerResponse(Tuner product) {
         return TunerResponse.builder()
-                .id(tuner.getId())
-                .name(tuner.getName())
-                .price(tuner.getPrice())
-                .display(tuner.getDisplay())
-                .design(tuner.getDesign())
-                .chromatic(tuner.getChromatic())
-                .integrated_metronome(tuner.getIntegrated_metronome())
-                .integrated_microphone(tuner.getIntegrated_microphone())
-                .images(tuner.getImages())
-                .brandName(tuner.getBrand().getName())
-                .brandLogo(tuner.getBrand().getLogo())
-                .rating(tuner.getRating())
-                .product_quantity(tuner.getProduct_quantity())
-                .category(tuner.getCategory())
+                .id(product.getId())
+                .name(product.getName())
+                .price(product.getPrice())
+                .display(product.getDisplay())
+                .design(product.getDesign())
+                .chromatic(product.getChromatic())
+                .integrated_metronome(product.getIntegrated_metronome())
+                .integrated_microphone(product.getIntegrated_microphone())
+                .images(product.getImages())
+                .brandName(product.getBrand().getName())
+                .brandLogo(product.getBrand().getLogo())
+                .rating(product.getRating())
+                .product_quantity(product.getProduct_quantity())
+                .category(product.getCategory())
                 .build();
     }
-
 }

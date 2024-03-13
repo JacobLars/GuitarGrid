@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.guitargrid.server.controller.dto.request.*;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
-import com.guitargrid.server.controller.dto.response.ProductListResponseV2;
 import com.guitargrid.server.controller.dto.response.ProductResponse;
 import com.guitargrid.server.exception.ProductNotFoundException;
 import com.guitargrid.server.mapper.ProductMapper;
@@ -27,7 +26,6 @@ public class ProductService {
     private final BrandRepository brandRepository;
     private final ObjectMapper objectMapper;
 
-
     public ProductResponse handleRequest(String productRequest, UUID brandId){
         String productCategory;
         try {
@@ -48,7 +46,8 @@ public class ProductService {
                 case "pickups" -> {
                     PickupRequest pickupRequest = objectMapper.readValue(productRequest, PickupRequest.class);
                     return productMapper.mapToProductResponse(saveProduct(pickupRequest, brandId));
-                }case "picks" -> {
+                }
+                case "picks" -> {
                     PicksRequest picksRequest = objectMapper.readValue(productRequest, PicksRequest.class);
                     return productMapper.mapToProductResponse(saveProduct(picksRequest, brandId));
                 }
@@ -74,15 +73,15 @@ public class ProductService {
                 .orElseThrow(() -> new ProductNotFoundException(id)));
     }
 
-    public ProductListResponseV2 getQueriedProducts(String category, String type) {
+    public ProductListResponse getQueriedProducts(String category, String type) {
        if(type != null && category.equals("guitars")){
-           return productMapper.mapCategoryToProductListResponseV2(
+           return productMapper.mapCategoryToProductListResponse(
                    filterGuitarsByType(type, productRepository.findByCategory(category)));
        }
-       return productMapper.mapCategoryToProductListResponseV2(productRepository.findByCategory(category));
+       return productMapper.mapCategoryToProductListResponse(productRepository.findByCategory(category));
     }
 
-    public ProductListResponseV2 getProductsByBrandId(UUID brandId) {
+    public ProductListResponse getProductsByBrandId(UUID brandId) {
         return productMapper.mapToProductListResponse(productRepository.findByBrandId(brandId));
     }
 

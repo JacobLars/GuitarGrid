@@ -21,7 +21,6 @@ import static com.guitargrid.server.utils.BrandTestData.createNewBrandEntity;
 import static com.guitargrid.server.utils.GuitarTestData.*;
 import static com.guitargrid.server.utils.ProductTestData.*;
 import static com.guitargrid.server.utils.TunerTestData.createTunerEntity;
-import static com.guitargrid.server.utils.TunerTestData.createTunerResponse;
 import static java.lang.String.format;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

@@ -1,6 +1,7 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.response.AmplifierResponse;
+import com.guitargrid.server.controller.dto.response.ProductResponse;
 import com.guitargrid.server.model.products.Amplifier;
 import org.springframework.stereotype.Component;
 
@@ -27,28 +28,28 @@ public class AmplifierMapper {
                 .build();
     }
 
-    public AmplifierResponse mapToAmplifierResponse(Amplifier amplifier) {
+
+    public ProductResponse mapToAmplifierResponse(Amplifier product) {
         return AmplifierResponse.builder()
-                .id(amplifier.getId())
-                .name(amplifier.getName())
-                .price(amplifier.getPrice())
-                .rating(amplifier.getRating())
-                .product_quantity(amplifier.getProduct_quantity())
-                .category(amplifier.getCategory())
-                .images(amplifier.getImages())
-                .brandName(amplifier.getBrand().getName())
-                .brandLogo(amplifier.getBrand().getLogo())
-                .weight(amplifier.getWeight())
-                .power(amplifier.getPower())
-                .channels(amplifier.getChannels())
-                .reverb(amplifier.getReverb())
-                .externalFxLoop(amplifier.getExternalFxLoop())
-                .lineInput(amplifier.getLineInput())
-                .footSwitchConnection(amplifier.getFootSwitchConnection())
-                .effectsProcessor(amplifier.getEffectsProcessor())
-                .microphoneInput(amplifier.getMicrophoneInput())
-                .batteryOperation(amplifier.getBatteryOperation())
+                .id(product.getId())
+                .name(product.getName())
+                .price(product.getPrice())
+                .rating(product.getRating())
+                .product_quantity(product.getProduct_quantity())
+                .category(product.getCategory())
+                .images(product.getImages())
+                .brandName(product.getBrand().getName())
+                .brandLogo(product.getBrand().getLogo())
+                .weight(product.getWeight())
+                .power(product.getPower())
+                .channels(product.getChannels())
+                .reverb(product.getReverb())
+                .externalFxLoop(product.getExternalFxLoop())
+                .lineInput(product.getLineInput())
+                .footSwitchConnection(product.getFootSwitchConnection())
+                .effectsProcessor(product.getEffectsProcessor())
+                .microphoneInput(product.getMicrophoneInput())
+                .batteryOperation(product.getBatteryOperation())
                 .build();
     }
-
 }

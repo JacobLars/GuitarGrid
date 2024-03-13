@@ -1,7 +1,6 @@
 package com.guitargrid.server.utils;
 
 import com.guitargrid.server.controller.dto.request.ProductRequest;
-import com.guitargrid.server.controller.dto.response.*;
 import com.guitargrid.server.model.Image;
 import com.guitargrid.server.model.products.Product;
 import lombok.experimental.UtilityClass;
@@ -15,25 +14,6 @@ public class ProductTestData {
 
     List<Image> images = List.of(new Image());
 
-    public static ProductResponseV2 createProductResponseV2WithGuitar(Product product) {
-        return ProductResponseV2.builder()
-                .id(product.getId())
-                .name(product.getName())
-                .price(product.getPrice())
-                .rating(product.getRating())
-                .product_quantity(product.getProduct_quantity())
-                .category(product.getCategory())
-                .images(images)
-                .brandName(product.getBrand().getName())
-                .brandLogo(product.getBrand().getLogo())
-                .build();
-    }
-
-    public static ProductListResponseV2 createProductListResponseV2(ProductResponseV2 productResponseV2) {
-        return ProductListResponseV2.builder()
-                .products(List.of(productResponseV2))
-                .build();
-    }
 
 
     public static String createProductRequestString() {

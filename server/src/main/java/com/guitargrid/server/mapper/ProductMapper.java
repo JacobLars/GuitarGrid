@@ -1,10 +1,7 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.*;
-import com.guitargrid.server.controller.dto.response.ProductListResponse;
-import com.guitargrid.server.controller.dto.response.ProductListResponseV2;
-import com.guitargrid.server.controller.dto.response.ProductResponse;
-import com.guitargrid.server.controller.dto.response.ProductResponseV2;
+import com.guitargrid.server.controller.dto.response.*;
 import com.guitargrid.server.model.products.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -21,32 +18,29 @@ public class ProductMapper {
     private final PickupMapper pickupMapper;
     private final PicksMapper picksMapper;
 
-
-    public ProductListResponseV2 mapCategoryToProductListResponseV2(List<Product> products) {
-        return ProductListResponseV2.builder()
-                .products(products.stream().map(this::mapToProductResponseV2).toList())
+    public ProductListResponse mapCategoryToProductListResponse(List<Product> products) {
+        return ProductListResponse.builder()
+                .products(products.stream().map(this::mapToProductResponse).toList())
                 .build();
     }
 
-    public ProductListResponseV2 mapToProductListResponse(List<Product> products){
-        return ProductListResponseV2.builder()
-                .products(products.stream().map(this::mapToProductResponseV2).toList())
+    public ProductListResponse mapToProductListResponse(List<Product> products){
+        return ProductListResponse.builder()
+                .products(products.stream().map(this::mapToProductResponse).toList())
                 .build();
     }
 
-    public ProductResponseV2 mapToProductResponseV2(Product product){
-        return ProductResponseV2.builder()
-                .id(product.getId())
-                .name(product.getName())
-                .price(product.getPrice())
-                .rating(product.getRating())
-                .product_quantity(product.getProduct_quantity())
-                .category(product.getCategory())
-                .images(product.getImages())
-                .brandName(product.getBrand().getName())
-                .brandLogo(product.getBrand().getLogo())
-                .build();
+    public ProductResponse mapToProductResponse(Product product){
+        switch (product.getCategory()) {
+            case "amplifiers" -> {return  amplifierMapper.mapToAmplifierResponse((Amplifier) product);}
+            case "guitars" -> {return guitarMapper.mapToGuitarResponse((Guitar) product);}
+            case "tuners" -> {return tunerMapper.mapToTunerResponse((Tuner) product);}
+            case "pickups" -> {return pickupMapper.mapToPickupResponse((Pickup) product);}
+            case "picks" -> {return picksMapper.mapToPicksResponse((Picks) product);}
+        }
+        return null;
     }
+
     public Product mapRequestToProduct(ProductRequest product) {
            if (product instanceof GuitarRequest) {
                 return guitarMapper.mapToGuitar((GuitarRequest) product);
@@ -62,29 +56,5 @@ public class ProductMapper {
             return null;
     }
 
-    public ProductResponse mapToProductResponse(Product product) {
-        if (product instanceof Guitar) {
-            return ProductResponse.builder()
-                    .guitar(guitarMapper.mapToGuitarResponse((Guitar) product))
-                    .build();
-        } else if (product instanceof Tuner) {
-            return ProductResponse.builder()
-                    .tuner(tunerMapper.mapToTunerResponse((Tuner) product))
-                    .build();
-        }else if (product instanceof Amplifier) {
-            return ProductResponse.builder()
-                    .amplifier(amplifierMapper.mapToAmplifierResponse((Amplifier) product))
-                    .build();
-        }else if (product instanceof Pickup){
-            return ProductResponse.builder()
-                    .pickup(pickupMapper.mapToPickupResponse((Pickup) product))
-                    .build();
-        }else if (product instanceof Picks){
-            return ProductResponse.builder()
-                    .picks(picksMapper.mapToPicksResponse((Picks) product))
-                    .build();
-        }
-        return null;
-    }
 
 }

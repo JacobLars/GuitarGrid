@@ -57,7 +57,7 @@ class ProductServiceTest {
        Guitar electricGuitar = createElectricGuitarEntity();
        GuitarResponse accousticGuitarResponse = createAcousticGuitarResponse();
        when(productRepository.findByCategory("guitars")).thenReturn(List.of(accousticGuitar, electricGuitar));
-       when(productMapper.mapToProductListResponse(List.of(accousticGuitar)))
+       when(productMapper.mapCategoryToProductListResponse(List.of(accousticGuitar)))
                .thenReturn(ProductListResponse.builder().guitars(List.of(accousticGuitarResponse)).build());
        ProductListResponse response = productService.getQueriedProducts("guitars", "acoustic");
        assertEquals(response.guitars().get(0), accousticGuitarResponse);
@@ -71,7 +71,7 @@ class ProductServiceTest {
         Tuner tuner = createTunerEntity();
         TunerResponse tunerResponse = createTunerResponse();
         when(productRepository.findByCategory("tuners")).thenReturn(List.of(tuner));
-        when(productMapper.mapToProductListResponse(List.of(tuner)))
+        when(productMapper.mapCategoryToProductListResponse(List.of(tuner)))
                 .thenReturn(ProductListResponse.builder().tuners(List.of(tunerResponse)).build());
         ProductListResponse response = productService.getQueriedProducts("tuners", null);
         assertEquals(response.tuners().get(0), tunerResponse);

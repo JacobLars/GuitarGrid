@@ -19,7 +19,7 @@ public class ProductMapper {
     private final PickupMapper pickupMapper;
     private final PicksMapper picksMapper;
 
-    public ProductListResponse mapToProductListResponse(List<Product> products) {
+    public ProductListResponse mapCategoryToProductListResponse(List<Product> products) {
         if (products.get(0) instanceof Guitar) {
             List<Guitar> guitars = filterProductsByType(products, Guitar.class);
             return buildProductListResponseWithGuitars(guitars);
@@ -36,7 +36,15 @@ public class ProductMapper {
         return new ProductListResponse(null, null, null, null, null);
     }
 
-
+    public ProductListResponse mapToProductListResponse(List<Product> products){
+        return ProductListResponse.builder()
+                .guitars(filterProductsByType(products, Guitar.class).stream().map(guitarMapper::mapToGuitarResponse).toList())
+                .tuners(filterProductsByType(products, Tuner.class).stream().map(tunerMapper::mapToTunerResponse).toList())
+                .amplifiers(filterProductsByType(products, Amplifier.class).stream().map(amplifierMapper::mapToAmplifierResponse).toList())
+                .pickups(filterProductsByType(products, Pickup.class).stream().map(pickupMapper::mapToPickupResponse).toList())
+                .picks(filterProductsByType(products, Picks.class).stream().map(picksMapper::mapToPicksResponse).toList())
+                .build();
+    }
 
 
     public Product mapRequestToProduct(ProductRequest product) {

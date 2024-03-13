@@ -1,7 +1,6 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.PickupRequest;
-import com.guitargrid.server.controller.dto.response.AmplifierResponse;
 import com.guitargrid.server.controller.dto.response.ProductListResponse;
 import com.guitargrid.server.controller.dto.response.ProductResponse;
 import com.guitargrid.server.controller.dto.response.TunerResponse;
@@ -40,7 +39,7 @@ class ProductMapperTest {
         Tuner amplifier = createTunerEntity();
         TunerResponse tunerResponse = createTunerResponse();
         when(tunerMapper.mapToTunerResponse(amplifier)).thenReturn(tunerResponse);
-        ProductListResponse productListResponse = productMapper.mapToProductListResponse(List.of(amplifier));
+        ProductListResponse productListResponse = productMapper.mapCategoryToProductListResponse(List.of(amplifier));
         assertNotNull(productListResponse.tuners());
         assertNull(productListResponse.guitars());
         assertEquals(List.of(tunerResponse), productListResponse.tuners());

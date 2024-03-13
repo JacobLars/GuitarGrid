@@ -81,11 +81,16 @@ public class ProductService {
        return productMapper.mapToProductListResponse(productRepository.findByCategory(category));
     }
 
+    public ProductListResponse getProductsByBrandId(UUID brandId) {
+        return productMapper.mapToProductListResponse(productRepository.findByBrandId(brandId));
+    }
+
     private List<Product> filterGuitarsByType(String type, List<Product> products) {
         return products.stream()
                 .filter(product -> product instanceof Guitar)
                 .filter(product -> ((Guitar) product).getType().equals(type))
                 .toList();
     }
+
 
 }

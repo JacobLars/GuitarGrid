@@ -40,6 +40,11 @@ public class ProductController {
         return service.handleRequest(productRequest, brandId);
     }
 
+    @GetMapping("/brand/{brandId}")
+    public ProductListResponse getProductsByBrandId(@PathVariable UUID brandId) {
+        return service.getProductsByBrandId(brandId);
+    }
+
     @ExceptionHandler(ProductNotFoundException.class)
     @ResponseStatus(NOT_FOUND)
     public String handleProductNotFoundException(ProductNotFoundException e) {

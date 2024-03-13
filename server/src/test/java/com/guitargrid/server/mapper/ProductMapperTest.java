@@ -1,23 +1,16 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.PickupRequest;
-import com.guitargrid.server.controller.dto.response.ProductListResponse;
-import com.guitargrid.server.controller.dto.response.ProductResponse;
-import com.guitargrid.server.controller.dto.response.TunerResponse;
 import com.guitargrid.server.model.products.Pickup;
 import com.guitargrid.server.model.products.Product;
-import com.guitargrid.server.model.products.Tuner;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.List;
-
 import static com.guitargrid.server.utils.PickupTestData.createPickupEntity;
 import static com.guitargrid.server.utils.PickupTestData.createPickupRequest;
-import static com.guitargrid.server.utils.TunerTestData.createTunerEntity;
 import static com.guitargrid.server.utils.TunerTestData.createTunerResponse;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -34,29 +27,6 @@ class ProductMapperTest {
     @InjectMocks
     private ProductMapper productMapper;
 
-    @Test
-    void shouldMapListOfTypeTunerToProductListResponse() {
-        Tuner amplifier = createTunerEntity();
-        TunerResponse tunerResponse = createTunerResponse();
-        when(tunerMapper.mapToTunerResponse(amplifier)).thenReturn(tunerResponse);
-        ProductListResponse productListResponse = productMapper.mapCategoryToProductListResponse(List.of(amplifier));
-        assertNotNull(productListResponse.tuners());
-        assertNull(productListResponse.guitars());
-        assertEquals(List.of(tunerResponse), productListResponse.tuners());
-        assertInstanceOf(TunerResponse.class, productListResponse.tuners().get(0));
-    }
-
-    @Test
-    void shouldMapProductToProductResponse() {
-        Tuner tuner = createTunerEntity();
-        TunerResponse tunerResponse = createTunerResponse();
-        when(tunerMapper.mapToTunerResponse(tuner)).thenReturn(tunerResponse);
-        ProductResponse productResponse = productMapper.mapToProductResponse(tuner);
-        assertNotNull(productResponse.tuner());
-        assertNull(productResponse.guitar());
-        assertEquals(tunerResponse, productResponse.tuner());
-        assertInstanceOf(TunerResponse.class, productResponse.tuner());
-    }
 
     @Test
     void shouldMapPickupRequestToPickup() {

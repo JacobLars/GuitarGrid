@@ -6,8 +6,6 @@ import com.guitargrid.server.model.products.Guitar;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @RequiredArgsConstructor
 @Component
 public class GuitarMapper {

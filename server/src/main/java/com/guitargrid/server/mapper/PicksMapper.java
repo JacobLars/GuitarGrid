@@ -20,20 +20,19 @@ public class PicksMapper {
                 .build();
     }
 
-    public PicksResponse mapToPicksResponse(Picks picks) {
+    public PicksResponse mapToPicksResponse(Picks product) {
         return PicksResponse.builder()
-                .id(picks.getId())
-                .name(picks.getName())
-                .price(picks.getPrice())
-                .images(picks.getImages())
-                .rating(picks.getRating())
-                .product_quantity(picks.getProduct_quantity())
-                .category(picks.getCategory())
-                .delivery_quantity(picks.getDelivery_quantity())
-                .thickness(picks.getThickness())
-                .brandName(picks.getBrand().getName())
-                .brandLogo(picks.getBrand().getLogo())
+                .id(product.getId())
+                .name(product.getName())
+                .price(product.getPrice())
+                .images(product.getImages())
+                .rating(product.getRating())
+                .product_quantity(product.getProduct_quantity())
+                .category(product.getCategory())
+                .brandName(product.getBrand().getName())
+                .brandLogo(product.getBrand().getLogo())
+                .delivery_quantity(product.getDelivery_quantity())
+                .thickness(product.getThickness())
                 .build();
     }
-
 }

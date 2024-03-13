@@ -1,9 +1,7 @@
 package com.guitargrid.server.mapper;
 
 import com.guitargrid.server.controller.dto.request.*;
-import com.guitargrid.server.controller.dto.response.ProductListResponse;
-import com.guitargrid.server.controller.dto.response.ProductListResponseV2;
-import com.guitargrid.server.controller.dto.response.ProductResponse;
+import com.guitargrid.server.controller.dto.response.*;
 import com.guitargrid.server.model.products.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -21,28 +19,27 @@ public class ProductMapper {
     private final PicksMapper picksMapper;
 
     public ProductListResponse mapCategoryToProductListResponse(List<Product> products) {
-        if (products.get(0) instanceof Guitar) {
-            List<Guitar> guitars = filterProductsByType(products, Guitar.class);
-            return buildProductListResponseWithGuitars(guitars);
-        } else if (products.get(0) instanceof Tuner) {
-            List<Tuner> tuners = filterProductsByType(products, Tuner.class);
-            return buildProductListResponseWithTuners(tuners);
-        }else if(products.get(0) instanceof Amplifier){
-            return buildProductListResponseWithAmplifiers(filterProductsByType(products, Amplifier.class));
-        }else if(products.get(0) instanceof Pickup){
-            return buildProductListResponseWithPickups(filterProductsByType(products, Pickup.class));
-        }else if(products.get(0) instanceof Picks){
-            return buildProductListResponseWithPicks(filterProductsByType(products, Picks.class));
-        }
-        return new ProductListResponse(null, null, null, null, null, null);
-    }
-
-    public ProductListResponseV2 mapToProductListResponse(List<Product> products){
-        return ProductListResponseV2.builder()
-                .products(products)
+        return ProductListResponse.builder()
+                .products(products.stream().map(this::mapToProductResponse).toList())
                 .build();
     }
 
+    public ProductListResponse mapToProductListResponse(List<Product> products){
+        return ProductListResponse.builder()
+                .products(products.stream().map(this::mapToProductResponse).toList())
+                .build();
+    }
+
+    public ProductResponse mapToProductResponse(Product product){
+        switch (product.getCategory()) {
+            case "amplifiers" -> {return  amplifierMapper.mapToAmplifierResponse((Amplifier) product);}
+            case "guitars" -> {return guitarMapper.mapToGuitarResponse((Guitar) product);}
+            case "tuners" -> {return tunerMapper.mapToTunerResponse((Tuner) product);}
+            case "pickups" -> {return pickupMapper.mapToPickupResponse((Pickup) product);}
+            case "picks" -> {return picksMapper.mapToPicksResponse((Picks) product);}
+        }
+        return null;
+    }
 
     public Product mapRequestToProduct(ProductRequest product) {
            if (product instanceof GuitarRequest) {
@@ -59,67 +56,5 @@ public class ProductMapper {
             return null;
     }
 
-    public ProductResponse mapToProductResponse(Product product) {
-        if (product instanceof Guitar) {
-            return ProductResponse.builder()
-                    .guitar(guitarMapper.mapToGuitarResponse((Guitar) product))
-                    .build();
-        } else if (product instanceof Tuner) {
-            return ProductResponse.builder()
-                    .tuner(tunerMapper.mapToTunerResponse((Tuner) product))
-                    .build();
-        }else if (product instanceof Amplifier) {
-            return ProductResponse.builder()
-                    .amplifier(amplifierMapper.mapToAmplifierResponse((Amplifier) product))
-                    .build();
-        }else if (product instanceof Pickup){
-            return ProductResponse.builder()
-                    .pickup(pickupMapper.mapToPickupResponse((Pickup) product))
-                    .build();
-        }else if (product instanceof Picks){
-            return ProductResponse.builder()
-                    .picks(picksMapper.mapToPicksResponse((Picks) product))
-                    .build();
-        }
-        return null;
-    }
-
-    private <T extends Product> List<T> filterProductsByType(List<Product> products, Class<T> type) {
-        return products.stream()
-                .filter(type::isInstance)
-                .map(type::cast)
-                .toList();
-    }
-
-    private ProductListResponse buildProductListResponseWithGuitars(List<Guitar> guitars) {
-        return ProductListResponse.builder()
-                .guitars(guitars.stream().map(guitarMapper::mapToGuitarResponse).toList())
-                .build();
-    }
-
-    private ProductListResponse buildProductListResponseWithTuners(List<Tuner> tuners) {
-        return ProductListResponse.builder()
-                .tuners(tuners.stream().map(tunerMapper::mapToTunerResponse).toList())
-                .build();
-    }
-
-    private ProductListResponse buildProductListResponseWithAmplifiers(List<Amplifier> amplifiers) {
-        return ProductListResponse.builder()
-                .amplifiers(amplifiers.stream().map(amplifierMapper::mapToAmplifierResponse).toList())
-                .build();
-    }
-
-
-    private ProductListResponse buildProductListResponseWithPickups(List<Pickup> pickups) {
-        return ProductListResponse.builder()
-                .pickups(pickups.stream().map(pickupMapper::mapToPickupResponse).toList())
-                .build();
-    }
-
-    private ProductListResponse buildProductListResponseWithPicks(List<Picks> picks) {
-        return ProductListResponse.builder()
-                .picks(picks.stream().map(picksMapper::mapToPicksResponse).toList())
-                .build();
-    }
 
 }

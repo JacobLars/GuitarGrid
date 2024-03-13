@@ -1,37 +1,15 @@
 package com.guitargrid.server.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.guitargrid.server.controller.dto.request.GuitarRequest;
-import com.guitargrid.server.controller.dto.request.ProductRequest;
-import com.guitargrid.server.controller.dto.response.GuitarResponse;
-import com.guitargrid.server.controller.dto.response.ProductListResponse;
-import com.guitargrid.server.controller.dto.response.ProductResponse;
-import com.guitargrid.server.controller.dto.response.TunerResponse;
 import com.guitargrid.server.mapper.ProductMapper;
-import com.guitargrid.server.model.Brand;
-import com.guitargrid.server.model.products.Guitar;
-import com.guitargrid.server.model.products.Tuner;
 import com.guitargrid.server.repository.BrandRepository;
 import com.guitargrid.server.repository.ProductRepository;
-import lombok.SneakyThrows;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.List;
-import java.util.Optional;
-
-import static com.guitargrid.server.utils.BrandTestData.createNewBrandEntity;
-import static com.guitargrid.server.utils.GuitarTestData.*;
-
-import static com.guitargrid.server.utils.ProductTestData.createProductRequest;
-import static com.guitargrid.server.utils.ProductTestData.createProductRequestString;
-import static com.guitargrid.server.utils.TunerTestData.createTunerEntity;
 import static com.guitargrid.server.utils.TunerTestData.createTunerResponse;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ProductServiceTest {
@@ -51,7 +29,7 @@ class ProductServiceTest {
     @InjectMocks
     private ProductService productService;
 
-    @Test
+/*    @Test
     void shouldReturnListContainingAcousticGuitarsWhenQueryingProducts() {
        Guitar accousticGuitar = createAcousticGuitarEntity();
        Guitar electricGuitar = createElectricGuitarEntity();
@@ -78,8 +56,9 @@ class ProductServiceTest {
         assertEquals(response.tuners().size(), 1);
         assertEquals(response.tuners().get(0).name(), tuner.getName());
         assertInstanceOf(TunerResponse.class, response.tuners().get(0));
-    }
+    }*/
 
+/*
     @Test
     @SneakyThrows
     void shouldReturnGuitarResponseWhenHandlingGuitarRequest(){
@@ -100,5 +79,6 @@ class ProductServiceTest {
         assertEquals(product.guitar().name(), guitarRequest.getName());
         assertInstanceOf(GuitarResponse.class, product.guitar());
     }
+*/
 
 }

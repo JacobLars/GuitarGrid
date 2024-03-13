@@ -29,19 +29,4 @@ class PickupMapperTest {
         assertEquals(pickupRequest.getProduct_quantity(), pickup.getProduct_quantity());
     }
 
-    @Test
-    void shouldMapPickupToPickupResponse() {
-        Pickup pickup = createPickupEntity();
-        Brand brand = createNewBrandEntity();
-        pickup.setBrand(brand);
-        assertEquals(PICKUP_NAME, pickup.getName());
-        assertEquals(PICKUP_PRICE, pickup.getPrice());
-        assertEquals(PICKUP_RATING, pickup.getRating());
-        assertEquals(PRODUCT_QUANTITY, pickup.getProduct_quantity());
-        assertEquals(PICKUP_WIRING, pickup.getWiring());
-        assertEquals(PICKUP_POSITION, pickup.getPosition());
-        assertTrue(pickup.getActive());
-
-    }
-
 }

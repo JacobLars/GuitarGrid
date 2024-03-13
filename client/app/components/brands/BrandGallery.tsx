@@ -8,17 +8,19 @@ export const BrandGallery = () => {
     const fetchAllBrands = async () => {
       const response = await fetch("http://localhost:8080/api/v1/brands");
       const responseToJson = await response.json();
-      console.log(responseToJson);
       setBrands(responseToJson.brands);
     };
     fetchAllBrands();
   }, []);
 
   return (
-    <div>
-      {brands.map((brand) => (
-        <BrandCard brand={brand} />
-      ))}
+    <div className="mt-10">
+      <h1 className="text-2xl text-center underline">Our Products</h1>
+      <div className="grid grid-cols-4 gap-5 mt-5">
+        {brands.map((brand, index) => (
+          <BrandCard brand={brand} key={index} />
+        ))}
+      </div>
     </div>
   );
 };

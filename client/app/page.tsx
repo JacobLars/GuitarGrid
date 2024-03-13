@@ -6,11 +6,13 @@ import { BrandGallery } from "./components/brands/BrandGallery";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="grid grid-cols-1 gap-y-10">
       <Header />
       <NavBar />
-      <Categories />
-      <BrandGallery />
+      <div className="flex flex-col items-center">
+        <Categories />
+        <BrandGallery />
+      </div>
     </div>
   );
 }

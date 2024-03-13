@@ -5,10 +5,10 @@ export const Categories = () => {
   return (
     <div className="mt-10">
       <h1 className="text-2xl text-center underline">Our Products</h1>
-      <div className="flex flex-col h-10 items-center">
+      <div className="grid grid-cols-2 gap-5 mt-5">
         <Link
           href="/selection"
-          className="flex flex-col items-center border rounded-md border-neutral-500 m-5 w-52 shadow-md"
+          className="flex flex-col items-center border rounded-md border-neutral-500 w-48 shadow-md"
         >
           <img
             className="h-52 rounded-md"
@@ -18,7 +18,7 @@ export const Categories = () => {
         </Link>
         <Link
           href="/products/tuners"
-          className="flex flex-col items-center border border-neutral-500 m-5 w-52 shadow-md rounded-md"
+          className="flex flex-col items-center border border-neutral-500 w-48 shadow-md rounded-md"
         >
           <img
             className="h-52 rounded-md"
@@ -28,7 +28,7 @@ export const Categories = () => {
         </Link>
         <Link
           href="/products/amplifiers"
-          className="flex flex-col items-center border rounded-md border-neutral-500 m-5 w-52 shadow-md"
+          className="flex flex-col items-center border rounded-md border-neutral-500 w-48 shadow-md"
         >
           <img
             className="h-52 rounded-md"
@@ -38,7 +38,7 @@ export const Categories = () => {
         </Link>
         <Link
           href="/products/pickups"
-          className="flex flex-col items-center rounded-md border border-neutral-500 m-5 w-52 shadow-md"
+          className="flex flex-col items-center rounded-md border border-neutral-500 w-48 shadow-md"
         >
           <img
             className="h-52 rounded-md"
@@ -48,7 +48,7 @@ export const Categories = () => {
         </Link>
         <Link
           href="/products/picks"
-          className="flex flex-col items-center rounded-md border border-neutral-500 m-5 w-52 shadow-md"
+          className="flex flex-col items-center rounded-md border border-neutral-500 w-48 shadow-md"
         >
           <img
             className="h-52 rounded-md"

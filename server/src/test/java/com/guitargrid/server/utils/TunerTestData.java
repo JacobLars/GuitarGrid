@@ -22,7 +22,7 @@ public class TunerTestData {
     public static boolean TUNER_CHROMATIC = true;
     public static boolean TUNER_INTEGRATED_METRONOME = true;
     public static boolean TUNER_INTEGRATED_MICROPHONE = true;
-    public static String TUNER_CATEGORY = "Tuner";
+    public static String TUNER_CATEGORY = "tuners";
 
 
     public static TunerRequest createTunerRequest() {

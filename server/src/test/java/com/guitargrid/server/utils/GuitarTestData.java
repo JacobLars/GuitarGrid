@@ -36,7 +36,7 @@ public class GuitarTestData {
                 new ArrayList<Image>(),
                 GUITAR_RATING,
                 GUITAR_PRODUCT_QUANTITY,
-                "guitars",
+                GUITAR_CATEGORY,
                 GUITAR_COLOR,
                 GUITAR_BODY_TYPE,
                 GUITAR_NECK_TYPE,
@@ -56,6 +56,7 @@ public class GuitarTestData {
                 .rating(GUITAR_RATING)
                 .bodyType(GUITAR_BODY_TYPE)
                 .neckType(GUITAR_NECK_TYPE)
+                .category(GUITAR_CATEGORY)
                 .fretboardType(GUITAR_FRETBOARD_TYPE)
                 .pickups(GUITAR_PICKUPS)
                 .scale(GUITAR_SCALE)
@@ -70,6 +71,7 @@ public class GuitarTestData {
                 .type(GUITAR_ACOUSTIC_TYPE)
                 .color(GUITAR_COLOR)
                 .rating(GUITAR_RATING)
+                .category(GUITAR_CATEGORY)
                 .bodyType(GUITAR_BODY_TYPE)
                 .neckType(GUITAR_NECK_TYPE)
                 .fretboardType(GUITAR_FRETBOARD_TYPE)

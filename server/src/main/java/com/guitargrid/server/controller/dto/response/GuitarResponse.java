@@ -11,6 +11,7 @@ import java.util.UUID;
 @Getter
 @Setter
 public class GuitarResponse extends ProductResponse {
+
     private String color;
     private String bodyType;
     private String neckType;

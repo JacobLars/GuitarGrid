@@ -1,15 +1,29 @@
 "use client";
-
-import { BrandProductsGallery } from "@/app/components/products/productsByBrand/BrandProductsGallery";
+import { ProductGallery } from "@/app/components/products/ProductGallery";
+import { Product } from "@/app/types/Types";
+import { useEffect, useState } from "react";
 
 export default function BrandProducts({
   params,
 }: {
   params: { brandId: string };
 }) {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsloading] = useState<boolean>(true);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await fetch(
+        `http://localhost:8080/api/v1/products/brand/${params.brandId}`
+      );
+      const jsonResponse = await response.json();
+      setProducts(jsonResponse.products);
+      setIsloading(false);
+    };
+    fetchProducts();
+  }, []);
   return (
     <div className="">
-      <BrandProductsGallery brandId={params.brandId} />
+      <ProductGallery products={products} />
     </div>
   );
 }

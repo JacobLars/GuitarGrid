@@ -18,12 +18,6 @@ public class ProductMapper {
     private final PickupMapper pickupMapper;
     private final PicksMapper picksMapper;
 
-    public ProductListResponse mapCategoryToProductListResponse(List<Product> products) {
-        return ProductListResponse.builder()
-                .products(products.stream().map(this::mapToProductResponse).toList())
-                .build();
-    }
-
     public ProductListResponse mapToProductListResponse(List<Product> products){
         return ProductListResponse.builder()
                 .products(products.stream().map(this::mapToProductResponse).toList())

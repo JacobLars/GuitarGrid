@@ -63,6 +63,7 @@ class ProductMapperTest {
         assertEquals(productListResponse.products().size(), 2);
         assertEquals(productListResponse.products().get(0).getName(), tuner.getName());
         assertEquals(productListResponse.products().get(1).getName(), guitar.getName());
-
     }
+
+
 }

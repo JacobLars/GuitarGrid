@@ -1,4 +1,6 @@
 "use client";
+import { Header } from "@/app/components/home/Header";
+import { NavBar } from "@/app/components/navbar/NavBar";
 import { ProductGallery } from "@/app/components/products/ProductGallery";
 import { Product } from "@/app/types/Types";
 import { useEffect, useState } from "react";
@@ -23,6 +25,8 @@ export default function BrandProducts({
   }, []);
   return (
     <div className="">
+      <Header />
+      <NavBar />
       <ProductGallery products={products} isLoading={isLoading} />
     </div>
   );

@@ -6,7 +6,7 @@ import { BrandGallery } from "./components/brands/BrandGallery";
 
 export default function Home() {
   return (
-    <div className="grid grid-cols-1 gap-y-10">
+    <div className="grid grid-cols-1">
       <Header />
       <NavBar />
       <div className="flex flex-col items-center">

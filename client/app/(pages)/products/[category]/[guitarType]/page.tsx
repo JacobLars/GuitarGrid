@@ -23,12 +23,11 @@ export default function Products({
     };
     fetchProducts();
   }, []);
-  console.log(products);
   return (
     <div className="">
       <Header />
       <NavBar />
-      <ProductGallery products={products} />
+      <ProductGallery products={products} isLoading={isLoading} />
     </div>
   );
 }

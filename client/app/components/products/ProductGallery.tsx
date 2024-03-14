@@ -1,13 +1,13 @@
 import { Product } from "@/app/types/Types";
-import { useParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ProductCard } from "./ProductCard";
 import { Link } from "@nextui-org/react";
 import { SearchBar } from "../searchbar/SearchBar";
 type Props = {
   products: Product[];
+  isLoading: boolean;
 };
-export const ProductGallery = ({ products }: Props) => {
+export const ProductGallery = ({ products, isLoading }: Props) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const filteredProducts = products.filter(
     (product) =>
@@ -18,14 +18,18 @@ export const ProductGallery = ({ products }: Props) => {
   return (
     <div>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      {filteredProducts.map((product, index) => (
-        <Link
-          key={index}
-          href={`/products/${product.category}/product/${product.id}`}
-        >
-          <ProductCard product={product} />
-        </Link>
-      ))}
+      {isLoading ? (
+        <img className="h-20 mx-auto my-40" src="/loading.gif" />
+      ) : (
+        filteredProducts.map((product, index) => (
+          <Link
+            key={index}
+            href={`/products/${product.category}/product/${product.id}`}
+          >
+            <ProductCard product={product} />
+          </Link>
+        ))
+      )}
     </div>
   );
 };

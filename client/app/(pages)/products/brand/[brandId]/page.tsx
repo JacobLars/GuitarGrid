@@ -23,7 +23,7 @@ export default function BrandProducts({
   }, []);
   return (
     <div className="">
-      <ProductGallery products={products} />
+      <ProductGallery products={products} isLoading={isLoading} />
     </div>
   );
 }

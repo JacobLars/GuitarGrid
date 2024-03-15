@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { FilterByRating } from "./FilterByRating";
 import { Product } from "@/app/types/Types";
+import { SortByPrice } from "./SortByPrice";
 type Props = {
   products: Product[];
   setSelectedRatings: Function;
   selectedRatings: number[];
+  setOption: Function;
 };
 export const FilterMenu = ({
   products,
   setSelectedRatings,
   selectedRatings,
+  setOption,
 }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [icon, setIcon] = useState<string>("/filter.png");
@@ -36,11 +39,14 @@ export const FilterMenu = ({
         }`}
       >
         {isOpen && (
-          <FilterByRating
-            products={products}
-            setSelectedRatings={setSelectedRatings}
-            selectedRatings={selectedRatings}
-          />
+          <>
+            <FilterByRating
+              products={products}
+              setSelectedRatings={setSelectedRatings}
+              selectedRatings={selectedRatings}
+            />
+            <SortByPrice setOption={setOption} />
+          </>
         )}
       </div>
     </div>

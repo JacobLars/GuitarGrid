@@ -47,7 +47,7 @@ export const ProductGallery = ({ products, isLoading }: Props) => {
     selectedRatings,
     option
   );
-  console.log(option);
+
   return (
     <div>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />

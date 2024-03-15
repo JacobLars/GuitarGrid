@@ -8,8 +8,12 @@ export const SortByPrice = ({ setOption }: Props) => {
   };
 
   return (
-    <div>
-      <select onChange={(e) => handleOptionChange(e)}>
+    <div className="flex p-5">
+      <select
+        className="mx-auto shadow-md border border-slate-600"
+        onChange={(e) => handleOptionChange(e)}
+      >
+        <option>Sort by price</option>
         <option>Highest to lowest</option>
         <option>Lowest to highest </option>
       </select>

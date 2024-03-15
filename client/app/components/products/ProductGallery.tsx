@@ -57,11 +57,6 @@ export const ProductGallery = ({ products, isLoading }: Props) => {
         selectedRatings={selectedRatings}
         setOption={setOption}
       />
-      {/*       <FilterByRating
-        products={products}
-        setSelectedRatings={setSelectedRatings}
-        selectedRatings={selectedRatings}
-      /> */}
       {isLoading ? (
         <img className="h-20 mx-auto my-40" src="/loading.gif" />
       ) : (

@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { ProductCard } from "./ProductCard";
 import { Link } from "@nextui-org/react";
 import { SearchBar } from "../filtering/SearchBar";
-import { SortByRating } from "../filtering/FilterByRating";
+import { FilterByRating } from "../filtering/FilterByRating";
+import { FilterMenu } from "../filtering/FilterMenu";
 type Props = {
   products: Product[];
   isLoading: boolean;
@@ -11,7 +12,6 @@ type Props = {
 export const ProductGallery = ({ products, isLoading }: Props) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
-
   const applyFilters = (
     products: Product[],
     term: string,
@@ -36,11 +36,16 @@ export const ProductGallery = ({ products, isLoading }: Props) => {
   return (
     <div>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <SortByRating
+      <FilterMenu
         products={products}
         setSelectedRatings={setSelectedRatings}
         selectedRatings={selectedRatings}
       />
+      {/*       <FilterByRating
+        products={products}
+        setSelectedRatings={setSelectedRatings}
+        selectedRatings={selectedRatings}
+      /> */}
       {isLoading ? (
         <img className="h-20 mx-auto my-40" src="/loading.gif" />
       ) : (

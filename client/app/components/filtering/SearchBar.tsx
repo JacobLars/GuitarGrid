@@ -1,5 +1,5 @@
 import React, { SetStateAction } from "react";
-import { SortByRating } from "./FilterByRating";
+import { FilterByRating } from "./FilterByRating";
 type Props = {
   searchTerm: string;
   setSearchTerm: Function;

@@ -5,7 +5,7 @@ type Props = {
   setSelectedRatings: Function;
   selectedRatings: number[];
 };
-export const SortByRating = ({
+export const FilterByRating = ({
   products,
   selectedRatings,
   setSelectedRatings,

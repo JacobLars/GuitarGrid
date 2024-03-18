@@ -27,12 +27,12 @@ export const FilterMenu = ({
   return (
     <div className="mt-5 mb-16">
       <img
-        className="h-8 absolute ml-14 z-10 mt-1"
+        className="h-8 absolute mt-2 ml-14 z-10 hover:cursor-pointer hover:bg-slate-100 md:left-1/4"
         src={icon}
         onClick={handleToggle}
       />
       <div
-        className={`mx-auto w-3/4 transition-transform ease-out duration-300 ${
+        className={`mx-auto w-3/4 transition-transform ease-out duration-300 md:w-1/3 ${
           isOpen
             ? "translate-x-0  border border-slate-600 rounded-md shadow-md"
             : "translate-x-full"

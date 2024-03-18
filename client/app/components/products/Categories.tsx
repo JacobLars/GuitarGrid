@@ -5,7 +5,7 @@ export const Categories = () => {
   return (
     <div className="mt-10">
       <h1 className="text-2xl text-center underline">Our Products</h1>
-      <div className="grid grid-cols-2 gap-5 mt-5">
+      <div className="grid grid-cols-2 gap-5 mt-5 md:grid md:grid-cols-3">
         <Link
           href="/selection"
           className="flex flex-col items-center border rounded-md border-neutral-500 w-48 shadow-md"

@@ -10,9 +10,9 @@ export const ProductCard = ({ product }: Props) => {
   return (
     <div>
       <Card className="flex items-center shadow-lg m-5 border border-[#c5c5c5]">
-        <div className="w-1/2 max-h-40 self-start jusitfy-center">
+        <div className="w-1/2 h-44 self-start jusitfy-center">
           <img
-            className="w-44 max-h-44 self-start p-5 object-contain"
+            className="w-44 h-44 self-start p-5 object-contain"
             src={product.images.filter((img) => img.isMain === true)[0].url}
           />
         </div>

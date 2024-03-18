@@ -16,7 +16,7 @@ export const SearchBar = ({ setSearchTerm, searchTerm }: Props) => {
       <input
         value={searchTerm}
         placeholder=" Search product or brand"
-        className="border border-slate-600 mx-auto w-3/4 h-10 mt-5 shadow-md rounded-md"
+        className="border border-slate-600 mx-auto w-3/4 h-10 mt-5 shadow-md rounded-md md:w-1/3"
         onChange={handleOnChange}
       ></input>
     </div>

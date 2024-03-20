@@ -10,7 +10,7 @@ export const SortByPrice = ({ setOption }: Props) => {
   return (
     <div className="flex p-5">
       <select
-        className="mx-auto shadow-md border border-slate-600"
+        className="mx-auto shadow-md border border-slate-600 md:justify-center"
         onChange={(e) => handleOptionChange(e)}
       >
         <option>Sort by price</option>

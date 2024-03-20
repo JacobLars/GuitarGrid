@@ -32,13 +32,12 @@ export const FilterMenu = ({
         onClick={handleToggle}
       />
       <div
-        className={`mx-auto w-3/4 transition-transform ease-out duration-300 md:w-1/3 md:border md:border-slate-600 md:rounded-md md:shadow-md ${
+        className={`mx-auto w-3/4 transition-transform ease-out duration-300 md:w-2/3 md:border md:border-slate-600 md:rounded-md md:shadow-md ${
           isOpen
             ? "translate-x-0 border border-slate-600 rounded-md shadow-md"
-            : "translate-x-full"
+            : "translate-x-full h-0"
         }`}
       >
-        {/* Always render FilterByRating and SortByPrice */}
         <FilterByRating
           products={products}
           setSelectedRatings={setSelectedRatings}

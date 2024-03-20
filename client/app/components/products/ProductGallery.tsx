@@ -51,26 +51,31 @@ export const ProductGallery = ({ products, isLoading }: Props) => {
   return (
     <div>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <div className="md:flex md:flex-row">
+        <section className="md:w-1/4 md:-ml-60">
+          <FilterMenu
+            products={products}
+            setSelectedRatings={setSelectedRatings}
+            selectedRatings={selectedRatings}
+            setOption={setOption}
+          />
+        </section>
 
-      <FilterMenu
-        products={products}
-        setSelectedRatings={setSelectedRatings}
-        selectedRatings={selectedRatings}
-        setOption={setOption}
-      />
-      <div className="md:grid md:grid-cols-2">
-        {isLoading ? (
-          <img className="h-20 mx-auto my-40" src="/loading.gif" />
-        ) : (
-          filteredProducts.map((product, index) => (
-            <Link
-              key={index}
-              href={`/products/${product.category}/product/${product.id}`}
-            >
-              <ProductCard product={product} />
-            </Link>
-          ))
-        )}
+        <section className="md:flex md:flex-col md:items-center md:mx-auto md:w-full">
+          {isLoading ? (
+            <img className="h-20 mx-auto my-40" src="/loading.gif" />
+          ) : (
+            filteredProducts.map((product, index) => (
+              <Link
+                key={index}
+                href={`/products/${product.category}/product/${product.id}`}
+                className="md:w-2/3"
+              >
+                <ProductCard product={product} />
+              </Link>
+            ))
+          )}
+        </section>
       </div>
     </div>
   );

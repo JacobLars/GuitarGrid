@@ -76,7 +76,7 @@ export const Carousel = ({ images }: Props) => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
   return (
-    <div className="flex flex-col items-center justify-center bg-opacity-100 backdrop-blur-md bg-white rounded-xl shadow-lg overflow-hidden my-4 p-4 mx-auto w-full">
+    <div className="flex flex-col items-center justify-center bg-opacity-100 backdrop-blur-md bg-white rounded-xl shadow-lg overflow-hidden my-4 p-4 mx-auto w-full md:w-2/3">
       <div className="relative w-full h-96 overflow-hidden">
         {images.map((image, index) => (
           <div

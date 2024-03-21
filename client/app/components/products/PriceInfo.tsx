@@ -7,10 +7,10 @@ type Props = {
 };
 export const PriceInfo = ({ product_price, product_quantity }: Props) => {
   return (
-    <div className="shadow-lg rounded-md p-5">
+    <div className="shadow-lg rounded-md p-5 md:w-1/2 md:mx-auto">
       <p className="text-2xl">{product_price}$</p>
       <InStock product_quantity={product_quantity} />
-      <Button className="bg-slate-600 text-white p-2 rounded-md mt-2">
+      <Button className="bg-slate-600 text-white p-2 rounded-md mt-2 -ml-1">
         Add to cart
       </Button>
     </div>

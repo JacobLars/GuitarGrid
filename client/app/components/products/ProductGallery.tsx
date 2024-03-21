@@ -3,13 +3,21 @@ import React, { useState } from "react";
 import { ProductCard } from "./ProductCard";
 import { Link } from "@nextui-org/react";
 import { SearchBar } from "../filtering/SearchBar";
-import { FilterByRating } from "../filtering/FilterByRating";
 import { FilterMenu } from "../filtering/FilterMenu";
 type Props = {
   products: Product[];
   isLoading: boolean;
+  guitarType?: string;
+  category: string;
+  brandName?: string;
 };
-export const ProductGallery = ({ products, isLoading }: Props) => {
+export const ProductGallery = ({
+  products,
+  isLoading,
+  category,
+  brandName,
+  guitarType,
+}: Props) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
   const [option, setOption] = useState<string>("");
@@ -50,6 +58,11 @@ export const ProductGallery = ({ products, isLoading }: Props) => {
 
   return (
     <div>
+      <div className="text-2xl flex flex-row underline mt-4">
+        <h1 className="mx-auto">
+          {brandName} {guitarType} {category}
+        </h1>
+      </div>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="md:flex md:flex-row">
         <section className="md:w-1/4 md:-ml-60">

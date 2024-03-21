@@ -27,7 +27,12 @@ export default function Products({
     <div className="">
       <Header />
       <NavBar />
-      <ProductGallery products={products} isLoading={isLoading} />
+      <ProductGallery
+        products={products}
+        isLoading={isLoading}
+        category={params.category}
+        guitarType={params.guitarType}
+      />
     </div>
   );
 }

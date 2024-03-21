@@ -27,7 +27,11 @@ export default function ProductCategory({
     <div className="">
       <Header />
       <NavBar />
-      <ProductGallery products={products} isLoading={isLoading} />
+      <ProductGallery
+        products={products}
+        isLoading={isLoading}
+        category={params.category}
+      />
     </div>
   );
 }

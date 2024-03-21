@@ -12,6 +12,7 @@ export default function BrandProducts({
 }) {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsloading] = useState<boolean>(true);
+
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await fetch(
@@ -23,11 +24,18 @@ export default function BrandProducts({
     };
     fetchProducts();
   }, []);
+  const brandName = products.map((p) => p.brandName)[0];
+
   return (
     <div className="">
       <Header />
       <NavBar />
-      <ProductGallery products={products} isLoading={isLoading} />
+      <ProductGallery
+        products={products}
+        isLoading={isLoading}
+        category={"Products"}
+        brandName={brandName}
+      />
     </div>
   );
 }

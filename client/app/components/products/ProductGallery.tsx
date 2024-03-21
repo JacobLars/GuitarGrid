@@ -4,6 +4,7 @@ import { ProductCard } from "./ProductCard";
 import { Link } from "@nextui-org/react";
 import { SearchBar } from "../filtering/SearchBar";
 import { FilterMenu } from "../filtering/FilterMenu";
+import { capitalizeFirstLetter } from "@/app/utils/Utils";
 type Props = {
   products: Product[];
   isLoading: boolean;
@@ -60,7 +61,8 @@ export const ProductGallery = ({
     <div>
       <div className="text-2xl flex flex-row underline mt-4">
         <h1 className="mx-auto">
-          {brandName} {guitarType} {category}
+          {capitalizeFirstLetter(brandName)} {capitalizeFirstLetter(guitarType)}{" "}
+          {capitalizeFirstLetter(category)}{" "}
         </h1>
       </div>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />

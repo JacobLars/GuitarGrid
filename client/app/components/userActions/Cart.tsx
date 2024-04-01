@@ -1,6 +1,9 @@
+import { Product } from "@/app/types/Types";
 import React, { useState } from "react";
-
-export const Cart = () => {
+type Props = {
+  cartProducts: Product[];
+};
+export const Cart = ({ cartProducts }: Props) => {
   const [count, setCount] = useState<number>(0);
   return (
     <div>

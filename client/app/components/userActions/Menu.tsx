@@ -1,11 +1,14 @@
 import React from "react";
 import { Cart } from "./Cart";
-
-export const Menu = () => {
+import { Product } from "@/app/types/Types";
+type Props = {
+  cartProducts: Product[];
+};
+export const Menu = ({ cartProducts }: Props) => {
   return (
     <div className="flex flex-row p-3 justify-end">
       <img className="h-8 mr-3" src="/account.png" />
-      <Cart />
+      <Cart cartProducts={cartProducts} />
     </div>
   );
 };

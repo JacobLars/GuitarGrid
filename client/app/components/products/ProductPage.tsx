@@ -4,6 +4,7 @@ import {
   Image,
   Picks,
   Pickup,
+  Product,
   Tuner,
 } from "@/app/types/Types";
 import React, { useEffect, useState } from "react";
@@ -27,6 +28,7 @@ export const ProductPage = ({ productId, productCategory }: Props) => {
   const [amplifier, setAmplifier] = useState<Amplifier>();
   const [pickup, setPickup] = useState<Pickup>();
   const [picks, setPicks] = useState<Picks>();
+  const [product, setProduct] = useState<Product>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
     const fetchProductById = async () => {
@@ -34,6 +36,8 @@ export const ProductPage = ({ productId, productCategory }: Props) => {
         `http://localhost:8080/api/v1/products/${productId}`
       );
       const responseToJson = await response.json();
+      setProduct(responseToJson);
+
       if (productCategory === "guitars") {
         setGuitar(responseToJson);
       } else if (productCategory === "tuners") {
@@ -56,86 +60,22 @@ export const ProductPage = ({ productId, productCategory }: Props) => {
         <img className="h-20 mx-auto my-40" src="/loading.gif" alt="Loading" />
       ) : (
         <>
-          {guitar && (
-            <>
-              <ProductHeader
-                productName={guitar.name}
-                productRating={guitar.rating}
-                brandLogo={guitar.brandLogo}
-                product_quantity={guitar.product_quantity}
-              />
-              <Carousel images={guitar.images} />
-              <PriceInfo
-                product_price={guitar.price}
-                product_quantity={guitar.product_quantity}
-              />
-              <GuitarInfo guitar={guitar} />
-            </>
-          )}
-          {tuner && (
-            <>
-              <ProductHeader
-                productName={tuner.name}
-                productRating={tuner.rating}
-                brandLogo={tuner.brandLogo}
-                product_quantity={tuner.product_quantity}
-              />
-              <Carousel images={tuner.images} />
-              <PriceInfo
-                product_price={tuner.price}
-                product_quantity={tuner.product_quantity}
-              />
-              <TunerInfo tuner={tuner} />
-            </>
-          )}
-          {amplifier && (
-            <>
-              <ProductHeader
-                productName={amplifier.name}
-                productRating={amplifier.rating}
-                brandLogo={amplifier.brandLogo}
-                product_quantity={amplifier.product_quantity}
-              />
-              <Carousel images={amplifier.images} />
-              <PriceInfo
-                product_price={amplifier.price}
-                product_quantity={amplifier.product_quantity}
-              />
-              <AmplifierInfo amplifier={amplifier} />
-            </>
-          )}
-          {pickup && (
-            <>
-              <ProductHeader
-                productName={pickup.name}
-                productRating={pickup.rating}
-                brandLogo={pickup.brandLogo}
-                product_quantity={pickup.product_quantity}
-              />
-              <Carousel images={pickup.images} />
-              <PriceInfo
-                product_price={pickup.price}
-                product_quantity={pickup.product_quantity}
-              />
-              <PickupInfo pickup={pickup} />
-            </>
-          )}
-          {picks && (
-            <>
-              <ProductHeader
-                productName={picks.name}
-                productRating={picks.rating}
-                brandLogo={picks.brandLogo}
-                product_quantity={picks.product_quantity}
-              />
-              <Carousel images={picks.images} />
-              <PriceInfo
-                product_price={picks.price}
-                product_quantity={picks.product_quantity}
-              />
-              <PicksInfo picks={picks} />
-            </>
-          )}
+          <ProductHeader
+            productName={product!.name}
+            productRating={product!.rating}
+            brandLogo={product!.brandLogo}
+            product_quantity={product!.product_quantity}
+          />
+          <Carousel images={product!.images} />
+          <PriceInfo
+            product_price={product!.price}
+            product_quantity={product!.product_quantity}
+          />
+          {guitar && <GuitarInfo guitar={guitar} />}
+          {tuner && <TunerInfo tuner={tuner} />}
+          {amplifier && <AmplifierInfo amplifier={amplifier} />}
+          {pickup && <PickupInfo pickup={pickup} />}
+          {picks && <PicksInfo picks={picks} />}
         </>
       )}
     </div>

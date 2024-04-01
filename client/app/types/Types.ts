@@ -3,9 +3,7 @@ export type Brand = {
   name: string;
   logo: string;
 };
-export type Products = {
-  guitar: Guitar;
-};
+
 export type Guitar = {
   id: string;
   name: string;
@@ -105,6 +103,7 @@ export type Product = {
   product_quantity: number;
   images: Image[];
   brandName: string;
+  brandLogo: string;
   category: string;
 };
 

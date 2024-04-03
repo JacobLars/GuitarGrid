@@ -5,6 +5,7 @@ import { Link } from "@nextui-org/react";
 import { SearchBar } from "../filtering/SearchBar";
 import { FilterMenu } from "../filtering/FilterMenu";
 import { capitalizeFirstLetter } from "@/app/utils/Utils";
+import { AddToCart } from "./AddToCart";
 type Props = {
   products: Product[];
   isLoading: boolean;
@@ -81,13 +82,18 @@ export const ProductGallery = ({
             <img className="h-20 mx-auto my-40" src="/loading.gif" />
           ) : (
             filteredProducts.map((product, index) => (
-              <Link
-                key={index}
-                href={`/products/${product.category}/product/${product.id}`}
-                className="md:w-2/3"
-              >
-                <ProductCard product={product} />
-              </Link>
+              <div className="md:flex md:w-1/2">
+                <Link
+                  key={index}
+                  href={`/products/${product.category}/product/${product.id}`}
+                  className="w-full"
+                >
+                  <ProductCard product={product} />
+                </Link>
+                <div className="hidden md:block md:1/4 md:-ml-36 md:mt-20 md:h-10 md:z-10">
+                  <AddToCart product={product} />
+                </div>
+              </div>
             ))
           )}
         </section>

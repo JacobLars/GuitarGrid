@@ -7,7 +7,8 @@ type Props = {
 };
 export const AddToCart = ({ product }: Props) => {
   const { addToCart } = useCart();
-  const handleOnClick = () => {
+  const handleOnClick = (event: any) => {
+    event.stopPropagation();
     addToCart(product);
   };
   return (

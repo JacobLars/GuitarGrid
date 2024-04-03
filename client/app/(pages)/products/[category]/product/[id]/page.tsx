@@ -49,14 +49,14 @@ export default function ProductById({
     };
     fetchProductById();
   }, []);
-  console.log(products);
+
   return (
     <div className="">
       <Header />
       <Menu cartProducts={products} />
       <NavBar />
       {isLoading ? (
-        <img src="/loading.gif" />
+        <img className="h-20 mx-auto my-40" src="/loading.gif" />
       ) : (
         <ProductPage
           productId={params.id}

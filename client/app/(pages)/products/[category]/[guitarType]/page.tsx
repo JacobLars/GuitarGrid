@@ -2,6 +2,7 @@
 import { Header } from "@/app/components/home/Header";
 import { NavBar } from "@/app/components/navbar/NavBar";
 import { ProductGallery } from "@/app/components/products/ProductGallery";
+import { Menu } from "@/app/components/userActions/Menu";
 import { Product } from "@/app/types/Types";
 import { useEffect, useState } from "react";
 
@@ -26,6 +27,7 @@ export default function Products({
   return (
     <div className="">
       <Header />
+      <Menu />
       <NavBar />
       <ProductGallery
         products={products}

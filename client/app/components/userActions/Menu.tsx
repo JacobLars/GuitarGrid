@@ -4,11 +4,11 @@ import { Product } from "@/app/types/Types";
 type Props = {
   cartProducts: Product[];
 };
-export const Menu = ({ cartProducts }: Props) => {
+export const Menu = () => {
   return (
     <div className="flex flex-row p-3 justify-end">
       <img className="h-8 mr-3" src="/account.png" />
-      <Cart cartProducts={cartProducts} />
+      <Cart />
     </div>
   );
 };

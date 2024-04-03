@@ -53,7 +53,7 @@ export default function ProductById({
   return (
     <div className="">
       <Header />
-      <Menu cartProducts={products} />
+      <Menu />
       <NavBar />
       {isLoading ? (
         <img className="h-20 mx-auto my-40" src="/loading.gif" />

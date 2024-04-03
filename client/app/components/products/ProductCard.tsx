@@ -33,7 +33,6 @@ export const ProductCard = ({ product }: Props) => {
         </div>
         <div className="hidden md:flex md:flex-col md:items-center md:self-end mr-5">
           <p className="font-bold -mt-24 text-2xl">{product.price}$</p>
-          <AddToCart product={product} />
         </div>
       </Card>
     </div>

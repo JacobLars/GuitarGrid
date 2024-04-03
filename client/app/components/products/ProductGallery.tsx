@@ -82,9 +82,8 @@ export const ProductGallery = ({
             <img className="h-20 mx-auto my-40" src="/loading.gif" />
           ) : (
             filteredProducts.map((product, index) => (
-              <div className="md:flex md:w-1/2">
+              <div className="md:flex md:w-1/2" key={index}>
                 <Link
-                  key={index}
                   href={`/products/${product.category}/product/${product.id}`}
                   className="w-full"
                 >

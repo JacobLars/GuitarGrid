@@ -43,7 +43,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     }
   }, []);
 
-  // Save cart state to localStorage whenever it changes
   useEffect(() => {
     if (initialRender.current) {
       initialRender.current = false;

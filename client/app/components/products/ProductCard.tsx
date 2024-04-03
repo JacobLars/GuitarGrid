@@ -3,6 +3,7 @@ import Rating from "@mui/material/Rating";
 import { Card, Link } from "@nextui-org/react";
 import React from "react";
 import { InStock } from "./InStock";
+import { AddToCart } from "./AddToCart";
 type Props = {
   product: Product;
 };
@@ -32,9 +33,7 @@ export const ProductCard = ({ product }: Props) => {
         </div>
         <div className="hidden md:flex md:flex-col md:items-center md:self-end mr-5">
           <p className="font-bold -mt-24 text-2xl">{product.price}$</p>
-          <button className="mt-14 bg-slate-600 text-white p-2 rounded-md hover:bg-slate-800 z-10">
-            Add to Cart
-          </button>
+          <AddToCart product={product} />
         </div>
       </Card>
     </div>

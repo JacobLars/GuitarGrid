@@ -78,23 +78,19 @@ export const ProductGallery = ({
         </section>
 
         <section className="lg:grid lg:grid-cols-2 lg:gap-0 mx-auto md:w-2/3">
-          {isLoading ? (
-            <img className="h-20 mx-auto my-40" src="/loading.gif" />
-          ) : (
-            filteredProducts.map((product, index) => (
-              <div className="md:flex md:w-full" key={index}>
-                <Link
-                  href={`/products/${product.category}/product/${product.id}`}
-                  className="w-full"
-                >
-                  <ProductCard product={product} />
-                </Link>
-                <div className="hidden lg:block md:w-1/4 md:-ml-36 md:mt-20 md:h-10 md:z-10">
-                  <AddToCart product={product} />
-                </div>
+          {filteredProducts.map((product, index) => (
+            <div className="md:flex md:w-full" key={index}>
+              <Link
+                href={`/products/${product.category}/product/${product.id}`}
+                className="w-full"
+              >
+                <ProductCard product={product} />
+              </Link>
+              <div className="hidden lg:block md:w-1/4 md:-ml-36 md:mt-20 md:h-10 md:z-10">
+                <AddToCart product={product} />
               </div>
-            ))
-          )}
+            </div>
+          ))}
         </section>
       </div>
     </div>

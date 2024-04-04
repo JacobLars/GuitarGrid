@@ -29,11 +29,15 @@ export default function ProductCategory({
       <Header />
       <Menu />
       <NavBar />
-      <ProductGallery
-        products={products}
-        isLoading={isLoading}
-        category={params.category}
-      />
+      {isLoading ? (
+        <img className="h-20 mx-auto my-40" src="/loading.gif" />
+      ) : (
+        <ProductGallery
+          products={products}
+          isLoading={isLoading}
+          category={params.category}
+        />
+      )}
     </div>
   );
 }

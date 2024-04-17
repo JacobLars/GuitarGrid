@@ -8,14 +8,18 @@ import com.stripe.model.Product;
 import com.stripe.param.PriceCreateParams;
 import com.stripe.param.ProductCreateParams;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FirstStripe {
 
-    @Value("${stripeKey}")
-    String stripeKey;
+
+    @Value("${stripe.key}")
+    private String stripeKey;
+
     public void create() throws StripeException {
-        System.out.println(stripeKey);
         Stripe.apiKey = stripeKey;
+        System.out.println(stripeKey);
         ProductCreateParams productParams =
                 ProductCreateParams.builder()
                         .setName("Test Product")

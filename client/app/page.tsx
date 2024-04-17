@@ -4,6 +4,7 @@ import { Categories } from "./components/products/Categories";
 import { Header } from "./components/home/Header";
 import { BrandGallery } from "./components/brands/BrandGallery";
 import { Menu } from "./components/userActions/Menu";
+import { CartItems } from "./components/cart/CartItems";
 
 export default function Home() {
   return (

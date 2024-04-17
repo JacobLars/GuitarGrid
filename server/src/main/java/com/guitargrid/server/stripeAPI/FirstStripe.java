@@ -1,14 +1,19 @@
 package com.guitargrid.server.stripeAPI;
 
 
+import com.guitargrid.server.model.cart.CartProduct;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
-import com.stripe.model.Price;
-import com.stripe.model.Product;
-import com.stripe.param.PriceCreateParams;
-import com.stripe.param.ProductCreateParams;
+
+import com.stripe.model.checkout.Session;
+import com.stripe.param.checkout.SessionCreateParams;
+
+import com.stripe.param.checkout.SessionCreateParams.LineItem;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FirstStripe {
@@ -17,27 +22,45 @@ public class FirstStripe {
     @Value("${stripe.key}")
     private String stripeKey;
 
-    public void create() throws StripeException {
+    public String createCheckoutSession(List<CartProduct> cartProducts) throws StripeException {
         Stripe.apiKey = stripeKey;
-        System.out.println(stripeKey);
-        ProductCreateParams productParams =
-                ProductCreateParams.builder()
-                        .setName("Test Product")
-                        .setDescription("Test product")
-                        .build();
-        Product product = Product.create(productParams);
-        System.out.println("Success! Here is your starter product id: " + product.getId());
+        List<LineItem> lineItems = cartProducts.stream()
+                .map(cartProduct -> new LineItem.Builder()
+                        .setPriceData(
+                                new LineItem.PriceData.Builder()
+                                        .setCurrency("usd")
+                                        .setUnitAmount((long) (cartProduct.getPrice() * 100))
+                                        .setProductData(
+                                                new LineItem.PriceData.ProductData.Builder()
+                                                        .setName(cartProduct.getName())
+                                                        .build()
+                                        )
+                                        .build()
+                        )
+                        .setQuantity((long) cartProduct.getQuantity())
+                        .build())
+                .collect(Collectors.toList());
 
-        PriceCreateParams params =
-                PriceCreateParams
-                        .builder()
-                        .setProduct(product.getId())
-                        .setCurrency("usd")
-                        .setUnitAmount(1L)
+        SessionCreateParams params =
+                SessionCreateParams.builder()
+                        .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
+                        .setMode(SessionCreateParams.Mode.PAYMENT)
+                        .setSuccessUrl("http://localhost:3000/success")
+                        .setCancelUrl("http://localhost:3000/cancel")
+                        .addAllLineItem(lineItems)
                         .build();
-        Price price = Price.create(params);
-        System.out.println("Success! Here is your starter product price id: " + price.getId());
+
+        Session session = Session.create(params);
+        return getSession(session.getId());
     }
 
+    private String getSession(String sessionId) {
+        try {
+            return Session.retrieve(sessionId).getUrl();
+        } catch (StripeException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }

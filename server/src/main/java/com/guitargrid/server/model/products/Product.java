@@ -2,6 +2,7 @@ package com.guitargrid.server.model.products;
 
 import com.guitargrid.server.model.Brand;
 import com.guitargrid.server.model.Image;
+import com.guitargrid.server.model.cart.CartProduct;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,4 +41,5 @@ public class Product {
         this.product_quantity = product_quantity;
         this.category = category;
     }
+
 }

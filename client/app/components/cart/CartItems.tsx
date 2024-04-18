@@ -6,10 +6,9 @@ export const CartItems = () => {
 
   cart = JSON.parse(localStorage.getItem("cart") as string);
 
-  console.log(cart);
   return (
     <div>
-      <ul className="border border-t-sky-400">
+      <ul className="border border-t-sky-400 z-10">
         {cart?.map((item, index) => (
           <li key={index}>
             <h1>{item.product.name}</h1>

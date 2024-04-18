@@ -16,7 +16,6 @@ export default function Home() {
         <Categories />
         <BrandGallery />
       </div>
-      <CartItems />
     </div>
   );
 }

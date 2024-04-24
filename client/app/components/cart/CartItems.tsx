@@ -15,7 +15,6 @@ export const CartItems = () => {
       quantity: product.quantity,
       price: product.product.price,
     }));
-    console.log(cartProducts);
     const req = await fetch("http://localhost:8080/stripe/checkout", {
       headers: { "Content-type": "application/json" },
       method: "POST",
@@ -28,6 +27,11 @@ export const CartItems = () => {
   const handleClearCartClick = async () => {
     localStorage.clear();
     window.location.reload();
+  };
+
+  const handleDeleteItemClick = (product: Product) => {
+    console.log(product);
+    cart = cart.filter((item) => item.product.id !== product.id);
   };
 
   return (
@@ -54,7 +58,11 @@ export const CartItems = () => {
                 </div>
               </div>
               <div className="self-end">
-                <img src="./trashbin.png" className="h-8"></img>
+                <img
+                  onClick={() => handleDeleteItemClick(item.product)}
+                  src="./trashbin.png"
+                  className="h-8 hover:cursor-pointer"
+                ></img>
               </div>
             </div>
           </li>

@@ -25,6 +25,11 @@ export const CartItems = () => {
     window.location.href = response.checkoutUrl;
   };
 
+  const handleClearCartClick = async () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+
   return (
     <div>
       <ul className="border border-slate-600 rounded-md z-10 p-2">
@@ -55,7 +60,10 @@ export const CartItems = () => {
         >
           To Checkout
         </button>
-        <button className="bg-red-500 border border-slate-600 p-2 shadow-md rounded-md text-white hover:bg-red-600">
+        <button
+          onClick={handleClearCartClick}
+          className="bg-red-500 border border-slate-600 p-2 shadow-md rounded-md text-white hover:bg-red-600"
+        >
           Clear Cart
         </button>
       </section>

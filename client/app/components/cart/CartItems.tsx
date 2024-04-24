@@ -1,4 +1,4 @@
-import { Product } from "@/app/types/Types";
+import { CartProduct, Product } from "@/app/types/Types";
 import React, { useEffect } from "react";
 
 export const CartItems = () => {
@@ -8,6 +8,23 @@ export const CartItems = () => {
     cart = JSON.parse(localStorage.getItem("cart") as string);
   };
   getCart();
+
+  const handleCheckoutClick = async () => {
+    const cartProducts: CartProduct[] = cart.map((product) => ({
+      name: product.product.name,
+      quantity: product.quantity,
+      price: product.product.price,
+    }));
+    console.log(cartProducts);
+    const req = await fetch("http://localhost:8080/stripe/checkout", {
+      headers: { "Content-type": "application/json" },
+      method: "POST",
+      body: JSON.stringify(cartProducts),
+    });
+    const response = await req.json();
+    window.location.href = response.checkoutUrl;
+  };
+
   return (
     <div>
       <ul className="border border-slate-600 rounded-md z-10 p-2">
@@ -32,7 +49,10 @@ export const CartItems = () => {
         ))}
       </ul>
       <section className="border-b border-b-slate-600 border-r border-r-slate-600 border-l border-l-slate-600 rounded-md p-2 flex justify-around">
-        <button className="bg-green-500 border border-slate-600 p-2 shadow-md rounded-md text-white hover:bg-green-600">
+        <button
+          onClick={handleCheckoutClick}
+          className="bg-green-500 border border-slate-600 p-2 shadow-md rounded-md text-white hover:bg-green-600"
+        >
           To Checkout
         </button>
         <button className="bg-red-500 border border-slate-600 p-2 shadow-md rounded-md text-white hover:bg-red-600">

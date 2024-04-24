@@ -22,7 +22,7 @@ public class FirstStripe {
     @Value("${stripe.key}")
     private String stripeKey;
 
-    public String createCheckoutSession(List<CartProduct> cartProducts) throws StripeException {
+    public StripeResponse createCheckoutSession(List<CartProduct> cartProducts) throws StripeException {
         Stripe.apiKey = stripeKey;
         List<LineItem> lineItems = cartProducts.stream()
                 .map(cartProduct -> new LineItem.Builder()
@@ -51,10 +51,10 @@ public class FirstStripe {
                         .build();
 
         Session session = Session.create(params);
-        return getSession(session.getId());
+        return new StripeResponse(getCheckoutUrl(session.getId()));
     }
 
-    private String getSession(String sessionId) {
+    private String getCheckoutUrl(String sessionId) {
         try {
             return Session.retrieve(sessionId).getUrl();
         } catch (StripeException e) {

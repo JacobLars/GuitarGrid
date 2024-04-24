@@ -112,3 +112,9 @@ export type Image = {
   url: string;
   isMain: boolean;
 };
+
+export type CartProduct = {
+  name: string;
+  quantity: number;
+  price: number;
+};

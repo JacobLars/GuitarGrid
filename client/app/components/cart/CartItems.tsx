@@ -35,7 +35,7 @@ export const CartItems = () => {
       <ul className="border border-slate-600 rounded-md z-10 p-2">
         {cart?.map((item, index) => (
           <li className="border-b border-b-slate-600" key={index}>
-            <div className="flex flex-row items-center">
+            <div className="flex flex-row items-center justify-between">
               <div className="p-2 -ml-2">
                 <img
                   className="h-16 w-16"
@@ -45,9 +45,16 @@ export const CartItems = () => {
                   }
                 />
               </div>
-              <div className="ml-2">
-                <p>{item.product.name}</p>
-                <p className="text-xl">{item.product.price}$</p>
+              <div className="flex-col flex-grow ml-2">
+                <div>
+                  <p>{item.product.name}</p>
+                </div>
+                <div>
+                  <p className="text-xl">{item.product.price}$</p>
+                </div>
+              </div>
+              <div className="self-end">
+                <img src="./trashbin.png" className="h-8"></img>
               </div>
             </div>
           </li>

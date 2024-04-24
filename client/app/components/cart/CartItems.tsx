@@ -31,6 +31,14 @@ export const CartItems = () => {
           </li>
         ))}
       </ul>
+      <section className="border-b border-b-slate-600 border-r border-r-slate-600 border-l border-l-slate-600 rounded-md p-2 flex justify-around">
+        <button className="bg-green-500 border border-slate-600 p-2 shadow-md rounded-md text-white hover:bg-green-600">
+          To Checkout
+        </button>
+        <button className="bg-red-500 border border-slate-600 p-2 shadow-md rounded-md text-white hover:bg-red-600">
+          Clear Cart
+        </button>
+      </section>
     </div>
   );
 };

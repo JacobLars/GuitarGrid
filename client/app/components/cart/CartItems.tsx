@@ -1,13 +1,22 @@
 import { CartProduct, Product } from "@/app/types/Types";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 export const CartItems = () => {
-  let cart: { product: Product; quantity: number }[] = [];
+  const [cart, setCart] = useState<{ product: Product; quantity: number }[]>(
+    []
+  );
 
-  const getCart = async () => {
-    cart = JSON.parse(localStorage.getItem("cart") as string);
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    setCart(storedCart);
+  }, []);
+
+  const updateCartAndLocalStorage = (
+    updatedCart: { product: Product; quantity: number }[]
+  ) => {
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
-  getCart();
 
   const handleCheckoutClick = async () => {
     const cartProducts: CartProduct[] = cart.map((product) => ({
@@ -25,13 +34,13 @@ export const CartItems = () => {
   };
 
   const handleClearCartClick = async () => {
-    localStorage.clear();
-    window.location.reload();
+    localStorage.removeItem("cart");
+    setCart([]);
   };
 
   const handleDeleteItemClick = (product: Product) => {
-    console.log(product);
-    cart = cart.filter((item) => item.product.id !== product.id);
+    const updatedCart = cart.filter((item) => item.product.id !== product.id);
+    updateCartAndLocalStorage(updatedCart);
   };
 
   return (

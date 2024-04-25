@@ -19,13 +19,13 @@ export const NavBar = () => {
         </Link>
         <Link
           className="hover:bg-slate-700 h-full w-full flex justify-center"
-          href="/tuners"
+          href="/products/tuners"
         >
           <p>Tuners</p>
         </Link>
         <Link
           className="hover:bg-slate-700 h-full w-full flex justify-center"
-          href="/amplifiers"
+          href="/products/amplifiers"
         >
           <p>Amplifiers</p>
         </Link>

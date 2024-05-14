@@ -1,10 +1,7 @@
 import { useCart } from "@/app/contexts/CartContext";
-import { Product } from "@/app/types/Types";
 import React, { useState } from "react";
-import { CartItems } from "../cart/CartItems";
-type Props = {
-  cartProducts: Product[];
-};
+import { CartItems } from "./CartItems";
+
 export const Cart = () => {
   const { cart } = useCart();
   const [isClicked, setIsClicked] = useState<boolean>(false);

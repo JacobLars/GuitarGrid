@@ -1,8 +1,8 @@
 "use client";
-import { Header } from "@/app/components/home/Header";
+import { Header } from "@/app/components/header/Header";
 import { NavBar } from "@/app/components/navbar/NavBar";
 import { ProductPage } from "@/app/components/products/ProductPage";
-import { Menu } from "@/app/components/userActions/Menu";
+import { Menu } from "@/app/components/navbar/UserMenu";
 import {
   Amplifier,
   Guitar,

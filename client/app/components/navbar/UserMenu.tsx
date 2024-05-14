@@ -1,5 +1,5 @@
 import React from "react";
-import { Cart } from "./Cart";
+import { Cart } from "../cart/Cart";
 import { Product } from "@/app/types/Types";
 type Props = {
   cartProducts: Product[];

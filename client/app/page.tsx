@@ -1,9 +1,9 @@
 "use client";
 import { NavBar } from "./components/navbar/NavBar";
 import { Categories } from "./components/products/Categories";
-import { Header } from "./components/home/Header";
+import { Header } from "./components/header/Header";
 import { BrandGallery } from "./components/brands/BrandGallery";
-import { Menu } from "./components/userActions/Menu";
+import { Menu } from "./components/navbar/UserMenu";
 import { CartItems } from "./components/cart/CartItems";
 
 export default function Home() {

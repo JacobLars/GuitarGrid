@@ -1,5 +1,5 @@
 "use client";
-import { Header } from "@/app/components/home/Header";
+import { Header } from "@/app/components/header/Header";
 import { NavBar } from "@/app/components/navbar/NavBar";
 import { ProductGallery } from "@/app/components/products/ProductGallery";
 import { Product } from "@/app/types/Types";

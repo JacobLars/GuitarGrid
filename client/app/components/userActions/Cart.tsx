@@ -11,7 +11,6 @@ export const Cart = () => {
   const cartItemCount = cart.reduce((acc, item) => acc + item.quantity, 0);
   const handleCartOnClick = () => {
     setIsClicked(!isClicked);
-    console.log(isClicked);
   };
   return (
     <div>

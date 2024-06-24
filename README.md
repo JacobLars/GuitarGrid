@@ -1,11 +1,13 @@
 # GuitarGrid
 
 ##### Large Screen:
-![guitargrid-xl-gif](https://github.com/JacobLars/GuitarGrid/assets/93320021/61bf6273-8970-4ad1-b7fe-827e8af8bb5d)
+![gg-lg-gif](https://github.com/JacobLars/GuitarGrid/assets/93320021/31ad69d1-7f03-46d6-8230-a36ae05b61e1)
+
 
 
 ##### Small Screen:
-![guitargrid-sm-gif](https://github.com/JacobLars/GuitarGrid/assets/93320021/d1cf3270-512c-409a-95e4-dbb42c15299f)
+![gg-sm-gif](https://github.com/JacobLars/GuitarGrid/assets/93320021/7da41fe7-5ff9-4d7f-98a2-71da7e06a272)
+
 
 ## 
 ##### Built With:

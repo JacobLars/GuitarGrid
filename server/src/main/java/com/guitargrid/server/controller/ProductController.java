@@ -16,7 +16,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/products")
-@CrossOrigin
+@CrossOrigin("http://localhost:3000")
 public class ProductController {
 
     private final ProductService service;

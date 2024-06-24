@@ -12,7 +12,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/brands")
-@CrossOrigin
+@CrossOrigin("http://localhost:3000")
 public class BrandController {
 
     private final BrandService brandService;

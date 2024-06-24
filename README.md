@@ -1,5 +1,6 @@
 # GuitarGrid
-### Overview
+### About
+Unfinished guitar based webstore that is run locally.
 
 ##
 ### Large Screen:

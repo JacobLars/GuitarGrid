@@ -31,9 +31,15 @@ export const NavBar = () => {
         </Link>
         <Link
           className="hover:bg-slate-700 h-full w-full flex justify-center"
-          href="/other"
+          href="/products/pickups"
         >
-          <p>Other</p>
+          <p>Pickups</p>
+        </Link>
+        <Link
+          className="hover:bg-slate-700 h-full w-full flex justify-center"
+          href="/products/picks"
+        >
+          <p>Picks</p>
         </Link>
       </nav>
     </div>

@@ -25,7 +25,7 @@ export const AddToCart = ({ product }: Props) => {
         Add to Cart
       </button>
       {showAlert && (
-        <div className="bg-green-700 text-white ">
+        <div className="opacity-75 bg-green-700 text-white p-2 rounded-md">
           {product.name} added to cart
         </div>
       )}

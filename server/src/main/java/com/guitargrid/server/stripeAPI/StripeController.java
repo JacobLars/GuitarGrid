@@ -12,12 +12,12 @@ import java.util.List;
 public class StripeController {
 
     @Autowired
-    private FirstStripe firstStripe;
+    private StripeClient stripeClient;
 
     @PostMapping("/checkout")
     public StripeResponse createCheckoutSession(@RequestBody List<CartProduct> cartProducts) {
         try {
-            return firstStripe.createCheckoutSession(cartProducts);
+            return stripeClient.createCheckoutSession(cartProducts);
         } catch (Exception e) {
             return null;
         }
